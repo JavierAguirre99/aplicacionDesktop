@@ -5,6 +5,8 @@
  */
 package jaaer;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Javier
@@ -40,6 +42,9 @@ public class Login extends javax.swing.JFrame {
         jPasswordField1 = new javax.swing.JPasswordField();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
 
         jLabel2.setText("jLabel2");
 
@@ -65,29 +70,71 @@ public class Login extends javax.swing.JFrame {
         jLabel4.setText("Usuario:");
         jpIngreso.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 200, 100, 30));
 
+        jTextField2.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         jTextField2.setForeground(new java.awt.Color(153, 153, 153));
         jTextField2.setBorder(null);
-        jpIngreso.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 240, 240, 40));
-        jpIngreso.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 420, 350, 20));
-        jpIngreso.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 300, 350, 20));
+        jpIngreso.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 240, 230, 40));
+        jpIngreso.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 420, 340, 20));
+        jpIngreso.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 300, 340, 20));
 
+        jPasswordField1.setFont(new java.awt.Font("Yu Gothic UI", 0, 11)); // NOI18N
         jPasswordField1.setForeground(new java.awt.Color(153, 153, 153));
         jPasswordField1.setText("jPasswordField1");
         jPasswordField1.setBorder(null);
         jpIngreso.add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 370, 210, 40));
 
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/clave.png"))); // NOI18N
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/cancelar.png"))); // NOI18N
         jLabel6.setToolTipText("");
-        jpIngreso.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 370, -1, -1));
+        jLabel6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel6MouseClicked(evt);
+            }
+        });
+        jpIngreso.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 10, -1, -1));
 
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/usuario-1.png"))); // NOI18N
         jLabel7.setToolTipText("");
         jpIngreso.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 250, -1, -1));
 
-        getContentPane().add(jpIngreso, new org.netbeans.lib.awtextra.AbsoluteConstraints(-20, 0, 560, 520));
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/login-1.png"))); // NOI18N
+        jButton1.setBorder(null);
+        jButton1.setBorderPainted(false);
+        jButton1.setContentAreaFilled(false);
+        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jpIngreso.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 460, 60, 70));
+
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/clave.png"))); // NOI18N
+        jLabel8.setToolTipText("");
+        jpIngreso.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 370, -1, -1));
+
+        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/flecha-hacia-abajo.png"))); // NOI18N
+        jLabel9.setToolTipText("");
+        jLabel9.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel9.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel9MouseClicked(evt);
+            }
+        });
+        jpIngreso.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 10, -1, -1));
+
+        getContentPane().add(jpIngreso, new org.netbeans.lib.awtextra.AbsoluteConstraints(-20, 0, 560, 560));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jLabel9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel9MouseClicked
+        this.setState(Login.ICONIFIED);
+    }//GEN-LAST:event_jLabel9MouseClicked
+
+    private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseClicked
+        int dialogo = JOptionPane.YES_NO_OPTION;
+        int resultado = JOptionPane.showConfirmDialog(null, "Desea salir de la aplicacion","Salir",dialogo);
+        
+        if (resultado ==0) {
+            System.exit(0);
+        }
+    }//GEN-LAST:event_jLabel6MouseClicked
 
     /**
      * @param args the command line arguments
@@ -125,12 +172,15 @@ public class Login extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
