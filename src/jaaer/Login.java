@@ -33,16 +33,16 @@ public class Login extends javax.swing.JFrame {
 
         jLabel2 = new javax.swing.JLabel();
         jpIngreso = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        lblContra = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        lblUsuario = new javax.swing.JLabel();
+        txtUsuario = new javax.swing.JTextField();
         jSeparator1 = new javax.swing.JSeparator();
         jSeparator2 = new javax.swing.JSeparator();
-        jPasswordField1 = new javax.swing.JPasswordField();
+        txtContra = new javax.swing.JPasswordField();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        btnIngresar = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
 
@@ -56,32 +56,32 @@ public class Login extends javax.swing.JFrame {
         jpIngreso.setBackground(new java.awt.Color(255, 255, 255));
         jpIngreso.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Yu Gothic UI", 0, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(186, 12, 12));
-        jLabel1.setText("Contraseña:");
-        jpIngreso.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 330, 130, 30));
+        lblContra.setFont(new java.awt.Font("Yu Gothic UI", 0, 24)); // NOI18N
+        lblContra.setForeground(new java.awt.Color(186, 12, 12));
+        lblContra.setText("Contraseña:");
+        jpIngreso.add(lblContra, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 330, 130, 30));
 
         jLabel3.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/usuario.png"))); // NOI18N
         jpIngreso.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 20, 130, 180));
 
-        jLabel4.setFont(new java.awt.Font("Yu Gothic UI", 0, 24)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(186, 12, 12));
-        jLabel4.setText("Usuario:");
-        jpIngreso.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 200, 100, 30));
+        lblUsuario.setFont(new java.awt.Font("Yu Gothic UI", 0, 24)); // NOI18N
+        lblUsuario.setForeground(new java.awt.Color(186, 12, 12));
+        lblUsuario.setText("Usuario:");
+        jpIngreso.add(lblUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 200, 100, 30));
 
-        jTextField2.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
-        jTextField2.setForeground(new java.awt.Color(153, 153, 153));
-        jTextField2.setBorder(null);
-        jpIngreso.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 240, 230, 40));
+        txtUsuario.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        txtUsuario.setForeground(new java.awt.Color(153, 153, 153));
+        txtUsuario.setBorder(null);
+        jpIngreso.add(txtUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 240, 230, 40));
         jpIngreso.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 420, 340, 20));
         jpIngreso.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 300, 340, 20));
 
-        jPasswordField1.setFont(new java.awt.Font("Yu Gothic UI", 0, 11)); // NOI18N
-        jPasswordField1.setForeground(new java.awt.Color(153, 153, 153));
-        jPasswordField1.setText("jPasswordField1");
-        jPasswordField1.setBorder(null);
-        jpIngreso.add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 370, 210, 40));
+        txtContra.setFont(new java.awt.Font("Yu Gothic UI", 0, 11)); // NOI18N
+        txtContra.setForeground(new java.awt.Color(153, 153, 153));
+        txtContra.setText("jPasswordField1");
+        txtContra.setBorder(null);
+        jpIngreso.add(txtContra, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 370, 210, 40));
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/cancelar.png"))); // NOI18N
         jLabel6.setToolTipText("");
@@ -97,12 +97,12 @@ public class Login extends javax.swing.JFrame {
         jLabel7.setToolTipText("");
         jpIngreso.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 250, -1, -1));
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/login-1.png"))); // NOI18N
-        jButton1.setBorder(null);
-        jButton1.setBorderPainted(false);
-        jButton1.setContentAreaFilled(false);
-        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jpIngreso.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 460, 60, 70));
+        btnIngresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/login-1.png"))); // NOI18N
+        btnIngresar.setBorder(null);
+        btnIngresar.setBorderPainted(false);
+        btnIngresar.setContentAreaFilled(false);
+        btnIngresar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jpIngreso.add(btnIngresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 460, 60, 70));
 
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/clave.png"))); // NOI18N
         jLabel8.setToolTipText("");
@@ -172,19 +172,19 @@ public class Login extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton btnIngresar;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
-    private javax.swing.JTextField jTextField2;
     private javax.swing.JPanel jpIngreso;
+    private javax.swing.JLabel lblContra;
+    private javax.swing.JLabel lblUsuario;
+    private javax.swing.JPasswordField txtContra;
+    private javax.swing.JTextField txtUsuario;
     // End of variables declaration//GEN-END:variables
 }
