@@ -5,6 +5,10 @@
  */
 package jaaer;
 
+import DAO.usuarioDao;
+import MODELO.Usuario;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -19,7 +23,6 @@ public class Login extends javax.swing.JFrame {
     public Login() {
         initComponents();
         this.setLocationRelativeTo(null);
-        System.out.println("hola");
     }
 
     /**
@@ -102,6 +105,11 @@ public class Login extends javax.swing.JFrame {
         btnIngresar.setBorderPainted(false);
         btnIngresar.setContentAreaFilled(false);
         btnIngresar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnIngresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnIngresarActionPerformed(evt);
+            }
+        });
         jpIngreso.add(btnIngresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 460, 60, 70));
 
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/clave.png"))); // NOI18N
@@ -129,12 +137,25 @@ public class Login extends javax.swing.JFrame {
 
     private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseClicked
         int dialogo = JOptionPane.YES_NO_OPTION;
-        int resultado = JOptionPane.showConfirmDialog(null, "Desea salir de la aplicacion","Salir",dialogo);
-        
-        if (resultado ==0) {
+        int resultado = JOptionPane.showConfirmDialog(null, "Desea salir de la aplicacion", "Salir", dialogo);
+
+        if (resultado == 0) {
             System.exit(0);
         }
     }//GEN-LAST:event_jLabel6MouseClicked
+
+    private void btnIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarActionPerformed
+        try {
+            usuarioDao userDao = new usuarioDao();
+            Usuario use = new Usuario();
+            use.setContrasena(txtContra.getText());
+            use.setNombre(txtUsuario.getText());
+            userDao.verificarUsuario(use);
+            JOptionPane.showMessageDialog(this, "Bienvenido usuario "+txtUsuario.getText());
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(this, "Error contraseña o usuario incoreccto");
+        }
+    }//GEN-LAST:event_btnIngresarActionPerformed
 
     /**
      * @param args the command line arguments

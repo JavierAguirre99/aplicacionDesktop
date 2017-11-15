@@ -5,13 +5,13 @@ public class Usuario{
 
   private int id_usuario = 0;
   private String nombre = null;
-  private String contraseña = null;
+  private String contrasena = null;
   private int tipo_usuario = 0;
 
   public Usuario() {
     id_usuario = 0;
     nombre = null;
-    contraseña = null;
+    contrasena = null;
     tipo_usuario = 0;
 
   }
@@ -32,12 +32,12 @@ public class Usuario{
     this.nombre = nombre;
   }
 
-  public String getContraseña() {
-    return contraseña;
+  public String getContrasena() {
+    return contrasena;
   }
 
-  public void setContraseña(String contraseña) {
-    this.contraseña = contraseña;
+  public void setContrasena(String contraseña) {
+    this.contrasena = contraseña;
   }
 
   public int getTipo_usuario() {

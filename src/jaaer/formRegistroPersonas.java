@@ -424,7 +424,7 @@ List<Personas> lstPersona;
             
             Dao.ingresarPersona(objeto);
         } catch (Exception ex) {
-            System.out.println("Error al Ingresar Una Peronsa " + ex);
+            JOptionPane.showMessageDialog(this, "usuario y contraseña incoreccta");
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 

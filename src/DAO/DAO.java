@@ -3,6 +3,7 @@ package DAO;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.SQLException;
 
 public class DAO {
 
@@ -21,11 +22,11 @@ public class DAO {
         try
         {
             Class.forName("com.mysql.jdbc.Driver");
-            cn = DriverManager.getConnection("jdbc:mysql://localhost:3306/tvinter?user=root&password=root");
+            cn = DriverManager.getConnection("jdbc:mysql://localhost:3306/tvinter?user=walter&password=1234");
         }
-        catch(Exception e)
+        catch(SQLException e)
         {
-            throw e;
+            System.out.println("Error al conectar base de datos: "+e);
         }
     }
     
