@@ -5,7 +5,6 @@ import DAO.PersonaDAO;
 import Modelo.Categoria;
 
 import Modelo.cliente;
-import Modelo.cliente;
 import Modelo.Estado;
 import Modelo.Personas;
 import Modelo.TipoClientes;
@@ -313,18 +312,18 @@ public class FormClientes extends javax.swing.JFrame {
         }
     }
 
-    public final void listarTiposClientes() {
-        try {
-            ClienteDAO dao = new ClienteDAO();
-            lstTipos = dao.listarTipoCliente();
-            for (int i = 1; i < lstTipos.size(); i++) {
-                cbxTipo.addItem(lstTipos.get(i).getNombre());
-
-            }
-        } catch (Exception ex3) {
-            System.out.println("Error al listar tipos" + ex3);
-        }
-    }
+//    public final void listarTiposClientes() {
+//        try {
+//            ClienteDao dao = new ClienteDao();
+//            lstTipos = dao.listarTipoCliente();
+//            for (int i = 1; i < lstTipos.size(); i++) {
+//                cbxTipo.addItem(lstTipos.get(i).getNombre());
+//
+//            }
+//        } catch (Exception ex3) {
+//            System.out.println("Error al listar tipos" + ex3);
+//        }
+//    }
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */

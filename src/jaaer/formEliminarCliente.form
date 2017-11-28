@@ -107,6 +107,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Eliminar"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnEliminarClienteActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JComboBox" name="cboCliente">
           <Properties>

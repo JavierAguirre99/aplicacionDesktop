@@ -19,26 +19,34 @@ public class formEliminarCliente extends javax.swing.JFrame {
     /**
      * Creates new form formEliminarCliente
      */
-    ArrayList<InnerPersonaCliente> lstInnerPerClie = new ArrayList();
+    ArrayList<InnerPersonaCliente> lstInnerPerClie = new ArrayList<>();
+
     public formEliminarCliente() {
         initComponents();
         listarClientes();
     }
-    public void listarClientes(){
+
+    public void listarClientes() {
         cboCliente.removeAllItems();
         ClienteDao clieDao = new ClienteDao();
         try {
             lstInnerPerClie = clieDao.llenarLista();
-            for(int i = 0; i> lstInnerPerClie.size(); i++){
-                cboCliente.addItem(String.valueOf(lstInnerPerClie.get(i).getNombreCliente()));
+            for (int i = 0; i < lstInnerPerClie.size(); i++) {
+                cboCliente.addItem(lstInnerPerClie.get(i).getNombreCliente());
+                
             }
+            
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Error al mostrar listado de clientes");
-            System.err.println("Error al listar: "+e);
+            System.err.println("Error al listar: " + e);
+        }
+        for (int i = 0; i < lstInnerPerClie.size(); i++) {
+            if (lstInnerPerClie.get(i).getNombreCliente().equals(cboCliente.getItemAt(i))) {
+                txtIdCliente.setText(String.valueOf(lstInnerPerClie.get(i).getIdCliente()+1));
+            }
         }
         
-        txtIdCliente.setText(cboCliente.getSelectedItem().toString());
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -67,6 +75,11 @@ public class formEliminarCliente extends javax.swing.JFrame {
 
         btnEliminarCliente.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         btnEliminarCliente.setText("Eliminar");
+        btnEliminarCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarClienteActionPerformed(evt);
+            }
+        });
 
         cboCliente.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
@@ -151,6 +164,16 @@ public class formEliminarCliente extends javax.swing.JFrame {
     private void txtIdClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIdClienteActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtIdClienteActionPerformed
+
+    private void btnEliminarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarClienteActionPerformed
+        ClienteDao clieDao = new ClienteDao();
+
+        try {
+            clieDao.eliminarCliente(Integer.parseInt(txtIdCliente.getText()));
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Hubo un error al eliminar");
+        }
+    }//GEN-LAST:event_btnEliminarClienteActionPerformed
 
     /**
      * @param args the command line arguments
