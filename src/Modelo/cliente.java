@@ -3,34 +3,42 @@ package Modelo;
 
 
 public class cliente {
-    
-    private int idCliente;
-    private int telefono;
+    private int id_cliente;
+    private int id_categoria;
+    private int id_estado;
+    private int id_tipocliente;
     private String email;
-    private String direccion;
 
-    public cliente() {
-        this.idCliente = 0;
-        this.telefono = 0;
-        this.email = null;
-        this.direccion = null;
+    public int getId_cliente() {
+        return id_cliente;
     }
 
-
-    public int getIdCliente() {
-        return idCliente;
+    public void setId_cliente(int id_cliente) {
+        this.id_cliente = id_cliente;
     }
 
-    public void setIdCliente(int idCliente) {
-        this.idCliente = idCliente;
+    public int getId_categoria() {
+        return id_categoria;
     }
 
-    public int getTelefono() {
-        return telefono;
+    public void setId_categoria(int id_categoria) {
+        this.id_categoria = id_categoria;
     }
 
-    public void setTelefono(int telefono) {
-        this.telefono = telefono;
+    public int getId_estado() {
+        return id_estado;
+    }
+
+    public void setId_estado(int id_estado) {
+        this.id_estado = id_estado;
+    }
+
+    public int getId_tipocliente() {
+        return id_tipocliente;
+    }
+
+    public void setId_tipocliente(int id_tipocliente) {
+        this.id_tipocliente = id_tipocliente;
     }
 
     public String getEmail() {
@@ -41,13 +49,5 @@ public class cliente {
         this.email = email;
     }
 
-    public String getDireccion() {
-        return direccion;
-    }
-
-    public void setDireccion(String direccion) {
-        this.direccion = direccion;
-    }
-    
     
 }
