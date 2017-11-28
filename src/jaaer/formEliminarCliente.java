@@ -19,13 +19,14 @@ public class formEliminarCliente extends javax.swing.JFrame {
     /**
      * Creates new form formEliminarCliente
      */
+    ArrayList<InnerPersonaCliente> lstInnerPerClie = new ArrayList();
     public formEliminarCliente() {
         initComponents();
+        listarClientes();
     }
     public void listarClientes(){
         cboCliente.removeAllItems();
         ClienteDao clieDao = new ClienteDao();
-        ArrayList<InnerPersonaCliente> lstInnerPerClie = new ArrayList();
         try {
             lstInnerPerClie = clieDao.llenarLista();
             for(int i = 0; i> lstInnerPerClie.size(); i++){
@@ -35,6 +36,8 @@ public class formEliminarCliente extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Error al mostrar listado de clientes");
             System.err.println("Error al listar: "+e);
         }
+        
+        txtIdCliente.setText(cboCliente.getSelectedItem().toString());
     }
     /**
      * This method is called from within the constructor to initialize the form.

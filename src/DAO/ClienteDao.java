@@ -64,7 +64,7 @@ public class ClienteDao extends DAO {
 
         try {
             this.conectar();
-            sql = "select persona.nombre as nombre_cliente, clientes.id_cliente as id_cliente \n"
+            sql = "select persona.nombre, clientes.id_cliente \n"
                     + "from clientes \n"
                     + "inner join persona on clientes.id_cliente=persona.id_persona";
             sta = this.getCn().prepareStatement(sql);
@@ -73,7 +73,7 @@ public class ClienteDao extends DAO {
             while (res.next()) {
                 InnerPersonaCliente peopleModel = new InnerPersonaCliente();
                 peopleModel.setIdCliente(res.getInt("id_cliente"));
-                peopleModel.setNombreCliente(res.getString("nombre_cliente"));
+                peopleModel.setNombreCliente(res.getString("nombre"));
                 lista.add(peopleModel);
             }
         } catch (SQLException e) {

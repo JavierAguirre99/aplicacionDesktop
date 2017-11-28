@@ -7,6 +7,7 @@ package jaaer;
 
 import DAO.ClienteDao;
 import DAO.PersonaDAO;
+import Modelo.InnerPersonaCliente;
 import Modelo.cliente;
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -21,7 +22,7 @@ public class EliminarPersona extends javax.swing.JFrame {
     /**
      * Creates new form EliminarPersona
      */
-    ArrayList<cliente> lstLlenar = new ArrayList<>();  //lista para llenar el combobox
+    ArrayList<InnerPersonaCliente> lstLlenar = new ArrayList<>();  //lista para llenar el combobox
 
     public EliminarPersona() {
         initComponents();
