@@ -6,9 +6,8 @@
 package jaaer;
 
 import DAO.usuarioDao;
-import MODELO.Usuario;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import Modelo.Usuario;
+import interfazCliente.menuCliente;
 import javax.swing.JOptionPane;
 
 /**
@@ -82,8 +81,12 @@ public class Login extends javax.swing.JFrame {
 
         txtContra.setFont(new java.awt.Font("Yu Gothic UI", 0, 11)); // NOI18N
         txtContra.setForeground(new java.awt.Color(153, 153, 153));
-        txtContra.setText("jPasswordField1");
         txtContra.setBorder(null);
+        txtContra.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtContraActionPerformed(evt);
+            }
+        });
         jpIngreso.add(txtContra, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 370, 210, 40));
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/cancelar.png"))); // NOI18N
@@ -145,17 +148,34 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel6MouseClicked
 
     private void btnIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarActionPerformed
+        
         try {
             usuarioDao userDao = new usuarioDao();
             Usuario use = new Usuario();
             use.setContrasena(txtContra.getText());
             use.setNombre(txtUsuario.getText());
-            userDao.verificarUsuario(use);
-            JOptionPane.showMessageDialog(this, "Bienvenido usuario "+txtUsuario.getText());
+            userDao.verificarUsuario(use);            
+            
+            if(userDao.getContent()==1){
+                JOptionPane.showMessageDialog(this, "Bienvenido usuario "+txtUsuario.getText());
+                menuCliente menCliente = new menuCliente();
+                menCliente.setVisible(true);
+                menCliente.pack();
+            }else if(userDao.getContent()==2){
+                JOptionPane.showMessageDialog(this, "Bienvenido usuario "+txtUsuario.getText());
+                menuPrincipal menPrincipal = new menuPrincipal();
+                menPrincipal.setVisible(true);
+                menPrincipal.pack();
+            }
+            
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(this, "Error contraseña o usuario incoreccto");
         }
     }//GEN-LAST:event_btnIngresarActionPerformed
+
+    private void txtContraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtContraActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtContraActionPerformed
 
     /**
      * @param args the command line arguments

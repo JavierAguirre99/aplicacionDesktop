@@ -2,8 +2,10 @@ package jaaer;
 public class Jaaer {
 
     public static void main(String[] args) {
-        formRegistroPersonas registro = new formRegistroPersonas();
-        registro.show();
+        Login logUsuario = new Login();
+        logUsuario.show();
+//        formRegistroPersonas registro = new formRegistroPersonas();
+//        registro.show();
     }
     
 }

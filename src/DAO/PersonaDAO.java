@@ -1,6 +1,6 @@
 package DAO;
 
-import MODELO.Personas;
+import Modelo.Personas;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;

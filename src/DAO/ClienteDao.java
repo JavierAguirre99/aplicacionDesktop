@@ -3,12 +3,13 @@ package DAO;
 import Modelo.cliente;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class modificarClienteDao extends DAO{
+public class ClienteDao extends DAO{
     private String sql;
     private PreparedStatement sta;
     
@@ -23,7 +24,7 @@ public class modificarClienteDao extends DAO{
             sta.setInt(4, cle.getIdCliente());
             sta.executeUpdate();
         } catch (Exception ex) {
-            Logger.getLogger(modificarClienteDao.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ClienteDao.class.getName()).log(Level.SEVERE, null, ex);
         }
         
     }
@@ -44,10 +45,36 @@ public class modificarClienteDao extends DAO{
                 clie.setDireccion(res.getString("direccion"));
                 clie.setEmail(res.getString("email"));
                 clie.setTelefono(res.getInt("telefono")); 
+                clie.setIdCliente(res.getInt("id_cliente"));
                 sta.executeQuery();
+                lista.add(clie);
             }
         } catch (Exception e) {
             System.out.println("Error en listar cliente"+e);
+        }
+        
+        return lista;
+    }
+    
+    public ArrayList<cliente> llenarLista() throws Exception{
+        ArrayList<cliente> lista = null;
+        ResultSet res;
+        
+        try {
+            this.conectar();
+            sql="select * from clientes";
+            sta = this.getCn().prepareStatement(sql);
+            res = sta.executeQuery();
+            lista = new ArrayList();
+            while(res.next()){
+                cliente clie = new cliente();
+                clie.setIdCliente(res.getInt("id_cliente"));
+                lista.add(clie);
+            }
+        } catch (SQLException e) {
+            System.out.println("Error en listar cliente: "+e);
+        }finally{
+            this.cerrar();
         }
         
         return lista;

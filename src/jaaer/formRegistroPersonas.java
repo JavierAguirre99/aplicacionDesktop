@@ -6,7 +6,7 @@
 package jaaer;
 
 import DAO.PersonaDAO;
-import MODELO.Personas;
+import Modelo.Personas;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
