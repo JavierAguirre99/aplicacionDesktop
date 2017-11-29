@@ -8,6 +8,24 @@ package Modelo;
 public class InnerPersonaCliente {
     private String nombreCliente;
     private int idCliente;
+    private int dpiCliente;
+    private String direccion;
+
+    public int getDpiCliente() {
+        return dpiCliente;
+    }
+
+    public void setDpiCliente(int dpiCliente) {
+        this.dpiCliente = dpiCliente;
+    }
+
+    public String getDireccion() {
+        return direccion;
+    }
+
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
+    }
     
     public void InnerPersonaCliente(){
         nombreCliente = null;
