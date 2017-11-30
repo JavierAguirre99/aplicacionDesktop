@@ -177,7 +177,7 @@ public class formEliminarCliente extends javax.swing.JFrame {
 
         try {
             lstInnerPerMod = clientDao.llenarTabla(idClient);
-            if (tblCliente.getRowCount() >= 1) {
+            if (tblCliente.getRowCount()!=0) {
                 for (int i = 0; i < tblCliente.getRowCount(); i++) {
                     tblCliente.removeRow(i);
                 }
@@ -204,9 +204,13 @@ public class formEliminarCliente extends javax.swing.JFrame {
 
     private void btnEliminarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarClienteActionPerformed
         ClienteDao clieDao = new ClienteDao();
+        int answer=JOptionPane.showConfirmDialog(null, "¿Esta seguro de eliminar el cliente?", "Confirmacion", JOptionPane.YES_NO_OPTION);
         try {
-            clieDao.eliminarCliente(Integer.parseInt(txtIdClient.getText()));
-
+            if (answer==0) {
+                clieDao.eliminarCliente(Integer.parseInt(txtIdClient.getText()));
+                JOptionPane.showMessageDialog(null, "La operacion se realizo correctamente");
+            }
+            
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Hubo un error al eliminar el cliente");
         }

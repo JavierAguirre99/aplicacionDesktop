@@ -6,10 +6,27 @@ package Modelo;
  * @author Walter Caal
  */
 public class InnerPersonaCliente {
-    private String nombreCliente;
     private int idCliente;
+    private String nombreCliente;
+    private int idCategoria;
+    private String categoria;
+    private int idEstado;
+    private String estado;
+    private int idTipoCliente;
+    private String tipoCliente;
     private int dpiCliente;
     private String direccion;
+
+    public InnerPersonaCliente() {
+        this.idCliente = 0;
+        this.nombreCliente = null;
+        this.idCategoria = 0;
+        this.categoria = null;
+        this.idEstado = 0;
+        this.estado = null;
+        this.idTipoCliente = 0;
+        this.tipoCliente = null;
+    }
 
     public int getDpiCliente() {
         return dpiCliente;
@@ -19,6 +36,7 @@ public class InnerPersonaCliente {
         this.dpiCliente = dpiCliente;
     }
 
+
     public String getDireccion() {
         return direccion;
     }
@@ -26,11 +44,16 @@ public class InnerPersonaCliente {
     public void setDireccion(String direccion) {
         this.direccion = direccion;
     }
+
     
-    public void InnerPersonaCliente(){
-        nombreCliente = null;
-        idCliente =0;
+    public int getIdCliente() {
+        return idCliente;
     }
+
+    public void setIdCliente(int idCliente) {
+        this.idCliente = idCliente;
+    }
+
     public String getNombreCliente() {
         return nombreCliente;
     }
@@ -39,13 +62,52 @@ public class InnerPersonaCliente {
         this.nombreCliente = nombreCliente;
     }
 
-    public int getIdCliente() {
-        return idCliente;
+    public int getIdCategoria() {
+        return idCategoria;
     }
 
-    public void setIdCliente(int idCliente) {
-        this.idCliente = idCliente;
+    public void setIdCategoria(int idCategoria) {
+        this.idCategoria = idCategoria;
     }
-    
+
+    public String getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(String categoria) {
+        this.categoria = categoria;
+    }
+
+    public int getIdEstado() {
+        return idEstado;
+    }
+
+    public void setIdEstado(int idEstado) {
+        this.idEstado = idEstado;
+    }
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
+
+    public int getIdTipoCliente() {
+        return idTipoCliente;
+    }
+
+    public void setIdTipoCliente(int idTipoCliente) {
+        this.idTipoCliente = idTipoCliente;
+    }
+
+    public String getTipoCliente() {
+        return tipoCliente;
+    }
+
+    public void setTipoCliente(String tipoCliente) {
+        this.tipoCliente = tipoCliente;
+    }
     
 }

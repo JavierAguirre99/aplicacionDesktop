@@ -10,7 +10,7 @@ public class Personas {
     private int nit;
     private String fecha_nac;
     private int tel_casa;
-
+    
     public int getId() {
         return id;
     }
