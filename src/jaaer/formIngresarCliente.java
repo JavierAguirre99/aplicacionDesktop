@@ -27,10 +27,7 @@ public class formIngresarCliente extends javax.swing.JFrame {
 
     public formIngresarCliente() {
         initComponents();
-//        listarCategoria();
         listarClientes();
-//        listarEstado();
-//        listarTipoCliente();
     }
 
     public void listarClientes() {
@@ -81,7 +78,6 @@ public class formIngresarCliente extends javax.swing.JFrame {
 //            JOptionPane.showMessageDialog(null, "Hubo un error en la operacion");
 //        }
 //    }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -95,10 +91,11 @@ public class formIngresarCliente extends javax.swing.JFrame {
         lblTituloElCliente = new javax.swing.JLabel();
         btnIngresarCliente = new javax.swing.JButton();
         lblEmail = new javax.swing.JLabel();
-        txtEmail = new javax.swing.JTextField();
+        txtId = new javax.swing.JTextField();
         lblIdClient = new javax.swing.JLabel();
         cboCliente = new javax.swing.JComboBox<>();
         lblCliente = new javax.swing.JLabel();
+        txtEmail = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -120,21 +117,34 @@ public class formIngresarCliente extends javax.swing.JFrame {
         lblEmail.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         lblEmail.setText("Correo Electronico:");
 
+        txtId.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        txtId.setEnabled(false);
+        txtId.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtIdActionPerformed(evt);
+            }
+        });
+
+        lblIdClient.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        lblIdClient.setText("ID:");
+
+        cboCliente.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        cboCliente.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cboCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cboClienteActionPerformed(evt);
+            }
+        });
+
+        lblCliente.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        lblCliente.setText("Cliente:");
+
         txtEmail.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         txtEmail.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtEmailActionPerformed(evt);
             }
         });
-
-        lblIdClient.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
-        lblIdClient.setText("Cliente:");
-
-        cboCliente.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
-        cboCliente.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        lblCliente.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
-        lblCliente.setText("Cliente:");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -146,15 +156,22 @@ public class formIngresarCliente extends javax.swing.JFrame {
                         .addGap(275, 275, 275)
                         .addComponent(lblTituloElCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(228, 228, 228)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblIdClient, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(228, 228, 228)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblIdClient, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(lblCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(79, 79, 79))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(lblEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cboCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(txtId, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(cboCliente, javax.swing.GroupLayout.Alignment.LEADING, 0, 123, Short.MAX_VALUE))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(309, 309, 309)
                         .addComponent(btnIngresarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -169,17 +186,22 @@ public class formIngresarCliente extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(74, 74, 74)
                         .addComponent(cboCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 84, Short.MAX_VALUE)
                         .addComponent(lblCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblIdClient, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(27, 27, 27)))
-                .addComponent(lblIdClient, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(53, 53, 53)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(lblEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(53, 53, 53))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(44, 44, 44)))
                 .addComponent(btnIngresarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -210,7 +232,7 @@ public class formIngresarCliente extends javax.swing.JFrame {
             for (int i = 0; i < lstPerModelo.size(); i++) {
                 if (lstPerModelo.get(i).getNombre().equals(cboCliente.getSelectedItem())) {
                     int idCliente = Integer.parseInt(String.valueOf(lstPerModelo.get(i).getId()));
-                    System.out.println("id cliente: "+idCliente);
+
                     modelClient.setId_cliente(idCliente);
                 }
             }
@@ -220,16 +242,35 @@ public class formIngresarCliente extends javax.swing.JFrame {
             modelClient.setId_tipocliente(2);
             modelClient.setEmail(email);
             clieDao.ingresarCliente(modelClient);
-            
+
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Error al ingresar el cliente");
         }
 
     }//GEN-LAST:event_btnIngresarClienteActionPerformed
 
+    private void txtIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIdActionPerformed
+
+    }//GEN-LAST:event_txtIdActionPerformed
+
     private void txtEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmailActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtEmailActionPerformed
+
+    private void cboClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboClienteActionPerformed
+
+        try {
+            for (int i = 0; i < lstPerModelo.size(); i++) {
+                if (lstPerModelo.get(i).getNombre().equals(cboCliente.getSelectedItem())) {
+                    int idCliente = Integer.parseInt(String.valueOf(lstPerModelo.get(i).getId()));
+                    txtId.setText(String.valueOf(idCliente));
+                }
+            }
+        } catch (Exception e) {
+            System.out.println("Error: "+e);
+        }
+
+    }//GEN-LAST:event_cboClienteActionPerformed
 
     /**
      * @param args the command line arguments
@@ -276,5 +317,6 @@ public class formIngresarCliente extends javax.swing.JFrame {
     private javax.swing.JLabel lblIdClient;
     private javax.swing.JLabel lblTituloElCliente;
     private javax.swing.JTextField txtEmail;
+    private javax.swing.JTextField txtId;
     // End of variables declaration//GEN-END:variables
 }
