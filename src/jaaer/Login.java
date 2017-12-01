@@ -36,7 +36,6 @@ public class Login extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jpIngreso = new javax.swing.JPanel();
         lblContra = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
         lblUsuario = new javax.swing.JLabel();
         txtUsuario = new javax.swing.JTextField();
         jSeparator1 = new javax.swing.JSeparator();
@@ -47,6 +46,7 @@ public class Login extends javax.swing.JFrame {
         btnIngresar = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         jLabel2.setText("jLabel2");
 
@@ -62,10 +62,6 @@ public class Login extends javax.swing.JFrame {
         lblContra.setForeground(new java.awt.Color(186, 12, 12));
         lblContra.setText("Contraseña:");
         jpIngreso.add(lblContra, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 330, 130, 30));
-
-        jLabel3.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/usuario.png"))); // NOI18N
-        jpIngreso.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 20, 130, 180));
 
         lblUsuario.setFont(new java.awt.Font("Yu Gothic UI", 0, 24)); // NOI18N
         lblUsuario.setForeground(new java.awt.Color(186, 12, 12));
@@ -129,6 +125,9 @@ public class Login extends javax.swing.JFrame {
         });
         jpIngreso.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 10, -1, -1));
 
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/usuario.png"))); // NOI18N
+        jpIngreso.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 40, -1, 140));
+
         getContentPane().add(jpIngreso, new org.netbeans.lib.awtextra.AbsoluteConstraints(-20, 0, 560, 560));
 
         pack();
@@ -170,6 +169,7 @@ public class Login extends javax.swing.JFrame {
             
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(this, "Error contraseña o usuario incoreccto");
+            System.out.println("Error: "+ex);
         }
     }//GEN-LAST:event_btnIngresarActionPerformed
 
@@ -214,8 +214,8 @@ public class Login extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnIngresar;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;

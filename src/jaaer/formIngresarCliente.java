@@ -5,8 +5,6 @@
  */
 package jaaer;
 
-
-
 import DAO.*;
 import Modelo.*;
 import java.util.ArrayList;
@@ -22,18 +20,20 @@ public class formIngresarCliente extends javax.swing.JFrame {
     ArrayList<Personas> lstPerModelo;
     ArrayList<Categoria> lstCatModelo;
     ArrayList<Estado> lstEstModelo;
+    ArrayList<TipoClientes> lstTipClieMod;
     ClienteDao clieDao = new ClienteDao();
     CategoriaDao catDao = new CategoriaDao();
-    
+    EstadoDao estDao = new EstadoDao();
+
     public formIngresarCliente() {
         initComponents();
-        listarCategoria();
+//        listarCategoria();
         listarClientes();
-        listarEstado();
-        listarTipoCliente();
+//        listarEstado();
+//        listarTipoCliente();
     }
-    
-    public void listarClientes(){
+
+    public void listarClientes() {
         cboCliente.removeAllItems();
         try {
             lstPerModelo = clieDao.llenarListaCliente();
@@ -44,39 +44,44 @@ public class formIngresarCliente extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Hubo un error en la operacion");
         }
     }
-    public void listarCategoria(){
-        cboIdCategoria.removeAllItems();
-        try {
-            lstCatModelo = catDao.listarCategoria();
-            for (int i = 0; i < lstCatModelo.size(); i++) {
-                cboIdCategoria.addItem(lstCatModelo.get(i).getNombre());
-            }
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Hubo un error en la operacion");
-        }
-    }
-    public void listarEstado(){
-        cboIdEstado.removeAllItems();
-        try {
-            lstModInnerPersona = clieDao.llenarLista();
-            for (int i = 0; i < lstModInnerPersona.size(); i++) {
-                cboIdEstado.addItem(lstModInnerPersona.get(i).getEstado());
-            }
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Hubo un error en la operacion");
-        }
-    }
-    public void listarTipoCliente(){
-        cboIdTipoCliente.removeAllItems();
-        try {
-            lstModInnerPersona = clieDao.llenarLista();
-            for (int i = 0; i < lstModInnerPersona.size(); i++) {
-                cboIdTipoCliente.addItem(lstModInnerPersona.get(i).getTipoCliente());
-            }
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Hubo un error en la operacion");
-        }
-    }
+
+//    public void listarCategoria() {
+//        cboIdCategoria.removeAllItems();
+//        try {
+//            lstCatModelo = catDao.listarCategoria();
+//            for (int i = 0; i < lstCatModelo.size(); i++) {
+//                cboIdCategoria.addItem(lstCatModelo.get(i).getNombre());
+//            }
+//        } catch (Exception e) {
+//            JOptionPane.showMessageDialog(null, "Hubo un error en la operacion");
+//        }
+//    }
+//
+//    public void listarEstado() {
+//        cboIdEstado.removeAllItems();
+//        try {
+//            lstEstModelo = estDao.listarEstado();
+//            for (int i = 0; i < lstEstModelo.size(); i++) {
+//                cboIdEstado.addItem(lstEstModelo.get(i).getNombre());
+//            }
+//        } catch (Exception e) {
+//            JOptionPane.showMessageDialog(null, "Hubo un error en la operacion");
+//        }
+//    }
+//
+//    public void listarTipoCliente() {
+//        cboIdTipoCliente.removeAllItems();
+//        try {
+//            lstTipClieMod = clieDao.listarTipoCliente();
+//            for (int i = 0; i < lstTipClieMod.size(); i++) {
+//                cboIdTipoCliente.addItem(lstTipClieMod.get(i).getNombre());
+//                System.out.println("tipo de cliente"+lstTipClieMod.get(i).getNombre());
+//            }
+//        } catch (Exception e) {
+//            JOptionPane.showMessageDialog(null, "Hubo un error en la operacion");
+//        }
+//    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -89,16 +94,11 @@ public class formIngresarCliente extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         lblTituloElCliente = new javax.swing.JLabel();
         btnIngresarCliente = new javax.swing.JButton();
-        lblIdCate = new javax.swing.JLabel();
-        lblIdEstado = new javax.swing.JLabel();
-        lblIdTipoCliente = new javax.swing.JLabel();
         lblEmail = new javax.swing.JLabel();
         txtEmail = new javax.swing.JTextField();
         lblIdClient = new javax.swing.JLabel();
-        cboIdCategoria = new javax.swing.JComboBox<>();
-        cboIdEstado = new javax.swing.JComboBox<>();
-        cboIdTipoCliente = new javax.swing.JComboBox<>();
         cboCliente = new javax.swing.JComboBox<>();
+        lblCliente = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -117,15 +117,6 @@ public class formIngresarCliente extends javax.swing.JFrame {
             }
         });
 
-        lblIdCate.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
-        lblIdCate.setText("Categoria:");
-
-        lblIdEstado.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
-        lblIdEstado.setText("Estado:");
-
-        lblIdTipoCliente.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
-        lblIdTipoCliente.setText("Tipo de cliente:");
-
         lblEmail.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         lblEmail.setText("Correo Electronico:");
 
@@ -137,19 +128,13 @@ public class formIngresarCliente extends javax.swing.JFrame {
         });
 
         lblIdClient.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
-        lblIdClient.setText("ID:");
-
-        cboIdCategoria.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
-        cboIdCategoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        cboIdEstado.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
-        cboIdEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        cboIdTipoCliente.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
-        cboIdTipoCliente.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        lblIdClient.setText("Cliente:");
 
         cboCliente.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         cboCliente.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        lblCliente.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        lblCliente.setText("Cliente:");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -161,23 +146,18 @@ public class formIngresarCliente extends javax.swing.JFrame {
                         .addGap(275, 275, 275)
                         .addComponent(lblTituloElCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(320, 320, 320)
-                        .addComponent(btnIngresarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(228, 228, 228)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblIdClient, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblIdCate, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblIdEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblIdTipoCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(lblEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cboIdTipoCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cboIdEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cboIdCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cboCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(cboCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(309, 309, 309)
+                        .addComponent(btnIngresarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(89, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -185,32 +165,26 @@ public class formIngresarCliente extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(22, 22, 22)
                 .addComponent(lblTituloElCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(74, 74, 74)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cboCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblIdClient, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(30, 30, 30)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblIdCate, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cboIdCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(29, 29, 29)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblIdEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cboIdEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(30, 30, 30)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblIdTipoCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cboIdTipoCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(26, 26, 26)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(74, 74, 74)
+                        .addComponent(cboCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(lblCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(27, 27, 27)))
+                .addComponent(lblIdClient, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 79, Short.MAX_VALUE)
+                .addGap(53, 53, 53)
                 .addComponent(btnIngresarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(33, 33, 33))
+                .addContainerGap())
         );
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 0, 770, 640));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 0, 770, 440));
 
         jPanel2.setBackground(new java.awt.Color(255, 102, 51));
 
@@ -222,26 +196,35 @@ public class formIngresarCliente extends javax.swing.JFrame {
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 640, Short.MAX_VALUE)
+            .addGap(0, 440, Short.MAX_VALUE)
         );
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 180, 640));
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 180, 440));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnIngresarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarClienteActionPerformed
-//        ClienteDao clieDao = new ClienteDao();
-//        int answer=JOptionPane.showConfirmDialog(null, "¿Esta seguro de eliminar el cliente?", "Confirmacion", JOptionPane.YES_NO_OPTION);
-//        try {
-//            if (answer==0) {
-//                clieDao.eliminarCliente(Integer.parseInt(txtIdClient.getText()));
-//                JOptionPane.showMessageDialog(null, "La operacion se realizo correctamente");
-//            }
-//
-//        } catch (Exception e) {
-//            JOptionPane.showMessageDialog(null, "Hubo un error al eliminar el cliente");
-//        }
+        try {
+            cliente modelClient = new cliente();
+            for (int i = 0; i < lstPerModelo.size(); i++) {
+                if (lstPerModelo.get(i).getNombre().equals(cboCliente.getSelectedItem())) {
+                    int idCliente = Integer.parseInt(String.valueOf(lstPerModelo.get(i).getId()));
+                    System.out.println("id cliente: "+idCliente);
+                    modelClient.setId_cliente(idCliente);
+                }
+            }
+            String email = txtEmail.getText();
+            modelClient.setId_categoria(2);
+            modelClient.setId_estado(1);
+            modelClient.setId_tipocliente(2);
+            modelClient.setEmail(email);
+            clieDao.ingresarCliente(modelClient);
+            
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error al ingresar el cliente");
+        }
+
     }//GEN-LAST:event_btnIngresarClienteActionPerformed
 
     private void txtEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmailActionPerformed
@@ -286,16 +269,11 @@ public class formIngresarCliente extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnIngresarCliente;
     private javax.swing.JComboBox<String> cboCliente;
-    private javax.swing.JComboBox<String> cboIdCategoria;
-    private javax.swing.JComboBox<String> cboIdEstado;
-    private javax.swing.JComboBox<String> cboIdTipoCliente;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JLabel lblCliente;
     private javax.swing.JLabel lblEmail;
-    private javax.swing.JLabel lblIdCate;
     private javax.swing.JLabel lblIdClient;
-    private javax.swing.JLabel lblIdEstado;
-    private javax.swing.JLabel lblIdTipoCliente;
     private javax.swing.JLabel lblTituloElCliente;
     private javax.swing.JTextField txtEmail;
     // End of variables declaration//GEN-END:variables

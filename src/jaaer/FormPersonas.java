@@ -218,7 +218,7 @@ public class FormPersonas extends javax.swing.JFrame {
             
             PersonaDAO DAO = new PersonaDAO();
             //array que recibira los datos contenidos en el array de la clase
-            List<Personas> listapersonas = DAO.listarPersona();
+            /*List<Personas> listapersonas = DAO.listarPersona();
             
             int tamano = listapersonas.size();
             jTable1.removeAll();
@@ -228,7 +228,7 @@ public class FormPersonas extends javax.swing.JFrame {
                 columna[2] = listapersonas.get(i).getApellido();
                 
                 modeloTabla.addRow(columna);
-            }
+            }*/
             jTable1.updateUI();
         } catch (Exception ex) {
             System.out.println("Error al intentar Listar"+ex);

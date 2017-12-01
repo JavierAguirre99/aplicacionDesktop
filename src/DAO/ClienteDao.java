@@ -109,7 +109,7 @@ public class ClienteDao extends DAO {
         return lista;
     }
     
-    public void ingresarCliente(cliente modelCliente){
+    public void ingresarCliente(cliente modelCliente) throws Exception{
         try {
             this.conectar();
             sql= "insert into clientes(id_cliente, id_categoria, id_estado, id_tipo_cliente, email) values(?,?,?,?,?)";
@@ -122,9 +122,32 @@ public class ClienteDao extends DAO {
             sta.executeUpdate();
             
         } catch (Exception ex) {
-            Logger.getLogger(ClienteDao.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("Error al insertar cliente: "+ex);
+        }finally{
+            this.cerrar();
         }
         
+    }
+    public ArrayList<TipoClientes> listarTipoCliente(){
+        ArrayList<TipoClientes> lstModTipoCliente = null;
+        try {
+            this.conectar();
+            sql ="select * from tipo_cliente";
+            sta = this.getCn().prepareStatement(sql);
+            ResultSet res=sta.executeQuery();
+            lstModTipoCliente = new ArrayList<>();
+            while (res.next()) {
+                TipoClientes modTipoClie = new TipoClientes();
+                modTipoClie.setTipoClientes(res.getInt("id_tipo_cliente"));
+                modTipoClie.setNombre(res.getString("nombre"));
+                lstModTipoCliente.add(modTipoClie);
+            }
+            
+        } catch (Exception e) {
+            System.out.println("Error al listar tipo cliente: "+e);
+        }
+        
+        return lstModTipoCliente;
     }
 }
 
