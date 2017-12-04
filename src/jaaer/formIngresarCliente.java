@@ -232,17 +232,17 @@ public class formIngresarCliente extends javax.swing.JFrame {
             for (int i = 0; i < lstPerModelo.size(); i++) {
                 if (lstPerModelo.get(i).getNombre().equals(cboCliente.getSelectedItem())) {
                     int idCliente = Integer.parseInt(String.valueOf(lstPerModelo.get(i).getId()));
-
                     modelClient.setId_cliente(idCliente);
                 }
             }
-            String email = txtEmail.getText();
+            
             modelClient.setId_categoria(2);
             modelClient.setId_estado(1);
             modelClient.setId_tipocliente(2);
-            modelClient.setEmail(email);
+            modelClient.setEmail(txtEmail.getText());
             clieDao.ingresarCliente(modelClient);
-
+            JOptionPane.showMessageDialog(null, "Se realizo la operacion correctamente");
+                    
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Error al ingresar el cliente");
         }
@@ -262,8 +262,7 @@ public class formIngresarCliente extends javax.swing.JFrame {
         try {
             for (int i = 0; i < lstPerModelo.size(); i++) {
                 if (lstPerModelo.get(i).getNombre().equals(cboCliente.getSelectedItem())) {
-                    int idCliente = Integer.parseInt(String.valueOf(lstPerModelo.get(i).getId()));
-                    txtId.setText(String.valueOf(idCliente));
+                    txtId.setText(String.valueOf(lstPerModelo.get(i).getId()));
                 }
             }
         } catch (Exception e) {

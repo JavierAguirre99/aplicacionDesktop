@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="77fa3e63-985c-4dfa-ab90-be3cfbb6c082">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT
+     clientes.`id_cliente` AS clientes_id_cliente,
+     clientes.`id_categoria` AS clientes_id_categoria,
+     clientes.`id_estado` AS clientes_id_estado,
+     clientes.`id_tipo_cliente` AS clientes_id_tipo_cliente,
+     clientes.`email` AS clientes_email,
+     persona.`id_persona` AS persona_id_persona,
+     persona.`nombre` AS persona_nombre,
+     persona.`apellido` AS persona_apellido
+FROM
+     `persona` persona INNER JOIN `clientes` clientes ON persona.`id_persona` = clientes.`id_cliente`]]>
+	</queryString>
+	<field name="clientes_id_cliente" class="java.lang.Integer"/>
+	<field name="persona_nombre" class="java.lang.String"/>
+	<field name="persona_apellido" class="java.lang.String"/>
+	<field name="clientes_email" class="java.lang.String"/>
+	<field name="clientes_id_estado" class="java.lang.Integer"/>
+	<field name="clientes_id_tipo_cliente" class="java.lang.Integer"/>
+	<field name="clientes_id_categoria" class="java.lang.Integer"/>
+	<group name="clientes_id_cliente">
+		<groupExpression><![CDATA[$F{clientes_id_cliente}]]></groupExpression>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="14" width="555" height="25" uuid="341a93a6-df47-4e7d-8b41-7ea3fbb355fe"/>
+				<textElement>
+					<font size="18"/>
+				</textElement>
+				<text><![CDATA[Listado de Clientes]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="125" splitType="Stretch"/>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

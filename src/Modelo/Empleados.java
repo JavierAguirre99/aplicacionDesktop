@@ -4,6 +4,7 @@ public class Empleados {
     private int id_empleado;
     private int id_puesto;
     private int sueldo;
+    private String empleado;
 
     public int getId_empleado() {
         return id_empleado;
