@@ -39,9 +39,6 @@ public class FormContrataciones extends javax.swing.JFrame {
         cbxEmpleado = new javax.swing.JComboBox<>();
         jLabel10 = new javax.swing.JLabel();
         btnNuevo = new javax.swing.JButton();
-        jDateContra = new com.toedter.calendar.JDateChooser();
-        jDateReno = new com.toedter.calendar.JDateChooser();
-        jDateCul = new com.toedter.calendar.JDateChooser();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -85,12 +82,6 @@ public class FormContrataciones extends javax.swing.JFrame {
             }
         });
 
-        jDateContra.setDateFormatString("yyyy/MM/dd");
-
-        jDateReno.setDateFormatString("yyyy/MM/dd");
-
-        jDateCul.setDateFormatString("yyyy/MM/dd");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -133,23 +124,17 @@ public class FormContrataciones extends javax.swing.JFrame {
                                 .addGap(219, 219, 219))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jDateContra, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(201, 201, 201))
+                                .addGap(331, 331, 331))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jDateReno, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(201, 201, 201))
+                                .addGap(331, 331, 331))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(jLabel4)
                                     .addComponent(jLabel3))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtIDcliente, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jDateCul, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(201, 201, 201))))))
+                                .addComponent(txtIDcliente, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(219, 219, 219))))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -163,19 +148,13 @@ public class FormContrataciones extends javax.swing.JFrame {
                         .addGap(199, 199, 199)
                         .addComponent(jLabel5))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(91, 91, 91)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel1)
-                            .addComponent(jDateContra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(93, 93, 93)
+                        .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addComponent(jDateReno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3)
-                            .addComponent(jDateCul, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel2)
+                        .addGap(8, 8, 8)
+                        .addComponent(jLabel3)
+                        .addGap(8, 8, 8)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txtIDcliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel4))
@@ -205,36 +184,36 @@ public class FormContrataciones extends javax.swing.JFrame {
 
     private void btnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoActionPerformed
         ContratacionesDAO ingresar = new ContratacionesDAO();
-        try {
-            Contrataciones objeto = new Contrataciones();
-            int anio = jDateContra.getCalendar().get(Calendar.YEAR);
-            int mes = jDateContra.getCalendar().get(Calendar.MARCH);
-            int dia = jDateCul.getCalendar().get(Calendar.DAY_OF_MONTH);
-
-            int anio1 = jDateReno.getCalendar().get(Calendar.YEAR);
-            int mes1 = jDateReno.getCalendar().get(Calendar.MARCH);
-            int dia1 = jDateReno.getCalendar().get(Calendar.DAY_OF_MONTH);
-
-            int anio2 = jDateCul.getCalendar().get(Calendar.YEAR);
-            int mes2 = jDateCul.getCalendar().get(Calendar.MARCH);
-            int dia2 = jDateCul.getCalendar().get(Calendar.DAY_OF_MONTH);
-
-            String fechaContra = anio + "-" + mes + "-" + dia;
-            String fechaRenova = anio1 + "-" + mes1 + "-" + dia1;
-            String fechaCulmi = anio2 + "-" + mes2 + "-" + dia2;
-
-            objeto.setFecha_contrataciones(fechaContra);
-            objeto.setFecha_renovacion(fechaRenova);
-            objeto.setFecha_culminacion(fechaCulmi);
-            objeto.setId_cliente(Integer.parseInt(txtIDcliente.getText()));
-            objeto.setId_paquete(cbxPaquetes.getSelectedIndex());
-            objeto.setDireccion(txtDireccion.getText());
-            objeto.setId_municipio(cbxMunicipio.getSelectedIndex());
-            objeto.setId_empleado(cbxEmpleado.getSelectedIndex());
-            ingresar.insertarContratacion(objeto);
-        } catch (Exception ex) {
-            System.out.println("Error " + ex);
-        }
+//        try {
+//            Contrataciones objeto = new Contrataciones();
+//            int anio = jDateContra.getCalendar().get(Calendar.YEAR);
+//            int mes = jDateContra.getCalendar().get(Calendar.MARCH);
+//            int dia = jDateCul.getCalendar().get(Calendar.DAY_OF_MONTH);
+//
+//            int anio1 = jDateReno.getCalendar().get(Calendar.YEAR);
+//            int mes1 = jDateReno.getCalendar().get(Calendar.MARCH);
+//            int dia1 = jDateReno.getCalendar().get(Calendar.DAY_OF_MONTH);
+//
+//            int anio2 = jDateCul.getCalendar().get(Calendar.YEAR);
+//            int mes2 = jDateCul.getCalendar().get(Calendar.MARCH);
+//            int dia2 = jDateCul.getCalendar().get(Calendar.DAY_OF_MONTH);
+//
+//            String fechaContra = anio + "-" + mes + "-" + dia;
+//            String fechaRenova = anio1 + "-" + mes1 + "-" + dia1;
+//            String fechaCulmi = anio2 + "-" + mes2 + "-" + dia2;
+//
+//            objeto.setFecha_contrataciones(fechaContra);
+//            objeto.setFecha_renovacion(fechaRenova);
+//            objeto.setFecha_culminacion(fechaCulmi);
+//            objeto.setId_cliente(Integer.parseInt(txtIDcliente.getText()));
+//            objeto.setId_paquete(cbxPaquetes.getSelectedIndex());
+//            objeto.setDireccion(txtDireccion.getText());
+//            objeto.setId_municipio(cbxMunicipio.getSelectedIndex());
+//            objeto.setId_empleado(cbxEmpleado.getSelectedIndex());
+//            ingresar.insertarContratacion(objeto);
+//        } catch (Exception ex) {
+//            System.out.println("Error " + ex);
+//        }
 
     }//GEN-LAST:event_btnNuevoActionPerformed
 
@@ -311,9 +290,6 @@ public class FormContrataciones extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cbxEmpleado;
     private javax.swing.JComboBox<String> cbxMunicipio;
     private javax.swing.JComboBox<String> cbxPaquetes;
-    private com.toedter.calendar.JDateChooser jDateContra;
-    private com.toedter.calendar.JDateChooser jDateCul;
-    private com.toedter.calendar.JDateChooser jDateReno;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;

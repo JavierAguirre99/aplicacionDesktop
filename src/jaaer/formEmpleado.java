@@ -161,15 +161,15 @@ public class formEmpleado extends javax.swing.JFrame {
 
     private void cboEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboEmpleadoActionPerformed
 
-        try {
-            for (int i = 0; i < lstPerModelo.size(); i++) {
-                if (lstPerModelo.get(i).getNombre().equals(cboEmpleado.getSelectedItem())) {
-                    txtId.setText(String.valueOf(lstPerModelo.get(i).getId()));
-                }
-            }
-        } catch (Exception e) {
-            System.out.println("Error: "+e);
-        }
+//        try {
+//            for (int i = 0; i < lstPerModelo.size(); i++) {
+//                if (lstPerModelo.get(i).getNombre().equals(cboEmpleado.getSelectedItem())) {
+//                    txtId.setText(String.valueOf(lstPerModelo.get(i).getId()));
+//                }
+//            }
+//        } catch (Exception e) {
+//            System.out.println("Error: "+e);
+//        }
     }//GEN-LAST:event_cboEmpleadoActionPerformed
 
     private void txtIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIdActionPerformed
@@ -181,25 +181,25 @@ public class formEmpleado extends javax.swing.JFrame {
     }//GEN-LAST:event_txtSueldoActionPerformed
 
     private void btnIngresarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarClienteActionPerformed
-        try {
-            cliente modelClient = new cliente();
-            for (int i = 0; i < lstPerModelo.size(); i++) {
-                if (lstPerModelo.get(i).getNombre().equals(cboEmpleado.getSelectedItem())) {
-                    int idCliente = Integer.parseInt(String.valueOf(lstPerModelo.get(i).getId()));
-                    modelClient.setId_cliente(idCliente);
-                }
-            }
-
-            modelClient.setId_categoria(2);
-            modelClient.setId_estado(1);
-            modelClient.setId_tipocliente(2);
-            modelClient.setEmail(txtSueldo.getText());
-            clieDao.ingresarCliente(modelClient);
-            JOptionPane.showMessageDialog(null, "Se realizo la operacion correctamente");
-
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Error al ingresar el cliente");
-        }
+//        try {
+//            cliente modelClient = new cliente();
+//            for (int i = 0; i < lstPerModelo.size(); i++) {
+//                if (lstPerModelo.get(i).getNombre().equals(cboEmpleado.getSelectedItem())) {
+//                    int idCliente = Integer.parseInt(String.valueOf(lstPerModelo.get(i).getId()));
+//                    modelClient.setId_cliente(idCliente);
+//                }
+//            }
+//
+//            modelClient.setId_categoria(2);
+//            modelClient.setId_estado(1);
+//            modelClient.setId_tipocliente(2);
+//            modelClient.setEmail(txtSueldo.getText());
+//            clieDao.ingresarCliente(modelClient);
+//            JOptionPane.showMessageDialog(null, "Se realizo la operacion correctamente");
+//
+//        } catch (Exception e) {
+//            JOptionPane.showMessageDialog(null, "Error al ingresar el cliente");
+//        }
     }//GEN-LAST:event_btnIngresarClienteActionPerformed
 
     /**
