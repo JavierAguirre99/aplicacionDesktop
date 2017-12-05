@@ -5,6 +5,9 @@
  */
 package interfazCliente;
 
+import Paneles.pnlEmpleado;
+import paneles.CambiaPanel;
+
 /**
  *
  * @author javam
@@ -16,6 +19,8 @@ public class menuCliente extends javax.swing.JFrame {
      */
     public menuCliente() {
         initComponents();
+        this.setLocationRelativeTo(this);
+        
     }
 
     /**
@@ -28,96 +33,185 @@ public class menuCliente extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jPanel2 = new javax.swing.JPanel();
-        rSButtonMetro1 = new rsbuttom.RSButtonMetro();
-        jPanel4 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
+        btnProducto = new rsbuttom.RSButtonMetro();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        btnPersona = new rsbuttom.RSButtonMetro();
+        btnCliente = new rsbuttom.RSButtonMetro();
+        btnEmpleado = new rsbuttom.RSButtonMetro();
+        btnContrato = new rsbuttom.RSButtonMetro();
+        btnRecibo = new rsbuttom.RSButtonMetro();
+        btnPago = new rsbuttom.RSButtonMetro();
+        btnReporte = new rsbuttom.RSButtonMetro();
+        pnlPrincipal = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(74, 74, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        rSButtonMetro1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/job.png"))); // NOI18N
-        rSButtonMetro1.setText("Persona");
-        rSButtonMetro1.setColorHover(new java.awt.Color(153, 153, 153));
-        rSButtonMetro1.setColorNormal(new java.awt.Color(153, 153, 153));
-        rSButtonMetro1.setColorPressed(new java.awt.Color(153, 153, 153));
-        rSButtonMetro1.setColorTextNormal(new java.awt.Color(197, 197, 197));
-        rSButtonMetro1.setFont(new java.awt.Font("Yu Gothic UI", 1, 18)); // NOI18N
-        rSButtonMetro1.setIconTextGap(10);
+        jPanel3.setBackground(new java.awt.Color(255, 204, 102));
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Yu Gothic UI", 1, 24)); // NOI18N
-        jLabel1.setText("CIT SERVICES");
+        btnProducto.setBackground(new java.awt.Color(255, 204, 102));
+        btnProducto.setForeground(new java.awt.Color(0, 0, 0));
+        btnProducto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/responsive.png"))); // NOI18N
+        btnProducto.setText("Productos");
+        btnProducto.setColorHover(new java.awt.Color(255, 169, 0));
+        btnProducto.setColorNormal(new java.awt.Color(255, 204, 102));
+        btnProducto.setColorPressed(new java.awt.Color(255, 169, 0));
+        btnProducto.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        btnProducto.setIconTextGap(6);
+        jPanel3.add(btnProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 480, 220, 50));
 
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
-                .addContainerGap(76, Short.MAX_VALUE))
-        );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addGap(0, 77, Short.MAX_VALUE)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
+        jPanel2.setBackground(new java.awt.Color(255, 204, 102));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/logo cit letra blanca2.png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(rSButtonMetro1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(39, 39, 39)
+                .addComponent(jLabel2)
+                .addContainerGap(41, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(rSButtonMetro1, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel2)
+                .addContainerGap(13, Short.MAX_VALUE))
         );
 
-        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel3.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 220, 120));
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1360, Short.MAX_VALUE)
+        btnPersona.setBackground(new java.awt.Color(255, 204, 102));
+        btnPersona.setForeground(new java.awt.Color(0, 0, 0));
+        btnPersona.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/avatar.png"))); // NOI18N
+        btnPersona.setText("Persona");
+        btnPersona.setColorHover(new java.awt.Color(255, 169, 0));
+        btnPersona.setColorNormal(new java.awt.Color(255, 204, 102));
+        btnPersona.setColorPressed(new java.awt.Color(255, 169, 0));
+        btnPersona.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        btnPersona.setIconTextGap(10);
+        btnPersona.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPersonaActionPerformed(evt);
+            }
+        });
+        jPanel3.add(btnPersona, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 130, 220, 50));
+
+        btnCliente.setBackground(new java.awt.Color(255, 204, 102));
+        btnCliente.setForeground(new java.awt.Color(0, 0, 0));
+        btnCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/telemarketer.png"))); // NOI18N
+        btnCliente.setText("Cliente");
+        btnCliente.setColorHover(new java.awt.Color(255, 169, 0));
+        btnCliente.setColorNormal(new java.awt.Color(255, 204, 102));
+        btnCliente.setColorPressed(new java.awt.Color(255, 169, 0));
+        btnCliente.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        btnCliente.setIconTextGap(15);
+        btnCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnClienteActionPerformed(evt);
+            }
+        });
+        jPanel3.add(btnCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 180, 220, 50));
+
+        btnEmpleado.setBackground(new java.awt.Color(255, 204, 102));
+        btnEmpleado.setForeground(new java.awt.Color(0, 0, 0));
+        btnEmpleado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/employee.png"))); // NOI18N
+        btnEmpleado.setText("Empleado");
+        btnEmpleado.setColorHover(new java.awt.Color(255, 169, 0));
+        btnEmpleado.setColorNormal(new java.awt.Color(255, 204, 102));
+        btnEmpleado.setColorPressed(new java.awt.Color(255, 169, 0));
+        btnEmpleado.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        btnEmpleado.setIconTextGap(6);
+        jPanel3.add(btnEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 230, 220, 50));
+
+        btnContrato.setBackground(new java.awt.Color(255, 204, 102));
+        btnContrato.setForeground(new java.awt.Color(0, 0, 0));
+        btnContrato.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/certificate.png"))); // NOI18N
+        btnContrato.setText("Contrato");
+        btnContrato.setColorHover(new java.awt.Color(255, 169, 0));
+        btnContrato.setColorNormal(new java.awt.Color(255, 204, 102));
+        btnContrato.setColorPressed(new java.awt.Color(255, 169, 0));
+        btnContrato.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        btnContrato.setIconTextGap(6);
+        jPanel3.add(btnContrato, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 280, 220, 50));
+
+        btnRecibo.setBackground(new java.awt.Color(255, 204, 102));
+        btnRecibo.setForeground(new java.awt.Color(0, 0, 0));
+        btnRecibo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/invoice.png"))); // NOI18N
+        btnRecibo.setText("Recibo");
+        btnRecibo.setColorHover(new java.awt.Color(255, 169, 0));
+        btnRecibo.setColorNormal(new java.awt.Color(255, 204, 102));
+        btnRecibo.setColorPressed(new java.awt.Color(255, 169, 0));
+        btnRecibo.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        btnRecibo.setIconTextGap(25);
+        jPanel3.add(btnRecibo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 330, 220, 50));
+
+        btnPago.setBackground(new java.awt.Color(255, 204, 102));
+        btnPago.setForeground(new java.awt.Color(0, 0, 0));
+        btnPago.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/profits.png"))); // NOI18N
+        btnPago.setText("Pago");
+        btnPago.setColorHover(new java.awt.Color(255, 169, 0));
+        btnPago.setColorNormal(new java.awt.Color(255, 204, 102));
+        btnPago.setColorPressed(new java.awt.Color(255, 169, 0));
+        btnPago.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        btnPago.setIconTextGap(30);
+        jPanel3.add(btnPago, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 380, 220, 50));
+
+        btnReporte.setBackground(new java.awt.Color(255, 204, 102));
+        btnReporte.setForeground(new java.awt.Color(0, 0, 0));
+        btnReporte.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/newspaper.png"))); // NOI18N
+        btnReporte.setText("Reporte");
+        btnReporte.setColorHover(new java.awt.Color(255, 169, 0));
+        btnReporte.setColorNormal(new java.awt.Color(255, 204, 102));
+        btnReporte.setColorPressed(new java.awt.Color(255, 169, 0));
+        btnReporte.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        btnReporte.setIconTextGap(15);
+        jPanel3.add(btnReporte, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 430, 220, 50));
+
+        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 220, 710));
+
+        pnlPrincipal.setBackground(new java.awt.Color(255, 255, 255));
+
+        javax.swing.GroupLayout pnlPrincipalLayout = new javax.swing.GroupLayout(pnlPrincipal);
+        pnlPrincipal.setLayout(pnlPrincipalLayout);
+        pnlPrincipalLayout.setHorizontalGroup(
+            pnlPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 820, Short.MAX_VALUE)
         );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 712, Short.MAX_VALUE)
+        pnlPrincipalLayout.setVerticalGroup(
+            pnlPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 710, Short.MAX_VALUE)
         );
+
+        jPanel1.add(pnlPrincipal, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 0, 820, 710));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnPersonaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPersonaActionPerformed
+        new CambiaPanel(pnlPrincipal, new pnlEmpleado());
+    }//GEN-LAST:event_btnPersonaActionPerformed
+
+    private void btnClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClienteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnClienteActionPerformed
 
     /**
      * @param args the command line arguments
@@ -155,11 +249,18 @@ public class menuCliente extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
+    private rsbuttom.RSButtonMetro btnCliente;
+    private rsbuttom.RSButtonMetro btnContrato;
+    private rsbuttom.RSButtonMetro btnEmpleado;
+    private rsbuttom.RSButtonMetro btnPago;
+    private rsbuttom.RSButtonMetro btnPersona;
+    private rsbuttom.RSButtonMetro btnProducto;
+    private rsbuttom.RSButtonMetro btnRecibo;
+    private rsbuttom.RSButtonMetro btnReporte;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
-    private rsbuttom.RSButtonMetro rSButtonMetro1;
+    private javax.swing.JPanel pnlPrincipal;
     // End of variables declaration//GEN-END:variables
 }

@@ -3,18 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package jaaer;
+package Paneles;
 
 /**
  *
  * @author javam
  */
-public class formEmpleado extends javax.swing.JFrame {
+public class pnlEmpleado extends javax.swing.JPanel {
 
     /**
-     * Creates new form formEmpleado
+     * Creates new form frmEmpleado
      */
-    public formEmpleado() {
+    public pnlEmpleado() {
         initComponents();
     }
 
@@ -27,7 +27,6 @@ public class formEmpleado extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jMenu1 = new javax.swing.JMenu();
         jPanel1 = new javax.swing.JPanel();
         lblTituloElCliente = new javax.swing.JLabel();
         btnIngresarCliente = new javax.swing.JButton();
@@ -37,11 +36,6 @@ public class formEmpleado extends javax.swing.JFrame {
         cboEmpleado = new javax.swing.JComboBox<>();
         lblCliente = new javax.swing.JLabel();
         txtSueldo = new javax.swing.JTextField();
-
-        jMenu1.setText("jMenu1");
-
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -138,93 +132,65 @@ public class formEmpleado extends javax.swing.JFrame {
                 .addContainerGap(22, Short.MAX_VALUE))
         );
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 760, 440));
-
-        pack();
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void cboEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboEmpleadoActionPerformed
-
-//        try {
-//            for (int i = 0; i < lstPerModelo.size(); i++) {
-//                if (lstPerModelo.get(i).getNombre().equals(cboEmpleado.getSelectedItem())) {
-//                    txtId.setText(String.valueOf(lstPerModelo.get(i).getId()));
-//                }
-//            }
-//        } catch (Exception e) {
-//            System.out.println("Error: "+e);
-//        }
-    }//GEN-LAST:event_cboEmpleadoActionPerformed
+    private void btnIngresarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarClienteActionPerformed
+        //        try {
+            //            cliente modelClient = new cliente();
+            //            for (int i = 0; i < lstPerModelo.size(); i++) {
+                //                if (lstPerModelo.get(i).getNombre().equals(cboEmpleado.getSelectedItem())) {
+                    //                    int idCliente = Integer.parseInt(String.valueOf(lstPerModelo.get(i).getId()));
+                    //                    modelClient.setId_cliente(idCliente);
+                    //                }
+                //            }
+            //
+            //            modelClient.setId_categoria(2);
+            //            modelClient.setId_estado(1);
+            //            modelClient.setId_tipocliente(2);
+            //            modelClient.setEmail(txtSueldo.getText());
+            //            clieDao.ingresarCliente(modelClient);
+            //            JOptionPane.showMessageDialog(null, "Se realizo la operacion correctamente");
+            //
+            //        } catch (Exception e) {
+            //            JOptionPane.showMessageDialog(null, "Error al ingresar el cliente");
+            //        }
+    }//GEN-LAST:event_btnIngresarClienteActionPerformed
 
     private void txtIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIdActionPerformed
 
     }//GEN-LAST:event_txtIdActionPerformed
 
+    private void cboEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboEmpleadoActionPerformed
+
+        //        try {
+            //            for (int i = 0; i < lstPerModelo.size(); i++) {
+                //                if (lstPerModelo.get(i).getNombre().equals(cboEmpleado.getSelectedItem())) {
+                    //                    txtId.setText(String.valueOf(lstPerModelo.get(i).getId()));
+                    //                }
+                //            }
+            //        } catch (Exception e) {
+            //            System.out.println("Error: "+e);
+            //        }
+    }//GEN-LAST:event_cboEmpleadoActionPerformed
+
     private void txtSueldoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSueldoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtSueldoActionPerformed
 
-    private void btnIngresarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarClienteActionPerformed
-//        try {
-//            cliente modelClient = new cliente();
-//            for (int i = 0; i < lstPerModelo.size(); i++) {
-//                if (lstPerModelo.get(i).getNombre().equals(cboEmpleado.getSelectedItem())) {
-//                    int idCliente = Integer.parseInt(String.valueOf(lstPerModelo.get(i).getId()));
-//                    modelClient.setId_cliente(idCliente);
-//                }
-//            }
-//
-//            modelClient.setId_categoria(2);
-//            modelClient.setId_estado(1);
-//            modelClient.setId_tipocliente(2);
-//            modelClient.setEmail(txtSueldo.getText());
-//            clieDao.ingresarCliente(modelClient);
-//            JOptionPane.showMessageDialog(null, "Se realizo la operacion correctamente");
-//
-//        } catch (Exception e) {
-//            JOptionPane.showMessageDialog(null, "Error al ingresar el cliente");
-//        }
-    }//GEN-LAST:event_btnIngresarClienteActionPerformed
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(formEmpleado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(formEmpleado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(formEmpleado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(formEmpleado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new formEmpleado().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnIngresarCliente;
     private javax.swing.JComboBox<String> cboEmpleado;
-    private javax.swing.JMenu jMenu1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblCliente;
     private javax.swing.JLabel lblEmail;
