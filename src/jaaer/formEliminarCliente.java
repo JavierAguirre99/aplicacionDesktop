@@ -48,6 +48,7 @@ public class formEliminarCliente extends javax.swing.JFrame {
         jLabel1.setText("jLabel1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setLocationByPlatform(true);
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -56,8 +57,14 @@ public class formEliminarCliente extends javax.swing.JFrame {
         lblTituloElCliente.setFont(new java.awt.Font("Yu Gothic UI", 1, 24)); // NOI18N
         lblTituloElCliente.setText("Eliminacion de Clientes");
 
+        btnBuscarCliente.setBackground(new java.awt.Color(255, 255, 255));
         btnBuscarCliente.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         btnBuscarCliente.setText("Buscar");
+        btnBuscarCliente.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                btnBuscarClienteMouseMoved(evt);
+            }
+        });
         btnBuscarCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBuscarClienteActionPerformed(evt);
@@ -67,6 +74,7 @@ public class formEliminarCliente extends javax.swing.JFrame {
         lblIdClient.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         lblIdClient.setText("ID:");
 
+        tblDatocliente.setForeground(new java.awt.Color(153, 153, 153));
         tblDatocliente.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -75,14 +83,24 @@ public class formEliminarCliente extends javax.swing.JFrame {
                 "ID Cliente", "DPI", "Cliente", "Direccion"
             }
         ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class
+            };
             boolean[] canEdit = new boolean [] {
                 false, false, false, false
             };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
+        tblDatocliente.setGridColor(new java.awt.Color(255, 255, 255));
+        tblDatocliente.setRowHeight(25);
+        tblDatocliente.setSelectionBackground(new java.awt.Color(255, 153, 51));
         jScrollPane1.setViewportView(tblDatocliente);
 
         txtIdClient.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
@@ -115,15 +133,15 @@ public class formEliminarCliente extends javax.swing.JFrame {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(txtIdClient, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(73, 73, 73)
-                                .addComponent(btnBuscarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(198, 198, 198))
+                                .addComponent(btnBuscarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(165, 165, 165))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 551, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(102, 102, 102))))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(326, 326, 326)
-                .addComponent(btnEliminarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                        .addGap(102, 102, 102))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(199, 199, 199)
+                        .addComponent(btnEliminarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -133,7 +151,7 @@ public class formEliminarCliente extends javax.swing.JFrame {
                 .addGap(45, 45, 45)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtIdClient, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnBuscarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnBuscarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblIdClient, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(56, 56, 56)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -216,6 +234,10 @@ public class formEliminarCliente extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnEliminarClienteActionPerformed
 
+    private void btnBuscarClienteMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBuscarClienteMouseMoved
+        
+    }//GEN-LAST:event_btnBuscarClienteMouseMoved
+
     /**
      * @param args the command line arguments
      */
@@ -227,7 +249,7 @@ public class formEliminarCliente extends javax.swing.JFrame {
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
+                if ("Windows".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }

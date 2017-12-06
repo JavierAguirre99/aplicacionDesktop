@@ -18,12 +18,7 @@ public class formIngresarCliente extends javax.swing.JFrame {
 
 //    ArrayList<InnerPersonaCliente> lstModInnerPersona;
     ArrayList<Personas> lstPerModelo;
-    ArrayList<Categoria> lstCatModelo;
-    ArrayList<Estado> lstEstModelo;
-    ArrayList<TipoClientes> lstTipClieMod;
     ClienteDao clieDao = new ClienteDao();
-    CategoriaDao catDao = new CategoriaDao();
-    EstadoDao estDao = new EstadoDao();
 
     public formIngresarCliente() {
         initComponents();

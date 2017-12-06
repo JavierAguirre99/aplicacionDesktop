@@ -41,6 +41,8 @@ public class formEmpleado extends javax.swing.JFrame {
         jMenu1.setText("jMenu1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setLocationByPlatform(true);
+        setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
@@ -50,6 +52,7 @@ public class formEmpleado extends javax.swing.JFrame {
 
         btnIngresarCliente.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         btnIngresarCliente.setText("Ingresar");
+        btnIngresarCliente.setBorder(null);
         btnIngresarCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnIngresarClienteActionPerformed(evt);
@@ -72,6 +75,7 @@ public class formEmpleado extends javax.swing.JFrame {
 
         cboEmpleado.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         cboEmpleado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cboEmpleado.setBorder(null);
         cboEmpleado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cboEmpleadoActionPerformed(evt);
@@ -197,7 +201,7 @@ public class formEmpleado extends javax.swing.JFrame {
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
+                if ("Windows".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }

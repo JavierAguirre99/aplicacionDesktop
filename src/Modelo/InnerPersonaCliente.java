@@ -1,6 +1,8 @@
 
 package Modelo;
 
+import java.math.BigInteger;
+
 /**
  *
  * @author Walter Caal
@@ -14,11 +16,10 @@ public class InnerPersonaCliente {
     private String estado;
     private int idTipoCliente;
     private String tipoCliente;
-    private int dpiCliente;
+    private long dpiCliente;
     private String direccion;
 
     public InnerPersonaCliente() {
-        this.idCliente = 0;
         this.nombreCliente = null;
         this.idCategoria = 0;
         this.categoria = null;
@@ -28,14 +29,21 @@ public class InnerPersonaCliente {
         this.tipoCliente = null;
     }
 
-    public int getDpiCliente() {
+    public long getDpiCliente() {
         return dpiCliente;
     }
 
-    public void setDpiCliente(int dpiCliente) {
+    public void setDpiCliente(long dpiCliente) {
         this.dpiCliente = dpiCliente;
     }
 
+    public int getIdCliente() {
+        return idCliente;
+    }
+
+    public void setIdCliente(int idCliente) {
+        this.idCliente = idCliente;
+    }
 
     public String getDireccion() {
         return direccion;
@@ -46,14 +54,6 @@ public class InnerPersonaCliente {
     }
 
     
-    public int getIdCliente() {
-        return idCliente;
-    }
-
-    public void setIdCliente(int idCliente) {
-        this.idCliente = idCliente;
-    }
-
     public String getNombreCliente() {
         return nombreCliente;
     }

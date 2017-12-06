@@ -5,6 +5,7 @@
  */
 package interfazCliente;
 
+import Paneles.pnlCliente;
 import Paneles.pnlEmpleado;
 import paneles.CambiaPanel;
 
@@ -47,6 +48,7 @@ public class menuCliente extends javax.swing.JFrame {
         pnlPrincipal = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -60,6 +62,8 @@ public class menuCliente extends javax.swing.JFrame {
         btnProducto.setColorHover(new java.awt.Color(255, 169, 0));
         btnProducto.setColorNormal(new java.awt.Color(255, 204, 102));
         btnProducto.setColorPressed(new java.awt.Color(255, 169, 0));
+        btnProducto.setColorTextHover(new java.awt.Color(0, 0, 0));
+        btnProducto.setColorTextNormal(new java.awt.Color(0, 0, 0));
         btnProducto.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         btnProducto.setIconTextGap(6);
         jPanel3.add(btnProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 480, 220, 50));
@@ -94,6 +98,8 @@ public class menuCliente extends javax.swing.JFrame {
         btnPersona.setColorHover(new java.awt.Color(255, 169, 0));
         btnPersona.setColorNormal(new java.awt.Color(255, 204, 102));
         btnPersona.setColorPressed(new java.awt.Color(255, 169, 0));
+        btnPersona.setColorTextHover(new java.awt.Color(0, 0, 0));
+        btnPersona.setColorTextNormal(new java.awt.Color(0, 0, 0));
         btnPersona.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         btnPersona.setIconTextGap(10);
         btnPersona.addActionListener(new java.awt.event.ActionListener() {
@@ -110,6 +116,8 @@ public class menuCliente extends javax.swing.JFrame {
         btnCliente.setColorHover(new java.awt.Color(255, 169, 0));
         btnCliente.setColorNormal(new java.awt.Color(255, 204, 102));
         btnCliente.setColorPressed(new java.awt.Color(255, 169, 0));
+        btnCliente.setColorTextHover(new java.awt.Color(0, 0, 0));
+        btnCliente.setColorTextNormal(new java.awt.Color(0, 0, 0));
         btnCliente.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         btnCliente.setIconTextGap(15);
         btnCliente.addActionListener(new java.awt.event.ActionListener() {
@@ -126,6 +134,8 @@ public class menuCliente extends javax.swing.JFrame {
         btnEmpleado.setColorHover(new java.awt.Color(255, 169, 0));
         btnEmpleado.setColorNormal(new java.awt.Color(255, 204, 102));
         btnEmpleado.setColorPressed(new java.awt.Color(255, 169, 0));
+        btnEmpleado.setColorTextHover(new java.awt.Color(0, 0, 0));
+        btnEmpleado.setColorTextNormal(new java.awt.Color(0, 0, 0));
         btnEmpleado.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         btnEmpleado.setIconTextGap(6);
         jPanel3.add(btnEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 230, 220, 50));
@@ -137,6 +147,8 @@ public class menuCliente extends javax.swing.JFrame {
         btnContrato.setColorHover(new java.awt.Color(255, 169, 0));
         btnContrato.setColorNormal(new java.awt.Color(255, 204, 102));
         btnContrato.setColorPressed(new java.awt.Color(255, 169, 0));
+        btnContrato.setColorTextHover(new java.awt.Color(0, 0, 0));
+        btnContrato.setColorTextNormal(new java.awt.Color(0, 0, 0));
         btnContrato.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         btnContrato.setIconTextGap(6);
         jPanel3.add(btnContrato, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 280, 220, 50));
@@ -148,6 +160,8 @@ public class menuCliente extends javax.swing.JFrame {
         btnRecibo.setColorHover(new java.awt.Color(255, 169, 0));
         btnRecibo.setColorNormal(new java.awt.Color(255, 204, 102));
         btnRecibo.setColorPressed(new java.awt.Color(255, 169, 0));
+        btnRecibo.setColorTextHover(new java.awt.Color(0, 0, 0));
+        btnRecibo.setColorTextNormal(new java.awt.Color(0, 0, 0));
         btnRecibo.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         btnRecibo.setIconTextGap(25);
         jPanel3.add(btnRecibo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 330, 220, 50));
@@ -159,6 +173,8 @@ public class menuCliente extends javax.swing.JFrame {
         btnPago.setColorHover(new java.awt.Color(255, 169, 0));
         btnPago.setColorNormal(new java.awt.Color(255, 204, 102));
         btnPago.setColorPressed(new java.awt.Color(255, 169, 0));
+        btnPago.setColorTextHover(new java.awt.Color(0, 0, 0));
+        btnPago.setColorTextNormal(new java.awt.Color(0, 0, 0));
         btnPago.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         btnPago.setIconTextGap(30);
         jPanel3.add(btnPago, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 380, 220, 50));
@@ -170,6 +186,8 @@ public class menuCliente extends javax.swing.JFrame {
         btnReporte.setColorHover(new java.awt.Color(255, 169, 0));
         btnReporte.setColorNormal(new java.awt.Color(255, 204, 102));
         btnReporte.setColorPressed(new java.awt.Color(255, 169, 0));
+        btnReporte.setColorTextHover(new java.awt.Color(0, 0, 0));
+        btnReporte.setColorTextNormal(new java.awt.Color(0, 0, 0));
         btnReporte.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         btnReporte.setIconTextGap(15);
         jPanel3.add(btnReporte, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 430, 220, 50));
@@ -177,18 +195,7 @@ public class menuCliente extends javax.swing.JFrame {
         jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 220, 710));
 
         pnlPrincipal.setBackground(new java.awt.Color(255, 255, 255));
-
-        javax.swing.GroupLayout pnlPrincipalLayout = new javax.swing.GroupLayout(pnlPrincipal);
-        pnlPrincipal.setLayout(pnlPrincipalLayout);
-        pnlPrincipalLayout.setHorizontalGroup(
-            pnlPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 820, Short.MAX_VALUE)
-        );
-        pnlPrincipalLayout.setVerticalGroup(
-            pnlPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 710, Short.MAX_VALUE)
-        );
-
+        pnlPrincipal.setLayout(new javax.swing.BoxLayout(pnlPrincipal, javax.swing.BoxLayout.LINE_AXIS));
         jPanel1.add(pnlPrincipal, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 0, 820, 710));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -210,7 +217,7 @@ public class menuCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_btnPersonaActionPerformed
 
     private void btnClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClienteActionPerformed
-        // TODO add your handling code here:
+        new CambiaPanel(pnlPrincipal, new pnlCliente());
     }//GEN-LAST:event_btnClienteActionPerformed
 
     /**
