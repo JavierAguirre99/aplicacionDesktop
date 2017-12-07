@@ -1,15 +1,25 @@
 package Modelo;
 
+import java.sql.Date;
+
 public class Personas {
     private int id;
     private String nombre;
     private String apellido;
     private String direccion;
-    private int dpi;
+    private long dpi;
     private int tel_movil;
     private int nit;
-    private String fecha_nac;
+    private Date fecha_nac;
     private int tel_casa;
+
+    public Date getFecha_nac() {
+        return fecha_nac;
+    }
+
+    public void setFecha_nac(Date fecha_nac) {
+        this.fecha_nac = fecha_nac;
+    }
     
     public int getId() {
         return id;
@@ -19,7 +29,13 @@ public class Personas {
         this.id = id;
     }
 
-    
+    public long getDpi() {
+        return dpi;
+    }
+
+    public void setDpi(long dpi) {
+        this.dpi = dpi;
+    }
     
     public int getTel_casa() {
         return tel_casa;
@@ -53,14 +69,6 @@ public class Personas {
         this.direccion = direccion;
     }
 
-    public int getDpi() {
-        return dpi;
-    }
-
-    public void setDpi(int dpi) {
-        this.dpi = dpi;
-    }
-
     public int getTel_movil() {
         return tel_movil;
     }
@@ -75,14 +83,6 @@ public class Personas {
 
     public void setNit(int nit) {
         this.nit = nit;
-    }
-
-    public String getFecha_nac() {
-        return fecha_nac;
-    }
-
-    public void setFecha_nac(String fecha_nac) {
-        this.fecha_nac = fecha_nac;
     }
 
 }

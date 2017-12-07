@@ -5,13 +5,11 @@
  */
 package jaaer;
 
-import DAO.ClienteDao;
 import DAO.PersonaDAO;
-import Modelo.InnerPersonaCliente;
-import Modelo.cliente;
+import Modelo.Personas;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -22,25 +20,13 @@ public class EliminarPersona extends javax.swing.JFrame {
     /**
      * Creates new form EliminarPersona
      */
-    ArrayList<InnerPersonaCliente> lstLlenar = new ArrayList<>();  //lista para llenar el combobox
+    DefaultTableModel tblPersona;
 
     public EliminarPersona() {
         initComponents();
-        listarCliente();
     }
-    public void listarCliente(){
-        cboListadoCliente.removeAllItems();
-        ClienteDao clieDao = new ClienteDao();
-        PersonaDAO perDao = new PersonaDAO();
-        try {
-            lstLlenar = clieDao.llenarLista();
-            for (int i = 0; i < lstLlenar.size(); i++) {
-                cboListadoCliente.addItem(String.valueOf(lstLlenar.get(i).getIdCliente()));
-            }
-        } catch (Exception ex) {
-            Logger.getLogger(EliminarPersona.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
+
+    //groupMetodo
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -50,10 +36,20 @@ public class EliminarPersona extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        grupoDeBusqueda = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         txtTituloEliminarCliente = new javax.swing.JLabel();
         btnEliminarCliente = new javax.swing.JButton();
-        cboListadoCliente = new javax.swing.JComboBox<>();
+        txtNombrePersona = new principal.MaterialTextField();
+        txtIdPersona = new principal.MaterialTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tblDatoPersona = new javax.swing.JTable();
+        lblNombreCliente = new javax.swing.JLabel();
+        lblIdCliente = new javax.swing.JLabel();
+        jPanel3 = new javax.swing.JPanel();
+        btgIdPersona = new javax.swing.JRadioButton();
+        btgNombrePersona = new javax.swing.JRadioButton();
+        btnBuscarCliente = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -62,7 +58,7 @@ public class EliminarPersona extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
         txtTituloEliminarCliente.setFont(new java.awt.Font("Yu Gothic UI", 1, 24)); // NOI18N
-        txtTituloEliminarCliente.setText("Eliminar Cliente");
+        txtTituloEliminarCliente.setText("Eliminar Persona");
 
         btnEliminarCliente.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         btnEliminarCliente.setText("Eliminar");
@@ -72,11 +68,80 @@ public class EliminarPersona extends javax.swing.JFrame {
             }
         });
 
-        cboListadoCliente.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
-        cboListadoCliente.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        cboListadoCliente.addActionListener(new java.awt.event.ActionListener() {
+        txtNombrePersona.setSelectionColor(new java.awt.Color(255, 102, 0));
+
+        txtIdPersona.setSelectionColor(new java.awt.Color(255, 102, 0));
+
+        tblDatoPersona.setForeground(new java.awt.Color(153, 153, 153));
+        tblDatoPersona.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "ID Persona", "DPI", "Persona", "Fecha de Nacimiento", "Direccion", "Nit", "Telefono Movil", "Telefono de Casa"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, true, false, true, true, true
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tblDatoPersona.setGridColor(new java.awt.Color(255, 255, 255));
+        tblDatoPersona.setRowHeight(25);
+        tblDatoPersona.setSelectionBackground(new java.awt.Color(255, 153, 51));
+        jScrollPane1.setViewportView(tblDatoPersona);
+
+        lblNombreCliente.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        lblNombreCliente.setText("Persona");
+
+        lblIdCliente.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        lblIdCliente.setText("ID:");
+
+        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Seleccione el metodo de busqueda", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Yu Gothic UI", 0, 11))); // NOI18N
+
+        btgIdPersona.setBackground(new java.awt.Color(255, 255, 255));
+        grupoDeBusqueda.add(btgIdPersona);
+        btgIdPersona.setText("ID Persona");
+        btgIdPersona.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cboListadoClienteActionPerformed(evt);
+                btgIdPersonaActionPerformed(evt);
+            }
+        });
+
+        btgNombrePersona.setBackground(new java.awt.Color(255, 255, 255));
+        grupoDeBusqueda.add(btgNombrePersona);
+        btgNombrePersona.setText("Persona");
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addContainerGap(49, Short.MAX_VALUE)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btgNombrePersona)
+                    .addComponent(btgIdPersona, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(51, 51, 51))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(32, 32, 32)
+                .addComponent(btgIdPersona)
+                .addGap(18, 18, 18)
+                .addComponent(btgNombrePersona)
+                .addContainerGap(37, Short.MAX_VALUE))
+        );
+
+        btnBuscarCliente.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        btnBuscarCliente.setText("Buscar");
+        btnBuscarCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarClienteActionPerformed(evt);
             }
         });
 
@@ -85,35 +150,57 @@ public class EliminarPersona extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(330, 330, 330)
-                .addComponent(btnEliminarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 771, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(223, 223, 223)
+                        .addComponent(btnBuscarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(56, 56, 56)
+                        .addComponent(btnEliminarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(303, Short.MAX_VALUE)
-                .addComponent(txtTituloEliminarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(288, 288, 288))
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                    .addContainerGap(232, Short.MAX_VALUE)
-                    .addComponent(cboListadoCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 332, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(206, 206, 206)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblNombreCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblIdCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(29, 29, 29)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtNombrePersona, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtIdPersona, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(51, 51, 51)
+                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(33, 33, 33))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(txtTituloEliminarCliente)
+                        .addGap(288, 288, 288))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(29, 29, 29)
                 .addComponent(txtTituloEliminarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 520, Short.MAX_VALUE)
-                .addComponent(btnEliminarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(31, 31, 31))
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel1Layout.createSequentialGroup()
-                    .addGap(127, 127, 127)
-                    .addComponent(cboListadoCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(509, Short.MAX_VALUE)))
+                .addGap(38, 38, 38)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(txtIdPersona, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblIdCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(37, 37, 37)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtNombrePersona, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblNombreCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnBuscarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnEliminarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(48, 48, 48)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 339, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 0, 770, 680));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 0, 770, 750));
 
         jPanel2.setBackground(new java.awt.Color(255, 102, 51));
 
@@ -125,10 +212,10 @@ public class EliminarPersona extends javax.swing.JFrame {
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 680, Short.MAX_VALUE)
+            .addGap(0, 750, Short.MAX_VALUE)
         );
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 190, 680));
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 190, 750));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -137,9 +224,87 @@ public class EliminarPersona extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnEliminarClienteActionPerformed
 
-    private void cboListadoClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboListadoClienteActionPerformed
+    private void btgIdPersonaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btgIdPersonaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_cboListadoClienteActionPerformed
+    }//GEN-LAST:event_btgIdPersonaActionPerformed
+
+    private void btnBuscarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarClienteActionPerformed
+
+        //el modelo de la tabla se le asigna el balor de la tabla en la vista
+        tblPersona = (DefaultTableModel) tblDatoPersona.getModel();
+        //numero de columnas que tendra la tabla
+        Object[] column = new Object[tblPersona.getColumnCount()];
+        //array que recibira los valores del array del DAO
+        ArrayList<Personas> lstModPersona;
+        //modelo persona
+        PersonaDAO metodoPersona = new PersonaDAO();
+
+        if (btgIdPersona.isSelected()) {
+            int id = Integer.parseInt(txtIdPersona.getText());
+//            lstModPersona = new ArrayList();
+            try {
+                lstModPersona = metodoPersona.listarPorID(id);
+                 
+                if (tblPersona.getRowCount() != 0) {
+                    
+                    for (int i = 0; i < tblPersona.getRowCount(); i++) {
+                        tblPersona.removeRow(0);
+                    }
+                }
+                System.out.println("lista: "+lstModPersona.get(0).getDpi());
+                int tamano = lstModPersona.size();
+//                tblDatoPersona.removeAll();
+                for (int i =0; i < tamano; i++) {
+                    column[0] = lstModPersona.get(i).getId();
+                    column[1] = lstModPersona.get(i).getDpi();
+                    column[2] = lstModPersona.get(i).getNombre();
+                    column[3] = lstModPersona.get(i).getFecha_nac();
+                    column[4] = lstModPersona.get(i).getDireccion();
+                    column[5] = lstModPersona.get(i).getNit();
+                    column[6] = lstModPersona.get(i).getTel_movil();
+                    column[7] = lstModPersona.get(i).getTel_casa();
+                    tblPersona.addRow(column);
+
+                }
+            } catch (Exception e) {
+                System.err.println("error: " + e);
+            }
+             
+        }
+        if (btgNombrePersona.isSelected()) {
+            lstModPersona = null;
+            try {
+                
+                lstModPersona = metodoPersona.listarPorNombre(txtNombrePersona.getText());
+               
+                int valor=tblPersona.getRowCount();
+                System.out.println("cantidad: "+tblPersona.getRowCount());
+                if (tblPersona.getRowCount() != 0) {
+                    
+                    for (int i = 0; i < valor;  i++) {
+                        tblPersona.removeRow(0);
+                       
+                    }
+                }
+                for (int i = 0; i < lstModPersona.size(); i++) {
+                    
+                    System.out.println("hola: "+lstModPersona.get(i).getDpi());
+                    column[0] = lstModPersona.get(i).getId();
+                    column[1] = lstModPersona.get(i).getDpi();
+                    column[2] = lstModPersona.get(i).getNombre();
+                    column[3] = lstModPersona.get(i).getFecha_nac();
+                    column[4] = lstModPersona.get(i).getDireccion();
+                    column[5] = lstModPersona.get(i).getNit();
+                    column[6] = lstModPersona.get(i).getTel_movil();
+                    column[7] = lstModPersona.get(i).getTel_casa();
+                    tblPersona.addRow(column);
+
+                }
+            } catch (Exception e) {
+                System.out.println("error: "+e);
+            }
+        }
+    }//GEN-LAST:event_btnBuscarClienteActionPerformed
 
     /**
      * @param args the command line arguments
@@ -152,7 +317,7 @@ public class EliminarPersona extends javax.swing.JFrame {
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
+                if ("Windows".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
@@ -177,10 +342,20 @@ public class EliminarPersona extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JRadioButton btgIdPersona;
+    private javax.swing.JRadioButton btgNombrePersona;
+    private javax.swing.JButton btnBuscarCliente;
     private javax.swing.JButton btnEliminarCliente;
-    private javax.swing.JComboBox<String> cboListadoCliente;
+    private javax.swing.ButtonGroup grupoDeBusqueda;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblIdCliente;
+    private javax.swing.JLabel lblNombreCliente;
+    private javax.swing.JTable tblDatoPersona;
+    private principal.MaterialTextField txtIdPersona;
+    private principal.MaterialTextField txtNombrePersona;
     private javax.swing.JLabel txtTituloEliminarCliente;
     // End of variables declaration//GEN-END:variables
 }

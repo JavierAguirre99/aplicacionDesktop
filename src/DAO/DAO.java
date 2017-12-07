@@ -22,7 +22,7 @@ public class DAO {
         try
         {
             Class.forName("com.mysql.jdbc.Driver");
-            cn = DriverManager.getConnection("jdbc:mysql://localhost:3306/tvintercopia?user=walter&password=1234");
+            cn = DriverManager.getConnection("jdbc:mysql://localhost:3306/tvinter?user=walter&password=1234");
         }
         catch(SQLException e)
         {

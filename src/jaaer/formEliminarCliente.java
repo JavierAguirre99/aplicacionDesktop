@@ -19,7 +19,6 @@ public class formEliminarCliente extends javax.swing.JFrame {
 
     //objeto tipo Jtable
     DefaultTableModel tblCliente;
-    ArrayList<InnerPersonaCliente> lstInnerPerClie = new ArrayList<>();
 
     public formEliminarCliente() {
         initComponents();
