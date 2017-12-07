@@ -31,7 +31,6 @@ public class FormContrataciones extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         cbxPaquetes = new javax.swing.JComboBox<>();
-        jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         txtDireccion = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
@@ -39,6 +38,9 @@ public class FormContrataciones extends javax.swing.JFrame {
         cbxEmpleado = new javax.swing.JComboBox<>();
         jLabel10 = new javax.swing.JLabel();
         btnNuevo = new javax.swing.JButton();
+        jDateContra = new com.toedter.calendar.JDateChooser();
+        jDateReno = new com.toedter.calendar.JDateChooser();
+        jDateCul = new com.toedter.calendar.JDateChooser();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -65,9 +67,6 @@ public class FormContrataciones extends javax.swing.JFrame {
 
         jLabel6.setText("Paquete:");
 
-        jLabel7.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
-        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/usuario.png"))); // NOI18N
-
         jLabel8.setText("Direccion:");
 
         jLabel9.setText("Municipio:");
@@ -88,20 +87,12 @@ public class FormContrataciones extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(367, 367, 367)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(182, 182, 182)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel5)
-                                .addGap(163, 219, Short.MAX_VALUE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(jLabel7))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
+                                .addGap(1, 1, 1)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(jLabel6)
@@ -120,21 +111,26 @@ public class FormContrataciones extends javax.swing.JFrame {
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(btnNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(cbxEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                                .addGap(219, 219, 219))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addGap(331, 331, 331))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addGap(331, 331, 331))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel4)
-                                    .addComponent(jLabel3))
+                                            .addComponent(cbxEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(jLabel4)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txtIDcliente, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(219, 219, 219))))))
+                                .addComponent(txtIDcliente, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel5)
+                        .addGap(225, 225, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jDateReno, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE)
+                            .addComponent(jDateContra, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jDateCul, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(205, 205, 205))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -142,19 +138,21 @@ public class FormContrataciones extends javax.swing.JFrame {
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGap(78, 78, 78)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel1)
+                    .addComponent(jDateContra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel2)
+                    .addComponent(jDateReno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel3)
+                    .addComponent(jDateCul, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(199, 199, 199)
-                        .addComponent(jLabel5))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(93, 93, 93)
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel2)
-                        .addGap(8, 8, 8)
-                        .addComponent(jLabel3)
-                        .addGap(8, 8, 8)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txtIDcliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel4))
@@ -174,9 +172,12 @@ public class FormContrataciones extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(cbxEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel10))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(50, 128, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
+                        .addComponent(btnNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(202, 202, 202)
+                        .addComponent(jLabel5)))
+                .addGap(95, 95, 95))
         );
 
         pack();
@@ -184,36 +185,34 @@ public class FormContrataciones extends javax.swing.JFrame {
 
     private void btnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoActionPerformed
         ContratacionesDAO ingresar = new ContratacionesDAO();
-//        try {
-//            Contrataciones objeto = new Contrataciones();
-//            int anio = jDateContra.getCalendar().get(Calendar.YEAR);
-//            int mes = jDateContra.getCalendar().get(Calendar.MARCH);
-//            int dia = jDateCul.getCalendar().get(Calendar.DAY_OF_MONTH);
-//
-//            int anio1 = jDateReno.getCalendar().get(Calendar.YEAR);
-//            int mes1 = jDateReno.getCalendar().get(Calendar.MARCH);
-//            int dia1 = jDateReno.getCalendar().get(Calendar.DAY_OF_MONTH);
-//
-//            int anio2 = jDateCul.getCalendar().get(Calendar.YEAR);
-//            int mes2 = jDateCul.getCalendar().get(Calendar.MARCH);
-//            int dia2 = jDateCul.getCalendar().get(Calendar.DAY_OF_MONTH);
-//
-//            String fechaContra = anio + "-" + mes + "-" + dia;
-//            String fechaRenova = anio1 + "-" + mes1 + "-" + dia1;
-//            String fechaCulmi = anio2 + "-" + mes2 + "-" + dia2;
-//
-//            objeto.setFecha_contrataciones(fechaContra);
-//            objeto.setFecha_renovacion(fechaRenova);
-//            objeto.setFecha_culminacion(fechaCulmi);
-//            objeto.setId_cliente(Integer.parseInt(txtIDcliente.getText()));
-//            objeto.setId_paquete(cbxPaquetes.getSelectedIndex());
-//            objeto.setDireccion(txtDireccion.getText());
-//            objeto.setId_municipio(cbxMunicipio.getSelectedIndex());
-//            objeto.setId_empleado(cbxEmpleado.getSelectedIndex());
-//            ingresar.insertarContratacion(objeto);
-//        } catch (Exception ex) {
-//            System.out.println("Error " + ex);
-//        }
+    try {
+        Contrataciones objeto = new Contrataciones();
+           int anio = jDateContra.getCalendar().get(Calendar.YEAR);
+           int mes = jDateContra.getCalendar().get(Calendar.MARCH);
+           int dia = jDateCul.getCalendar().get(Calendar.DAY_OF_MONTH);
+
+           int anio1 = jDateReno.getCalendar().get(Calendar.YEAR);
+          int mes1 = jDateReno.getCalendar().get(Calendar.MARCH);
+          int dia1 = jDateReno.getCalendar().get(Calendar.DAY_OF_MONTH);
+           int anio2 = jDateCul.getCalendar().get(Calendar.YEAR);
+            int mes2 = jDateCul.getCalendar().get(Calendar.MARCH);
+            int dia2 = jDateCul.getCalendar().get(Calendar.DAY_OF_MONTH);
+
+           String fechaContra = anio + "-" + mes + "-" + dia;
+           String fechaRenova = anio1 + "-" + mes1 + "-" + dia1;
+           String fechaCulmi = anio2 + "-" + mes2 + "-" + dia2;
+           objeto.setFecha_contrataciones(fechaContra);
+           objeto.setFecha_renovacion(fechaRenova);
+           objeto.setFecha_culminacion(fechaCulmi);
+           objeto.setId_cliente(Integer.parseInt(txtIDcliente.getText()));
+           objeto.setId_paquete(cbxPaquetes.getSelectedIndex());
+           objeto.setDireccion(txtDireccion.getText());
+            objeto.setId_municipio(cbxMunicipio.getSelectedIndex());
+           objeto.setId_empleado(cbxEmpleado.getSelectedIndex());
+           ingresar.insertarContratacion(objeto);
+       } catch (Exception ex) {
+           System.out.println("Error " + ex);
+       }
 
     }//GEN-LAST:event_btnNuevoActionPerformed
 
@@ -290,6 +289,9 @@ public class FormContrataciones extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cbxEmpleado;
     private javax.swing.JComboBox<String> cbxMunicipio;
     private javax.swing.JComboBox<String> cbxPaquetes;
+    private com.toedter.calendar.JDateChooser jDateContra;
+    private com.toedter.calendar.JDateChooser jDateCul;
+    private com.toedter.calendar.JDateChooser jDateReno;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
@@ -297,7 +299,6 @@ public class FormContrataciones extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
