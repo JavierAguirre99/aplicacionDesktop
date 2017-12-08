@@ -15,15 +15,19 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author javam
  */
-public class EliminarPersona extends javax.swing.JFrame {
+public class formEliminarPersona extends javax.swing.JFrame {
 
     /**
-     * Creates new form EliminarPersona
+     * Creates new form formEliminarPersona
      */
     DefaultTableModel tblPersona;
 
-    public EliminarPersona() {
+    public formEliminarPersona() {
         initComponents();
+    }
+
+    public void llenarTabla() {
+
     }
 
     //groupMetodo
@@ -221,7 +225,22 @@ public class EliminarPersona extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnEliminarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarClienteActionPerformed
-        // TODO add your handling code here:
+        PersonaDAO perDao = new PersonaDAO();
+        Personas modPer = new Personas();
+
+        int id = Integer.parseInt(tblPersona.getValueAt(tblDatoPersona.getSelectedRow(), 0).toString());
+        int res = JOptionPane.showConfirmDialog(this, "Confirme para eliminar a la persona ", "Confirmacion", JOptionPane.YES_NO_OPTION);
+        modPer.setId(id);
+        try {
+            if (res == 0) {
+                perDao.eliminarPersona(modPer);
+                tblPersona.removeRow(tblDatoPersona.getSelectedRow());
+                txtIdPersona.setText(null);
+                txtNombrePersona.setText(null);
+            }
+        } catch (Exception e) {
+
+        }
     }//GEN-LAST:event_btnEliminarClienteActionPerformed
 
     private void btgIdPersonaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btgIdPersonaActionPerformed
@@ -244,17 +263,16 @@ public class EliminarPersona extends javax.swing.JFrame {
 //            lstModPersona = new ArrayList();
             try {
                 lstModPersona = metodoPersona.listarPorID(id);
-                 
+
                 if (tblPersona.getRowCount() != 0) {
-                    
+
                     for (int i = 0; i < tblPersona.getRowCount(); i++) {
                         tblPersona.removeRow(0);
                     }
                 }
-                System.out.println("lista: "+lstModPersona.get(0).getDpi());
                 int tamano = lstModPersona.size();
 //                tblDatoPersona.removeAll();
-                for (int i =0; i < tamano; i++) {
+                for (int i = 0; i < tamano; i++) {
                     column[0] = lstModPersona.get(i).getId();
                     column[1] = lstModPersona.get(i).getDpi();
                     column[2] = lstModPersona.get(i).getNombre();
@@ -269,26 +287,24 @@ public class EliminarPersona extends javax.swing.JFrame {
             } catch (Exception e) {
                 System.err.println("error: " + e);
             }
-             
+
         }
         if (btgNombrePersona.isSelected()) {
             lstModPersona = null;
             try {
-                
+
                 lstModPersona = metodoPersona.listarPorNombre(txtNombrePersona.getText());
-               
-                int valor=tblPersona.getRowCount();
-                System.out.println("cantidad: "+tblPersona.getRowCount());
+
+                int valor = tblPersona.getRowCount();
+                System.out.println("cantidad: " + tblPersona.getRowCount());
                 if (tblPersona.getRowCount() != 0) {
-                    
-                    for (int i = 0; i < valor;  i++) {
+
+                    for (int i = 0; i < valor; i++) {
                         tblPersona.removeRow(0);
-                       
+
                     }
                 }
                 for (int i = 0; i < lstModPersona.size(); i++) {
-                    
-                    System.out.println("hola: "+lstModPersona.get(i).getDpi());
                     column[0] = lstModPersona.get(i).getId();
                     column[1] = lstModPersona.get(i).getDpi();
                     column[2] = lstModPersona.get(i).getNombre();
@@ -301,7 +317,7 @@ public class EliminarPersona extends javax.swing.JFrame {
 
                 }
             } catch (Exception e) {
-                System.out.println("error: "+e);
+                System.out.println("error: " + e);
             }
         }
     }//GEN-LAST:event_btnBuscarClienteActionPerformed
@@ -323,20 +339,21 @@ public class EliminarPersona extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(EliminarPersona.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(formEliminarPersona.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(EliminarPersona.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(formEliminarPersona.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(EliminarPersona.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(formEliminarPersona.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(EliminarPersona.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(formEliminarPersona.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new EliminarPersona().setVisible(true);
+                new formEliminarPersona().setVisible(true);
             }
         });
     }

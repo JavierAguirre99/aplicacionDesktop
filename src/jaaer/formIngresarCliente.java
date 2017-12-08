@@ -16,9 +16,8 @@ import javax.swing.JOptionPane;
  */
 public class formIngresarCliente extends javax.swing.JFrame {
 
-//    ArrayList<InnerPersonaCliente> lstModInnerPersona;
-    ArrayList<Personas> lstPerModelo;
-    ClienteDao clieDao = new ClienteDao();
+    private ArrayList<Personas> lstPerModelo;
+    private final ClienteDao clieDao = new ClienteDao();
 
     public formIngresarCliente() {
         initComponents();
@@ -37,42 +36,6 @@ public class formIngresarCliente extends javax.swing.JFrame {
         }
     }
 
-//    public void listarCategoria() {
-//        cboIdCategoria.removeAllItems();
-//        try {
-//            lstCatModelo = catDao.listarCategoria();
-//            for (int i = 0; i < lstCatModelo.size(); i++) {
-//                cboIdCategoria.addItem(lstCatModelo.get(i).getNombre());
-//            }
-//        } catch (Exception e) {
-//            JOptionPane.showMessageDialog(null, "Hubo un error en la operacion");
-//        }
-//    }
-//
-//    public void listarEstado() {
-//        cboIdEstado.removeAllItems();
-//        try {
-//            lstEstModelo = estDao.listarEstado();
-//            for (int i = 0; i < lstEstModelo.size(); i++) {
-//                cboIdEstado.addItem(lstEstModelo.get(i).getNombre());
-//            }
-//        } catch (Exception e) {
-//            JOptionPane.showMessageDialog(null, "Hubo un error en la operacion");
-//        }
-//    }
-//
-//    public void listarTipoCliente() {
-//        cboIdTipoCliente.removeAllItems();
-//        try {
-//            lstTipClieMod = clieDao.listarTipoCliente();
-//            for (int i = 0; i < lstTipClieMod.size(); i++) {
-//                cboIdTipoCliente.addItem(lstTipClieMod.get(i).getNombre());
-//                System.out.println("tipo de cliente"+lstTipClieMod.get(i).getNombre());
-//            }
-//        } catch (Exception e) {
-//            JOptionPane.showMessageDialog(null, "Hubo un error en la operacion");
-//        }
-//    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -162,13 +125,12 @@ public class formIngresarCliente extends javax.swing.JFrame {
                                 .addContainerGap()
                                 .addComponent(lblEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(txtId, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(cboCliente, javax.swing.GroupLayout.Alignment.LEADING, 0, 123, Short.MAX_VALUE))))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtEmail, javax.swing.GroupLayout.DEFAULT_SIZE, 319, Short.MAX_VALUE)
+                            .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cboCliente, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(309, 309, 309)
+                        .addGap(317, 317, 317)
                         .addComponent(btnIngresarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(89, Short.MAX_VALUE))
         );
@@ -183,7 +145,7 @@ public class formIngresarCliente extends javax.swing.JFrame {
                         .addComponent(cboCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 84, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 94, Short.MAX_VALUE)
                         .addComponent(lblCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -193,15 +155,15 @@ public class formIngresarCliente extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(lblEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(53, 53, 53))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(44, 44, 44)))
+                        .addGap(34, 34, 34)))
                 .addComponent(btnIngresarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGap(21, 21, 21))
         );
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 0, 770, 440));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 0, 770, 450));
 
         jPanel2.setBackground(new java.awt.Color(255, 102, 51));
 
@@ -213,10 +175,10 @@ public class formIngresarCliente extends javax.swing.JFrame {
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 440, Short.MAX_VALUE)
+            .addGap(0, 450, Short.MAX_VALUE)
         );
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 180, 440));
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 180, 450));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -277,7 +239,7 @@ public class formIngresarCliente extends javax.swing.JFrame {
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
+                if ("Windows".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }

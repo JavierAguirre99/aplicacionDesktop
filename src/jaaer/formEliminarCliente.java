@@ -226,6 +226,8 @@ public class formEliminarCliente extends javax.swing.JFrame {
             if (answer==0) {
                 clieDao.eliminarCliente(Integer.parseInt(txtIdClient.getText()));
                 JOptionPane.showMessageDialog(null, "La operacion se realizo correctamente");
+                tblCliente.removeRow(tblDatocliente.getSelectedRow());
+                txtIdClient.setText(null);
             }
             
         } catch (Exception e) {

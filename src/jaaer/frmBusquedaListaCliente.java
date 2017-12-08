@@ -5,6 +5,11 @@
  */
 package jaaer;
 
+import DAO.ClienteDao;
+import Modelo.cliente;
+import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author javam
@@ -14,6 +19,9 @@ public class frmBusquedaListaCliente extends javax.swing.JFrame {
     /**
      * Creates new form frmBusquedaListaCliente
      */
+    private ArrayList<cliente> lstModCliente;
+    private ClienteDao clieDao = new ClienteDao();
+    private DefaultTableModel tblModelCliente;
     public frmBusquedaListaCliente() {
         initComponents();
     }
@@ -30,12 +38,13 @@ public class frmBusquedaListaCliente extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         lblTituloElCliente = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tblDatocliente = new javax.swing.JTable();
+        tblCliente = new javax.swing.JTable();
         txtIdCliente = new principal.MaterialTextField();
         btnBuscar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -44,27 +53,27 @@ public class frmBusquedaListaCliente extends javax.swing.JFrame {
         lblTituloElCliente.setText("Lista de Clientes");
         jPanel1.add(lblTituloElCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 20, -1, 60));
 
-        tblDatocliente.setForeground(new java.awt.Color(153, 153, 153));
-        tblDatocliente.setModel(new javax.swing.table.DefaultTableModel(
+        tblCliente.setForeground(new java.awt.Color(153, 153, 153));
+        tblCliente.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "ID Cliente", "DPI", "Cliente", "Direccion"
+                "ID Cliente", "DPI", "Cliente", "Tipo de Cliente", "Estado", "Correo Electronico"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false
+                false, false, false, true, true, true
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
-        tblDatocliente.setGridColor(new java.awt.Color(255, 255, 255));
-        tblDatocliente.setRowHeight(25);
-        tblDatocliente.setSelectionBackground(new java.awt.Color(255, 153, 51));
-        jScrollPane1.setViewportView(tblDatocliente);
+        tblCliente.setGridColor(new java.awt.Color(255, 255, 255));
+        tblCliente.setRowHeight(25);
+        tblCliente.setSelectionBackground(new java.awt.Color(255, 153, 51));
+        jScrollPane1.setViewportView(tblCliente);
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 200, 970, 350));
         jPanel1.add(txtIdCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 120, 200, 40));
@@ -74,6 +83,11 @@ public class frmBusquedaListaCliente extends javax.swing.JFrame {
         btnBuscar.setBorder(null);
         btnBuscar.setBorderPainted(false);
         btnBuscar.setContentAreaFilled(false);
+        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarActionPerformed(evt);
+            }
+        });
         jPanel1.add(btnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 120, 60, 40));
 
         jLabel1.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
@@ -93,6 +107,16 @@ public class frmBusquedaListaCliente extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
+        tblModelCliente = (DefaultTableModel) tblCliente.getModel();
+        
+        Object[] filas = new Object[tblModelCliente.getColumnCount()];
+        try {
+            lstModCliente = clieDao.llenarLista();
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_btnBuscarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -135,7 +159,7 @@ public class frmBusquedaListaCliente extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblTituloElCliente;
-    private javax.swing.JTable tblDatocliente;
+    private javax.swing.JTable tblCliente;
     private principal.MaterialTextField txtIdCliente;
     // End of variables declaration//GEN-END:variables
 }

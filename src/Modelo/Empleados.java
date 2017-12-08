@@ -3,7 +3,7 @@ package Modelo;
 public class Empleados {
     private int id_empleado;
     private int id_puesto;
-    private int sueldo;
+    private double sueldo;
     private String empleado;
 
     public int getId_empleado() {
@@ -22,13 +22,20 @@ public class Empleados {
         this.id_puesto = id_puesto;
     }
 
-    public int getSueldo() {
+    public double getSueldo() {
         return sueldo;
     }
 
-    public void setSueldo(int sueldo) {
+    public void setSueldo(double sueldo) {
         this.sueldo = sueldo;
     }
-    
+
+    public String getEmpleado() {
+        return empleado;
+    }
+
+    public void setEmpleado(String empleado) {
+        this.empleado = empleado;
+    }
     
 }

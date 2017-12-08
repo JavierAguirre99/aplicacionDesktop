@@ -29,7 +29,6 @@ public class usuarioDao extends DAO{
                 us.setContrasena(res.getString("contrasena"));
                 us.setId_usuario(res.getInt("id_usuario"));
                 us.setNombre(res.getString("nombre"));
-                System.out.println("usuario: "+res.getString("nombre"));
                 us.setTipo_usuario(res.getInt("id_tipoUsuario"));
                 listUser.add(us);
                 content = us.getTipo_usuario();

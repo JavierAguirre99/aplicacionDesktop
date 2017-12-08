@@ -1,14 +1,10 @@
 package DAO;
 
 import Modelo.*;
-import java.math.BigInteger;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.JOptionPane;
 
 public class ClienteDao extends DAO {
 
@@ -82,6 +78,8 @@ public class ClienteDao extends DAO {
             }
         } catch (SQLException e) {
             System.out.println("error en: " + e);
+        }finally{
+            this.cerrar();
         }
         return lstModPeople;
     }

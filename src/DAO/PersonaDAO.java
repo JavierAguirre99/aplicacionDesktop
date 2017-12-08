@@ -15,8 +15,6 @@ public class PersonaDAO extends DAO {
     public void ingresarPersona(Personas persona) throws Exception {
         try {
             this.conectar();
-            System.out.println(persona.getApellido());
-            System.out.println(persona.getFecha_nac());
             PreparedStatement st = this.getCn().prepareStatement("insert into persona values(?,?,?,?,?,?,?,?)");
             st.setString(1, persona.getNombre());
             st.setString(2, persona.getApellido());
@@ -40,7 +38,7 @@ public class PersonaDAO extends DAO {
         ResultSet result;
         try {
             this.conectar();
-            sql = "SELECT id_persona, concat(nombre,' ',apellido) as nombre_persona, dpi, telefono_movil, nit, fecha_nacimiento, telefono_casa FROM persona WHERE id_persona=?";
+            sql = "SELECT id_persona, concat(nombre,' ',apellido) as nombre_persona, dpi, telefono_movil, nit, fecha_nacimiento, telefono_casa, direccion FROM persona WHERE id_persona=?";
             sta = this.getCn().prepareStatement(sql);
             sta.setInt(1, id);
             result = sta.executeQuery();
@@ -55,6 +53,7 @@ public class PersonaDAO extends DAO {
                 pac.setTel_movil(result.getInt("telefono_movil"));
                 pac.setTel_casa(result.getInt("telefono_casa"));
                 pac.setNit(result.getInt("nit"));
+                pac.setDireccion(result.getString("direccion"));
                 pac.setFecha_nac(result.getDate("fecha_nacimiento"));
                 lista.add(pac);
                 
@@ -74,12 +73,10 @@ public class PersonaDAO extends DAO {
 
         try {
             this.conectar();
-            System.out.println("nombre");
-            sql="SELECT id_persona, concat(nombre,' ',apellido) as nombre_persona, dpi, telefono_movil, nit, fecha_nacimiento, telefono_casa FROM persona "
+            sql="SELECT id_persona, concat(nombre,' ',apellido) as nombre_persona, dpi, telefono_movil, nit, fecha_nacimiento, telefono_casa, direccion FROM persona "
                     //+ " WHERE nombre like ?";
                     + " WHERE MATCH(nombre,apellido) AGAINST(?)";
             sta = this.getCn().prepareStatement(sql);
-            System.out.println("sql: "+sql);
             sta.setString(1, nombre);
             result = sta.executeQuery();
             while (result.next()) {
@@ -90,8 +87,8 @@ public class PersonaDAO extends DAO {
                 pac.setTel_movil(result.getInt("telefono_movil"));
                 pac.setTel_casa(result.getInt("telefono_casa"));
                 pac.setNit(result.getInt("nit"));
+                pac.setDireccion(result.getString("direccion"));
                 pac.setFecha_nac(result.getDate("fecha_nacimiento"));
-                
                 lista.add(pac);
             }
         } catch (SQLException e) {
