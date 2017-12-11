@@ -24,7 +24,7 @@ public class formIngresarCliente extends javax.swing.JFrame {
         listarClientes();
     }
 
-    public void listarClientes() {
+    private void listarClientes() {
         cboCliente.removeAllItems();
         try {
             lstPerModelo = clieDao.llenarListaCliente();

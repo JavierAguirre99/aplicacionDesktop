@@ -248,7 +248,7 @@ public class FormPersonas extends javax.swing.JFrame {
             objeto.setNit(Integer.parseInt(txtNit.getText()));
             objeto.setTel_movil(Integer.parseInt(txtMovil.getText()));
 
-            objeto.setFecha_nac(txtFecha.getText());
+//            objeto.setFecha_nac(txtFecha.getText());
             objeto.setTel_casa(Integer.parseInt(txtCasa.getText()));
 
             Dao.ingresarPersona(objeto);

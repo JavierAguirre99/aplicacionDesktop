@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="dd7600d0-92ca-438a-bb2f-629d55adef75">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" fontName="Times New Roman" fontSize="50" isBold="true" pdfFontName="Times-Bold"/>
+	<style name="SubTitle" forecolor="#736343" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<style name="Row" mode="Transparent">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style backcolor="#E6DAC3"/>
+		</conditionalStyle>
+	</style>
+	<queryString language="SQL">
+		<![CDATA[SELECT
+     clientes.`id_cliente` AS clientes_id_cliente,
+     clientes.`email` AS clientes_email,
+     categoria.`nombre` AS categoria_nombre,
+     persona.`nombre` AS persona_nombre,
+     persona.`apellido` AS persona_apellido,
+     persona.`direccion` AS persona_direccion,
+     persona.`dpi` AS persona_dpi,
+     persona.`telefono_movil` AS persona_telefono_movil,
+     persona.`nit` AS persona_nit,
+     persona.`fecha_nacimiento` AS persona_fecha_nacimiento,
+     persona.`telefono_casa` AS persona_telefono_casa,
+     tipo_cliente.`nombre` AS tipo_cliente_nombre,
+     estados.`nombre` AS estados_nombre
+FROM
+     `categoria` categoria INNER JOIN `clientes` clientes ON categoria.`id_categoria` = clientes.`id_categoria`
+     INNER JOIN `persona` persona ON clientes.`id_cliente` = persona.`id_persona`
+     INNER JOIN `tipo_cliente` tipo_cliente ON clientes.`id_tipo_cliente` = tipo_cliente.`id_tipo_cliente`
+     INNER JOIN `estados` estados ON clientes.`id_estado` = estados.`id_estado`]]>
+	</queryString>
+	<field name="clientes_id_cliente" class="java.lang.Integer"/>
+	<field name="persona_dpi" class="java.lang.Long"/>
+	<field name="persona_nombre" class="java.lang.String"/>
+	<field name="persona_apellido" class="java.lang.String"/>
+	<field name="categoria_nombre" class="java.lang.String"/>
+	<field name="tipo_cliente_nombre" class="java.lang.String"/>
+	<field name="estados_nombre" class="java.lang.String"/>
+	<field name="persona_nit" class="java.lang.Integer"/>
+	<field name="persona_direccion" class="java.lang.String"/>
+	<field name="persona_telefono_movil" class="java.lang.Integer"/>
+	<field name="persona_telefono_casa" class="java.lang.Integer"/>
+	<field name="persona_fecha_nacimiento" class="java.sql.Date"/>
+	<field name="clientes_email" class="java.lang.String"/>
+	<group name="clientes_id_cliente">
+		<groupExpression><![CDATA[$F{clientes_id_cliente}]]></groupExpression>
+		<groupHeader>
+			<band height="37">
+				<frame>
+					<reportElement mode="Opaque" x="-21" y="7" width="843" height="24" forecolor="#B89F7D" backcolor="#F2EBDF" uuid="78f4d89e-1553-4133-98fb-ffe26144b072"/>
+					<rectangle>
+						<reportElement mode="Opaque" x="21" y="0" width="36" height="24" backcolor="#736343" uuid="73b30851-d7fe-4b2a-8f8e-5187bb92568e"/>
+						<graphicElement>
+							<pen lineWidth="0.0"/>
+						</graphicElement>
+					</rectangle>
+					<textField>
+						<reportElement style="SubTitle" x="68" y="0" width="755" height="24" forecolor="#736343" uuid="8b7fc645-661f-4f3f-a190-fabdc4961332"/>
+						<textElement>
+							<font isBold="true"/>
+						</textElement>
+						<textFieldExpression><![CDATA[$F{clientes_id_cliente}]]></textFieldExpression>
+					</textField>
+				</frame>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="6"/>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="136" splitType="Stretch">
+			<staticText>
+				<reportElement style="Title" x="270" y="0" width="263" height="62" uuid="3440b06b-533c-4425-b359-973c56fbf15a"/>
+				<textElement verticalAlignment="Middle">
+					<font pdfFontName="Times-Roman"/>
+				</textElement>
+				<text><![CDATA[Coffee Title]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="SubTitle" x="303" y="62" width="196" height="22" uuid="7ff7725d-ffc5-4559-8eca-e0b1a74bd943"/>
+				<textElement>
+					<font fontName="Times New Roman" pdfFontName="Times-Roman"/>
+				</textElement>
+				<text><![CDATA[Coffee SubTitle]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="172" y="94" width="383" height="42" uuid="aac7bc04-0a50-4065-8342-7ebe6e4c6a3a"/>
+				<textElement textAlignment="Right">
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce auctor purus gravida arcu aliquam mattis. Donec et nulla libero, ut varius massa. Nulla sed turpis elit. Etiam aliquet mauris a ligula hendrerit in auctor leo lobortis.]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="16" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="15" width="802" height="1" uuid="0fd1c5b8-cd6b-4adc-98a0-6c4b4ff06574"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement style="Column header" x="0" y="0" width="66" height="15" forecolor="#736343" uuid="b0a150ab-b617-42fb-bb68-897de46f10a3"/>
+				<text><![CDATA[persona_dpi]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="66" y="0" width="66" height="15" forecolor="#736343" uuid="4513f5ff-d627-49d1-893e-3a869ac14ed9"/>
+				<text><![CDATA[persona_nombre]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="132" y="0" width="66" height="15" forecolor="#736343" uuid="2cc391bb-507f-4ca3-b3f3-c2bd49e48b83"/>
+				<text><![CDATA[persona_apellido]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="198" y="0" width="66" height="15" forecolor="#736343" uuid="6b48a69f-89fa-4a3f-8592-07803827bb55"/>
+				<text><![CDATA[categoria_nombre]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="264" y="0" width="66" height="15" forecolor="#736343" uuid="89ef4a75-ea7d-4692-b5c0-5fe05abaec78"/>
+				<text><![CDATA[tipo_cliente_nombre]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="330" y="0" width="66" height="15" forecolor="#736343" uuid="013318bf-e080-4295-9767-ecb65d6f6fbd"/>
+				<text><![CDATA[estados_nombre]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="396" y="0" width="66" height="15" forecolor="#736343" uuid="47f74e9e-ae28-405a-a50a-e1ddcf21d79c"/>
+				<text><![CDATA[persona_nit]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="462" y="0" width="66" height="15" forecolor="#736343" uuid="2acba664-118f-459d-b6d6-d151f296bba0"/>
+				<text><![CDATA[persona_direccion]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="528" y="0" width="66" height="15" forecolor="#736343" uuid="a4d9f176-fcda-41f7-a009-63135e3401cf"/>
+				<text><![CDATA[persona_telefono_movil]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="594" y="0" width="66" height="15" forecolor="#736343" uuid="20b6abfb-02df-4125-81d6-aa6e0ec5268a"/>
+				<text><![CDATA[persona_telefono_casa]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="660" y="0" width="66" height="15" forecolor="#736343" uuid="95e7ddef-5b7e-44d2-baa2-89a70b3297c4"/>
+				<text><![CDATA[persona_fecha_nacimiento]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="726" y="0" width="66" height="15" forecolor="#736343" uuid="0105e1c9-6de6-4510-9aab-6299d96a9d42"/>
+				<text><![CDATA[clientes_email]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="15" splitType="Stretch">
+			<frame>
+				<reportElement style="Row" mode="Opaque" x="0" y="0" width="802" height="15" uuid="fbfcc9f3-26a3-4a37-aa4a-b7da1dc12f71"/>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="0" y="0" width="66" height="15" uuid="ed164d0f-9808-4727-b5f1-db26e7789284"/>
+					<textFieldExpression><![CDATA[$F{persona_dpi}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="66" y="0" width="66" height="15" uuid="67ff2fbe-b008-4954-9884-e752e4c3fa01"/>
+					<textFieldExpression><![CDATA[$F{persona_nombre}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="132" y="0" width="66" height="15" uuid="0545e05b-1936-49ba-937c-e62fbb3588bd"/>
+					<textFieldExpression><![CDATA[$F{persona_apellido}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="198" y="0" width="66" height="15" uuid="8afbef6f-856c-4793-a8d4-cfbd301fcdc3"/>
+					<textFieldExpression><![CDATA[$F{categoria_nombre}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="264" y="0" width="66" height="15" uuid="54c1f657-f9e8-45fa-bf3a-121c84f5cd8a"/>
+					<textFieldExpression><![CDATA[$F{tipo_cliente_nombre}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="330" y="0" width="66" height="15" uuid="a421d59f-8420-4643-809c-be1107a972ff"/>
+					<textFieldExpression><![CDATA[$F{estados_nombre}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="396" y="0" width="66" height="15" uuid="b3822e7b-4958-415c-8bfe-951c5555944b"/>
+					<textFieldExpression><![CDATA[$F{persona_nit}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="462" y="0" width="66" height="15" uuid="7e23f635-cbce-415e-9e10-df11cfec23bd"/>
+					<textFieldExpression><![CDATA[$F{persona_direccion}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="528" y="0" width="66" height="15" uuid="a9362cf8-23e7-450e-866d-33954c3e3089"/>
+					<textFieldExpression><![CDATA[$F{persona_telefono_movil}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="594" y="0" width="66" height="15" uuid="a096de90-c177-4e53-898e-513708e0468e"/>
+					<textFieldExpression><![CDATA[$F{persona_telefono_casa}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="660" y="0" width="66" height="15" uuid="09689f0a-baa9-402f-a953-3037ddd5c990"/>
+					<textFieldExpression><![CDATA[$F{persona_fecha_nacimiento}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="726" y="0" width="66" height="15" uuid="ee02005a-a67d-41d8-b402-577917d87443"/>
+					<textFieldExpression><![CDATA[$F{clientes_email}]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="6" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="802" height="1" uuid="b176bb02-bf57-4d63-bb4c-a5c7a66ce5f8"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="25" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="-21" y="1" width="843" height="24" forecolor="#D0B48E" backcolor="#F2EBDF" uuid="fe272868-251d-4489-887d-452bf1e60fd0"/>
+				<textField evaluationTime="Report">
+					<reportElement style="Column header" x="783" y="1" width="40" height="20" forecolor="#736343" uuid="b7e7b5b3-4f65-4e85-8adf-fb0646d8e43f"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="Column header" x="703" y="1" width="80" height="20" forecolor="#736343" uuid="87f921fe-2f5d-4b5d-ab64-3d0a0161f1f3"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+				</textField>
+				<textField pattern="EEEEE dd MMMMM yyyy">
+					<reportElement style="Column header" x="22" y="1" width="197" height="20" forecolor="#736343" uuid="8c1835df-4757-445d-a1e5-f946c1a23e52"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

@@ -5,32 +5,30 @@
  */
 package jaaer;
 
-import DAO.PersonaDAO;
-import Modelo.Personas;
+import DAO.EmpleadoDao;
+import Modelo.Empleados;
+import Modelo.InnerPersonaEmpleado;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author javam
+ * @author Walter
  */
-public class formEliminarPersona extends javax.swing.JFrame {
+public class formEliminarEmpleado extends javax.swing.JFrame {
 
     /**
-     * Creates new form formEliminarPersona
+     * Creates new form formEliminarEmpleado
      */
-    DefaultTableModel tblPersona;
+    private final EmpleadoDao empdao = new EmpleadoDao();
+    private DefaultTableModel tblModeloEmpleado;
+    private final InnerPersonaEmpleado innEmpMod = new InnerPersonaEmpleado();
 
-    public formEliminarPersona() {
+    public formEliminarEmpleado() {
         initComponents();
     }
 
-    public void llenarTabla() {
-
-    }
-
-    //groupMetodo
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -45,24 +43,22 @@ public class formEliminarPersona extends javax.swing.JFrame {
         txtTituloEliminarCliente = new javax.swing.JLabel();
         btnEliminarCliente = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tblDatoPersona = new javax.swing.JTable();
+        tblEmpleado = new javax.swing.JTable();
         lblNombreCliente = new javax.swing.JLabel();
         lblIdCliente = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
-        btgIdPersona = new javax.swing.JRadioButton();
-        btgNombrePersona = new javax.swing.JRadioButton();
+        btgIdEmpleado = new javax.swing.JRadioButton();
+        btgNombreEmpleado = new javax.swing.JRadioButton();
         btnBuscarCliente = new javax.swing.JButton();
-        txtIdPersona = new principal.MaterialTextField();
-        txtNombrePersona = new principal.MaterialTextField();
-        jPanel2 = new javax.swing.JPanel();
+        txtIdEmpleado = new principal.MaterialTextField();
+        txtNombreEmpleado = new principal.MaterialTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
         txtTituloEliminarCliente.setFont(new java.awt.Font("Yu Gothic UI", 1, 24)); // NOI18N
-        txtTituloEliminarCliente.setText("Eliminar Persona");
+        txtTituloEliminarCliente.setText("Eliminar Empleado");
 
         btnEliminarCliente.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         btnEliminarCliente.setText("Eliminar");
@@ -72,30 +68,30 @@ public class formEliminarPersona extends javax.swing.JFrame {
             }
         });
 
-        tblDatoPersona.setForeground(new java.awt.Color(153, 153, 153));
-        tblDatoPersona.setModel(new javax.swing.table.DefaultTableModel(
+        tblEmpleado.setForeground(new java.awt.Color(153, 153, 153));
+        tblEmpleado.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "ID Persona", "DPI", "Persona", "Fecha de Nacimiento", "Direccion", "Nit", "Telefono Movil", "Telefono de Casa"
+                "ID Empeado", "DPI", "Empleado", "Puesto", "Sueldo", "Direccion", "Nit", "Telefono"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, true, false, true, true, true
+                false, false, false, true, true, false, true, true
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
-        tblDatoPersona.setGridColor(new java.awt.Color(255, 255, 255));
-        tblDatoPersona.setRowHeight(25);
-        tblDatoPersona.setSelectionBackground(new java.awt.Color(255, 153, 51));
-        jScrollPane1.setViewportView(tblDatoPersona);
+        tblEmpleado.setGridColor(new java.awt.Color(255, 255, 255));
+        tblEmpleado.setRowHeight(25);
+        tblEmpleado.setSelectionBackground(new java.awt.Color(255, 153, 51));
+        jScrollPane1.setViewportView(tblEmpleado);
 
         lblNombreCliente.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
-        lblNombreCliente.setText("Persona:");
+        lblNombreCliente.setText("Empleado:");
 
         lblIdCliente.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         lblIdCliente.setText("ID:");
@@ -103,18 +99,18 @@ public class formEliminarPersona extends javax.swing.JFrame {
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Seleccione el metodo de busqueda", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Yu Gothic UI", 0, 11))); // NOI18N
 
-        btgIdPersona.setBackground(new java.awt.Color(255, 255, 255));
-        grupoDeBusqueda.add(btgIdPersona);
-        btgIdPersona.setText("ID Persona");
-        btgIdPersona.addActionListener(new java.awt.event.ActionListener() {
+        btgIdEmpleado.setBackground(new java.awt.Color(255, 255, 255));
+        grupoDeBusqueda.add(btgIdEmpleado);
+        btgIdEmpleado.setText("ID Empleado");
+        btgIdEmpleado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btgIdPersonaActionPerformed(evt);
+                btgIdEmpleadoActionPerformed(evt);
             }
         });
 
-        btgNombrePersona.setBackground(new java.awt.Color(255, 255, 255));
-        grupoDeBusqueda.add(btgNombrePersona);
-        btgNombrePersona.setText("Persona");
+        btgNombreEmpleado.setBackground(new java.awt.Color(255, 255, 255));
+        grupoDeBusqueda.add(btgNombreEmpleado);
+        btgNombreEmpleado.setText("Empleado");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -123,17 +119,17 @@ public class formEliminarPersona extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addContainerGap(49, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btgNombrePersona)
-                    .addComponent(btgIdPersona, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btgNombreEmpleado)
+                    .addComponent(btgIdEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(51, 51, 51))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(32, 32, 32)
-                .addComponent(btgIdPersona)
+                .addComponent(btgIdEmpleado)
                 .addGap(18, 18, 18)
-                .addComponent(btgNombrePersona)
+                .addComponent(btgNombreEmpleado)
                 .addContainerGap(37, Short.MAX_VALUE))
         );
 
@@ -166,11 +162,11 @@ public class formEliminarPersona extends javax.swing.JFrame {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(lblNombreCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtNombrePersona, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(txtNombreEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(lblIdCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtIdPersona, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(txtIdEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(30, 30, 30)
                         .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(33, 33, 33))
@@ -188,12 +184,12 @@ public class formEliminarPersona extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(12, 12, 12)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtIdPersona, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(txtIdEmpleado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(lblIdCliente, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE))
                         .addGap(38, 38, 38)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lblNombreCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtNombrePersona, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(txtNombreEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -203,84 +199,90 @@ public class formEliminarPersona extends javax.swing.JFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 339, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 0, 770, 750));
-
-        jPanel2.setBackground(new java.awt.Color(255, 102, 51));
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 190, Short.MAX_VALUE)
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 770, Short.MAX_VALUE)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 770, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 750, Short.MAX_VALUE)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
-
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 190, 750));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnEliminarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarClienteActionPerformed
-        PersonaDAO perDao = new PersonaDAO();
-        Personas modPer = new Personas();
 
-        int id = Integer.parseInt(tblPersona.getValueAt(tblDatoPersona.getSelectedRow(), 0).toString());
-        int res = JOptionPane.showConfirmDialog(this, "Confirme para eliminar a la persona ", "Confirmacion", JOptionPane.YES_NO_OPTION);
-        modPer.setId(id);
+       
+
+        int id = Integer.parseInt(tblModeloEmpleado.getValueAt(tblEmpleado.getSelectedRow(), 0).toString());
+        innEmpMod.setIdEmpleado(id);
+        int res = JOptionPane.showConfirmDialog(this, "Confirme para eliminar a la empleado", "Confirmacion", JOptionPane.YES_NO_OPTION);
         try {
             if (res == 0) {
-                perDao.eliminarPersona(modPer);
-                tblPersona.removeRow(tblDatoPersona.getSelectedRow());
-                txtIdPersona.setText(null);
-                txtNombrePersona.setText(null);
+                empdao.eliminarEmpleado(innEmpMod);
+                tblModeloEmpleado.removeRow(tblEmpleado.getSelectedRow());
+                txtIdEmpleado.setText(null);
+                txtNombreEmpleado.setText(null);
             }
         } catch (Exception e) {
-
+            JOptionPane.showMessageDialog(null, "Error al eliminar el empleado");
         }
     }//GEN-LAST:event_btnEliminarClienteActionPerformed
 
-    private void btgIdPersonaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btgIdPersonaActionPerformed
+    private void btgIdEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btgIdEmpleadoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btgIdPersonaActionPerformed
+    }//GEN-LAST:event_btgIdEmpleadoActionPerformed
 
     private void btnBuscarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarClienteActionPerformed
 
         //el modelo de la tabla se le asigna el balor de la tabla en la vista
-        tblPersona = (DefaultTableModel) tblDatoPersona.getModel();
+        tblModeloEmpleado = (DefaultTableModel) tblEmpleado.getModel();
         //numero de columnas que tendra la tabla
-        Object[] column = new Object[tblPersona.getColumnCount()];
+        Object[] column = new Object[tblModeloEmpleado.getColumnCount()];
         //array que recibira los valores del array del DAO
-        ArrayList<Personas> lstModPersona;
-        //modelo persona
-        PersonaDAO metodoPersona = new PersonaDAO();
+        ArrayList<InnerPersonaEmpleado> lstModEmpleado;
 
-        if (btgIdPersona.isSelected()) {
-            int id = Integer.parseInt(txtIdPersona.getText());
-//            lstModPersona = new ArrayList();
+        if (btgIdEmpleado.isSelected()) {
+            int id = Integer.parseInt(txtIdEmpleado.getText());
+            
+            innEmpMod.setIdEmpleado(id);
             try {
-                lstModPersona = metodoPersona.listarPorID(id);
 
-                if (tblPersona.getRowCount() != 0) {
+                lstModEmpleado = empdao.listarPorId(innEmpMod);
 
-                    for (int i = 0; i < tblPersona.getRowCount(); i++) {
-                        tblPersona.removeRow(0);
+                if (tblModeloEmpleado.getRowCount() != 0) {
+
+                    for (int i = 0; i < tblModeloEmpleado.getRowCount(); i++) {
+                        tblModeloEmpleado.removeRow(0);
                     }
                 }
-                int tamano = lstModPersona.size();
-//                tblDatoPersona.removeAll();
+                
+                int tamano = lstModEmpleado.size();
+                System.out.println("id: "+tamano);
+                //                tblDatoPersona.removeAll();
                 for (int i = 0; i < tamano; i++) {
-                    column[0] = lstModPersona.get(i).getId();
-                    column[1] = lstModPersona.get(i).getDpi();
-                    column[2] = lstModPersona.get(i).getNombre();
-                    column[3] = lstModPersona.get(i).getFecha_nac();
-                    column[4] = lstModPersona.get(i).getDireccion();
-                    column[5] = lstModPersona.get(i).getNit();
-                    column[6] = lstModPersona.get(i).getTel_movil();
-                    column[7] = lstModPersona.get(i).getTel_casa();
-                    tblPersona.addRow(column);
+                    column[0] = lstModEmpleado.get(i).getIdEmpleado();
+                    column[1] = lstModEmpleado.get(i).getDpiEmpleado();
+                    column[2] = lstModEmpleado.get(i).getNombreEmpleado();
+                    column[3] = lstModEmpleado.get(i).getPuesto();
+                    column[4] = lstModEmpleado.get(i).getDireccion();
+                    column[5] = lstModEmpleado.get(i).getNit();
+                    column[6] = lstModEmpleado.get(i).getTelefono();
+                    column[7] = lstModEmpleado.get(i).getSueldo();
+                    tblModeloEmpleado.addRow(column);
 
                 }
             } catch (Exception e) {
@@ -288,31 +290,31 @@ public class formEliminarPersona extends javax.swing.JFrame {
             }
 
         }
-        if (btgNombrePersona.isSelected()) {
-            lstModPersona = null;
+        if (btgNombreEmpleado.isSelected()) {
+//            lstModEmpleado = null;
             try {
+                innEmpMod.setNombreEmpleado(txtNombreEmpleado.getText());
+                lstModEmpleado = empdao.listarPorNombre(innEmpMod);
 
-                lstModPersona = metodoPersona.listarPorNombre(txtNombrePersona.getText());
+//                int valor = tblModeloEmpleado.getRowCount();
+                
+                if (tblModeloEmpleado.getRowCount() != 0) {
 
-                int valor = tblPersona.getRowCount();
-                System.out.println("cantidad: " + tblPersona.getRowCount());
-                if (tblPersona.getRowCount() != 0) {
-
-                    for (int i = 0; i < valor; i++) {
-                        tblPersona.removeRow(0);
-
+                    for (int i = 0; i < tblModeloEmpleado.getRowCount(); i++) {
+                        tblModeloEmpleado.removeRow(0);
                     }
                 }
-                for (int i = 0; i < lstModPersona.size(); i++) {
-                    column[0] = lstModPersona.get(i).getId();
-                    column[1] = lstModPersona.get(i).getDpi();
-                    column[2] = lstModPersona.get(i).getNombre();
-                    column[3] = lstModPersona.get(i).getFecha_nac();
-                    column[4] = lstModPersona.get(i).getDireccion();
-                    column[5] = lstModPersona.get(i).getNit();
-                    column[6] = lstModPersona.get(i).getTel_movil();
-                    column[7] = lstModPersona.get(i).getTel_casa();
-                    tblPersona.addRow(column);
+                System.out.println("hola");
+                for (int i = 0; i < lstModEmpleado.size(); i++) {
+                    column[0] = lstModEmpleado.get(i).getIdEmpleado();
+                    column[1] = lstModEmpleado.get(i).getDpiEmpleado();
+                    column[2] = lstModEmpleado.get(i).getNombreEmpleado();
+                    column[3] = lstModEmpleado.get(i).getPuesto();
+                    column[4] = lstModEmpleado.get(i).getDireccion();
+                    column[5] = lstModEmpleado.get(i).getNit();
+                    column[6] = lstModEmpleado.get(i).getTelefono();
+                    column[7] = lstModEmpleado.get(i).getSueldo();
+                    tblModeloEmpleado.addRow(column);
 
                 }
             } catch (Exception e) {
@@ -338,40 +340,39 @@ public class formEliminarPersona extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(formEliminarPersona.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(formEliminarEmpleado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(formEliminarPersona.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(formEliminarEmpleado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(formEliminarPersona.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(formEliminarEmpleado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(formEliminarPersona.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(formEliminarEmpleado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new formEliminarPersona().setVisible(true);
+                new formEliminarEmpleado().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JRadioButton btgIdPersona;
-    private javax.swing.JRadioButton btgNombrePersona;
+    private javax.swing.JRadioButton btgIdEmpleado;
+    private javax.swing.JRadioButton btgNombreEmpleado;
     private javax.swing.JButton btnBuscarCliente;
     private javax.swing.JButton btnEliminarCliente;
     private javax.swing.ButtonGroup grupoDeBusqueda;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblIdCliente;
     private javax.swing.JLabel lblNombreCliente;
-    private javax.swing.JTable tblDatoPersona;
-    private principal.MaterialTextField txtIdPersona;
-    private principal.MaterialTextField txtNombrePersona;
+    private javax.swing.JTable tblEmpleado;
+    private principal.MaterialTextField txtIdEmpleado;
+    private principal.MaterialTextField txtNombreEmpleado;
     private javax.swing.JLabel txtTituloEliminarCliente;
     // End of variables declaration//GEN-END:variables
+
 }

@@ -394,15 +394,15 @@ List<Personas> lstPersona;
 
     public final void listarPersonas(){
         try {
-            List<Personas> lstPersona;
-            PersonaDAO persona = new PersonaDAO();
-            
-            lstPersona=persona.listar();
-            for (int i = 0; i < lstPersona.size(); i++) {
-                cbxClientes.addItem(lstPersona.get(i).getNombre());
-                
-            }
-            System.out.println("funciona");
+//            List<Personas> lstPersona;
+//            PersonaDAO persona = new PersonaDAO();
+//            
+//            lstPersona=persona.listar();
+//            for (int i = 0; i < lstPersona.size(); i++) {
+//                cbxClientes.addItem(lstPersona.get(i).getNombre());
+//                
+//            }
+//            System.out.println("funciona");
         } catch (Exception ex) {
             System.out.println("Error al intentar Listar en el Form");
         }
@@ -412,17 +412,17 @@ List<Personas> lstPersona;
             PersonaDAO Dao = new PersonaDAO();
             Personas objeto = new Personas();
             
-            objeto.setId(Integer.parseInt(txtId.getText()));
-            objeto.setNombre(txtNombre.getText());
-            objeto.setApellido(txtApellido.getText());
-            objeto.setDireccion(txtDireccion.getText());
-            objeto.setDpi(Integer.parseInt(txtDpi.getText()));
-            objeto.setTel_movil(Integer.parseInt(txtMovil.getText()));
-            objeto.setNit(Integer.parseInt(txtNit.getText()));
-            objeto.setFecha_nac(txtFecha.getText());
-            objeto.setTel_casa(Integer.parseInt(txtCasa.getText()));
-            
-            Dao.ingresarPersona(objeto);
+//            objeto.setId(Integer.parseInt(txtId.getText()));
+//            objeto.setNombre(txtNombre.getText());
+//            objeto.setApellido(txtApellido.getText());
+//            objeto.setDireccion(txtDireccion.getText());
+//            objeto.setDpi(Integer.parseInt(txtDpi.getText()));
+//            objeto.setTel_movil(Integer.parseInt(txtMovil.getText()));
+//            objeto.setNit(Integer.parseInt(txtNit.getText()));
+//            objeto.setFecha_nac(txtFecha.getText());
+//            objeto.setTel_casa(Integer.parseInt(txtCasa.getText()));
+//            
+//            Dao.ingresarPersona(objeto);
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(this, "usuario y contraseña incoreccta");
         }

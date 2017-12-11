@@ -8,7 +8,7 @@ package jaaer;
 import DAO.EmpleadoDao;
 import Modelo.Empleados;
 import Modelo.Puesto;
-import Modelo.cliente;
+import java.awt.HeadlessException;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
@@ -246,7 +246,7 @@ public class formIngresarEmpleado extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Se realizo la operacion correctamente");
             txtSueldo.setText(null);
 
-        } catch (Exception e) {
+        } catch (HeadlessException | NumberFormatException e) {
             JOptionPane.showMessageDialog(null, "Error al ingresar el cliente");
         }
     }//GEN-LAST:event_btnIngresarClienteActionPerformed

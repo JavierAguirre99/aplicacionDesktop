@@ -1,5 +1,6 @@
 package DAO;
 
+import Modelo.InnerUsuario;
 import Modelo.Usuario;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -40,7 +41,27 @@ public class usuarioDao extends DAO{
         }
         return listUser;
     }
-
+    public void eliminarUsuario(Usuario modUsuario) throws Exception{
+        try {
+            this.conectar();
+            sql = "delete * from usuarios where id_usuario = ?";
+            sta = this.getCn().prepareStatement(sql);
+            sta.setInt(1, modUsuario.getId_usuario());
+            sta.executeUpdate();
+            
+        } catch (SQLException e) {
+            System.out.println("Error al eliminar al usuario: "+e);
+        }finally{
+            this.cerrar();
+        }   
+    }
+    
+    public ArrayList<InnerUsuario> listarUsuario(){
+        ArrayList<InnerUsuario> lstModUsuario = null;
+        
+        return lstModUsuario;
+    }
+    
     public int getContent() {
         return content;
     }

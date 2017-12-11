@@ -17,6 +17,7 @@ public class InnerPersonaCliente {
     private String tipoCliente;
     private long dpiCliente;
     private String direccion;
+    private String correoElectronico;
 
     public InnerPersonaCliente() {
         this.nombreCliente = null;
@@ -28,6 +29,14 @@ public class InnerPersonaCliente {
         this.tipoCliente = null;
     }
 
+    public String getCorreoElectronico() {
+        return correoElectronico;
+    }
+
+    public void setCorreoElectronico(String correoElectronico) {
+        this.correoElectronico = correoElectronico;
+    }
+    
     public long getDpiCliente() {
         return dpiCliente;
     }

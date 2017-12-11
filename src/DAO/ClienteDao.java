@@ -78,7 +78,7 @@ public class ClienteDao extends DAO {
             }
         } catch (SQLException e) {
             System.out.println("error en: " + e);
-        }finally{
+        } finally {
             this.cerrar();
         }
         return lstModPeople;
@@ -104,6 +104,44 @@ public class ClienteDao extends DAO {
                 peopleModel.setTipoCliente(res.getString("tipo_cliente"));
                 peopleModel.setIdEstado(res.getInt("id_estado"));
                 peopleModel.setEstado(res.getString("estado"));
+                peopleModel.setDireccion(res.getString("direccion"));
+                peopleModel.setCorreoElectronico(res.getString("correo_electronico"));
+                peopleModel.setDpiCliente(res.getLong("dpi_persona"));
+                lista.add(peopleModel);
+            }
+        } catch (SQLException e) {
+            System.out.println("Error en listar cliente: " + e);
+        } finally {
+            this.cerrar();
+        }
+
+        return lista;
+    }
+
+    public ArrayList<InnerPersonaCliente> llenarTablaCliente(InnerPersonaCliente objInnPersona) throws Exception {
+        ArrayList<InnerPersonaCliente> lista = null;
+        ResultSet res;
+
+        try {
+            this.conectar();
+            sql = "select * from vwdatocliente where id_cliente=?";
+            sta = this.getCn().prepareStatement(sql);
+            sta.setInt(1, objInnPersona.getIdCliente());
+            res = sta.executeQuery();
+            lista = new ArrayList();
+            while (res.next()) {
+                InnerPersonaCliente peopleModel = new InnerPersonaCliente();
+                peopleModel.setIdCliente(res.getInt("id_cliente"));
+                peopleModel.setNombreCliente(res.getString("cliente"));
+                peopleModel.setIdCategoria(res.getInt("id_categoria"));
+                peopleModel.setCategoria(res.getString("categoria"));
+                peopleModel.setIdTipoCliente(res.getInt("id_tipo_cliente"));
+                peopleModel.setTipoCliente(res.getString("tipo_cliente"));
+                peopleModel.setIdEstado(res.getInt("id_estado"));
+                peopleModel.setEstado(res.getString("estado"));
+                peopleModel.setDireccion(res.getString("direccion"));
+                peopleModel.setCorreoElectronico(res.getString("correo_electronico"));
+                peopleModel.setDpiCliente(res.getLong("dpi_persona"));
                 lista.add(peopleModel);
             }
         } catch (SQLException e) {
@@ -155,5 +193,22 @@ public class ClienteDao extends DAO {
         }
 
         return lstModTipoCliente;
+    }
+
+    public void modificar(cliente modCliente) throws Exception {
+        try {
+            this.conectar();
+            sql = "update clientes set id_categoria=?, id_estado=?, id_tipo_cliente=?, email=? where = ?";
+            sta = this.getCn().prepareStatement(sql);
+            sta.setInt(1, modCliente.getId_categoria());
+            sta.setInt(2, modCliente.getId_estado());
+            sta.setInt(3, modCliente.getId_tipocliente());
+            sta.setString(4, modCliente.getEmail());
+            sta.setInt(5, modCliente.getId_cliente());
+            sta.executeUpdate();
+        } catch (SQLException e) {
+            System.err.println("Error al modificar el cliente: "+e);
+        }
+
     }
 }
