@@ -17,6 +17,7 @@ import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.view.JasperViewer;
 
+
 /**
  *
  * @author javam
@@ -185,8 +186,9 @@ public class frmBusquedaListaCliente extends javax.swing.JFrame {
         
         int res = JOptionPane.showConfirmDialog(this, "¿Desea imprimir el listado de Clientes?", "Confirmacion", JOptionPane.YES_OPTION);
         if (res == 0) {
-            String direccion = "C:\\Users\\Walter\\Documents\\NetBeansProjects\\aplicacionDesktop\\src\\Reporte\\listadoCliente.jrxml";
+            String direccion = "C:\\Users\\Walter\\Documents\\NetBeansProjects\\aplicacionDesktop\\src\\Reporte\\listadoClienteOtro.jrxml";
             try {
+                System.out.println("hola");
                 JasperReport reporteCliente = JasperCompileManager.compileReport(direccion); //se crea una archivo tipo jrxml
                 JasperPrint mostrarReporte = JasperFillManager.fillReport(reporteCliente,null, clieDao.getCn()); //toma los valores de archivo jrxml y la conexion a la base de datos 
                 JasperViewer.viewReport(mostrarReporte); //sirve para mostrar el reporte en pantalla
