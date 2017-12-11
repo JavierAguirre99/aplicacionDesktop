@@ -6,8 +6,12 @@
 package jaaer;
 
 import DAO.ClienteDao;
+import DAO.DAO;
 import Modelo.InnerPersonaCliente;
+import java.sql.Connection;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import net.sf.jasperreports.engine.JRException;
@@ -15,6 +19,7 @@ import net.sf.jasperreports.engine.JasperCompileManager;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.util.JRLoader;
 import net.sf.jasperreports.view.JasperViewer;
 
 
@@ -31,6 +36,7 @@ public class frmBusquedaListaCliente extends javax.swing.JFrame {
     private final ClienteDao clieDao = new ClienteDao();
     private final InnerPersonaCliente modInnerPer = new InnerPersonaCliente();
     private DefaultTableModel tblModelCliente;
+ 
 
     public frmBusquedaListaCliente() {
         initComponents();
@@ -86,10 +92,10 @@ public class frmBusquedaListaCliente extends javax.swing.JFrame {
         lblTituloElCliente = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblCliente = new javax.swing.JTable();
-        txtIdCliente = new principal.MaterialTextField();
         btnListarImprimir = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         btnBuscar = new javax.swing.JButton();
+        txtIdCliente = new principal.MaterialTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -131,7 +137,6 @@ public class frmBusquedaListaCliente extends javax.swing.JFrame {
         jScrollPane1.setViewportView(tblCliente);
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 200, 970, 350));
-        jPanel1.add(txtIdCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 110, 200, 40));
 
         btnListarImprimir.setBackground(new java.awt.Color(255, 255, 255));
         btnListarImprimir.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
@@ -165,6 +170,7 @@ public class frmBusquedaListaCliente extends javax.swing.JFrame {
             }
         });
         jPanel1.add(btnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 110, 60, 40));
+        jPanel1.add(txtIdCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 109, 190, 40));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -186,15 +192,22 @@ public class frmBusquedaListaCliente extends javax.swing.JFrame {
         
         int res = JOptionPane.showConfirmDialog(this, "¿Desea imprimir el listado de Clientes?", "Confirmacion", JOptionPane.YES_OPTION);
         if (res == 0) {
-            String direccion = "C:\\Users\\Walter\\Documents\\NetBeansProjects\\aplicacionDesktop\\src\\Reporte\\listadoClienteOtro.jrxml";
             try {
-                System.out.println("hola");
-                JasperReport reporteCliente = JasperCompileManager.compileReport(direccion); //se crea una archivo tipo jrxml
-                JasperPrint mostrarReporte = JasperFillManager.fillReport(reporteCliente,null, clieDao.getCn()); //toma los valores de archivo jrxml y la conexion a la base de datos 
-                JasperViewer.viewReport(mostrarReporte); //sirve para mostrar el reporte en pantalla
+                DAO conn = new DAO();
+                Connection con = conn.getCn();
+                String direccion = "src\\Reporte\\report2.jasper";
+                JasperReport reporteCliente;//Variable de tipo JasperReport
+                reporteCliente =  (JasperReport) JRLoader.loadObjectFromFile(direccion);//se le asigna la direccion del archivo .jasper 
+                JasperPrint imprimirReporte =  JasperFillManager.fillReport(reporteCliente, null, con);//obtiene la direccion del reporte y la conexion a base de datos
+                JasperViewer vista = new JasperViewer(imprimirReporte, false);//se genera la vista del reporte
+                vista.setDefaultCloseOperation(DISPOSE_ON_CLOSE); //para que se pueda cerrar el reporte al momento de pichar la X
+                vista.setVisible(true);
+                
             } catch (JRException ex) {
-                System.err.println("Error al generar reporte: "+ex);
+                System.out.println("Error al generar reporte: "+ex);
+//                Logger.getLogger(frmBusquedaListaCliente.class.getName()).log(Level.SEVERE, null, ex);
             }
+            
                     
         }
     }//GEN-LAST:event_btnListarImprimirActionPerformed
