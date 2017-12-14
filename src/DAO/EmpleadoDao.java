@@ -1,17 +1,15 @@
 package DAO;
 
 import Modelo.Empleados;
+import Modelo.EmpleadosMod;
 import Modelo.InnerPersonaEmpleado;
 import Modelo.Puesto;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
-/**
- *
- * @author javam
- */
 public class EmpleadoDao extends DAO {
 
     private String sql;
@@ -166,5 +164,5 @@ public class EmpleadoDao extends DAO {
             this.cerrar();
         }
         return lstModEmpleado;
-    }
+    }      
 }

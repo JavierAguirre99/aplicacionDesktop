@@ -1,9 +1,16 @@
 package jaaer;
 
 import DAO.PaquetesDAO;
+import DAO.usuarioDao;
 import Modelo.Paquetes;
+import Modelo.Personas;
 import Modelo.TipoServicio;
+import Modelo.Usuario;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+
 import javax.swing.table.DefaultTableModel;
 
 public class formProductos extends javax.swing.JFrame {
@@ -11,6 +18,13 @@ public class formProductos extends javax.swing.JFrame {
     DefaultTableModel modeloTabla;
     private List<TipoServicio> lstTiposServicios;
     private List<Paquetes> lstPaquetes;
+
+    int id;
+    String nombre;
+    String descripcion;
+    String tipo;
+    int costo;
+    int precio;
 
     public formProductos() {
         initComponents();
@@ -37,6 +51,8 @@ public class formProductos extends javax.swing.JFrame {
         txtPrecioV = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         btnNuevo = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(0, 153, 51));
@@ -50,6 +66,11 @@ public class formProductos extends javax.swing.JFrame {
                 "ID", "Nombre", "Descripcion", "TIpo", "Costo", "Precio"
             }
         ));
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
 
         jPanel1.setBackground(new java.awt.Color(255, 204, 0));
@@ -71,6 +92,20 @@ public class formProductos extends javax.swing.JFrame {
         btnNuevo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnNuevoActionPerformed(evt);
+            }
+        });
+
+        jButton1.setText("Modificar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        jButton2.setText("Eliminar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
             }
         });
 
@@ -97,18 +132,22 @@ public class formProductos extends javax.swing.JFrame {
                                     .addComponent(jLabel2)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(btnNuevo)
                                             .addComponent(jLabel5)
                                             .addComponent(jLabel4))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(txtCosto, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(btnNuevo)
-                                            .addComponent(txtPrecioV, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                            .addComponent(txtPrecioV, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                                .addComponent(jButton1)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(jButton2)))))
                                 .addGap(0, 0, Short.MAX_VALUE))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(50, 50, 50)
                         .addComponent(jLabel6)
-                        .addGap(0, 72, Short.MAX_VALUE)))
+                        .addGap(0, 74, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -137,7 +176,10 @@ public class formProductos extends javax.swing.JFrame {
                     .addComponent(jLabel5)
                     .addComponent(txtPrecioV, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(33, 33, 33)
-                .addComponent(btnNuevo)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnNuevo)
+                    .addComponent(jButton1)
+                    .addComponent(jButton2))
                 .addContainerGap(76, Short.MAX_VALUE))
         );
 
@@ -146,9 +188,9 @@ public class formProductos extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(19, 19, 19)
+                .addContainerGap(46, Short.MAX_VALUE)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 547, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(103, 103, 103))
         );
@@ -166,26 +208,117 @@ public class formProductos extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoActionPerformed
-        try {
-            Paquetes paquete = new Paquetes();
-            PaquetesDAO DAO = new PaquetesDAO();
+        jTable1.setSelectionMode(0);
+        if (txtNombre.getText() != null) {
+            txtNombre.setText(null);
+            txtDescripcion.setText(null);
+            txtCosto.setText(null);
+            txtPrecioV.setText(null);
+            JOptionPane.showMessageDialog(null, "Ingrese Su nuevo Paquete");
+        } else {
 
-            paquete.setNombre(txtNombre.getText());
-            paquete.setDescripcion(txtDescripcion.getText());
-            for (int i = 0; i < lstTiposServicios.size(); i++) {
-                if (cbxTipo.getSelectedItem().equals(lstTiposServicios.get(i).getNombre())) {
-                    paquete.setId_tiposervicio(lstTiposServicios.get(i).getId_servicio());
+            try {
+                Paquetes paquete = new Paquetes();
+                PaquetesDAO DAO = new PaquetesDAO();
+
+                paquete.setNombre(txtNombre.getText());
+                paquete.setDescripcion(txtDescripcion.getText());
+                for (int i = 0; i < lstTiposServicios.size(); i++) {
+                    if (cbxTipo.getSelectedItem().equals(lstTiposServicios.get(i).getNombre())) {
+                        paquete.setId_tiposervicio(lstTiposServicios.get(i).getId_servicio());
+                    }
                 }
-            }
-            paquete.setCosto(Integer.parseInt(txtCosto.getText()));
-            paquete.setPrecioventa(Integer.parseInt(txtPrecioV.getText()));
-            DAO.ingresarPaquete(paquete);
-            llenarTabla();
+                paquete.setCosto(Integer.parseInt(txtCosto.getText()));
+                paquete.setPrecioventa(Integer.parseInt(txtPrecioV.getText()));
+                DAO.ingresarPaquete(paquete);
+                llenarTabla();
 
-        } catch (Exception ex) {
-            System.out.println("Error al intentar ingresar un paquete" + ex);
+            } catch (Exception ex) {
+                System.out.println("Error al intentar ingresar un paquete" + ex);
+
+            }
         }
     }//GEN-LAST:event_btnNuevoActionPerformed
+
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+        id = Integer.parseInt(modeloTabla.getValueAt(jTable1.getSelectedRow(), 0).toString());
+        nombre = modeloTabla.getValueAt(jTable1.getSelectedRow(), 1).toString();
+        descripcion = modeloTabla.getValueAt(jTable1.getSelectedRow(), 2).toString();
+        tipo = modeloTabla.getValueAt(jTable1.getSelectedRow(), 3).toString();
+        costo = Integer.parseInt(modeloTabla.getValueAt(jTable1.getSelectedRow(), 4).toString());
+        precio = Integer.parseInt(modeloTabla.getValueAt(jTable1.getSelectedRow(), 5).toString());
+
+        txtNombre.setText(nombre);
+        txtDescripcion.setText(descripcion);
+        cbxTipo.setSelectedItem(tipo);
+        txtCosto.setText(String.valueOf(costo));
+        txtPrecioV.setText(String.valueOf(precio));
+
+    }//GEN-LAST:event_jTable1MouseClicked
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        if (id != 0) {
+            try {
+                PaquetesDAO prueba = new PaquetesDAO();
+                Paquetes paquete = new Paquetes();
+
+                paquete.setId_paquete(id);
+                paquete.setNombre(txtNombre.getText());
+                paquete.setDescripcion(txtDescripcion.getText());
+
+                for (int i = 0; i < lstTiposServicios.size(); i++) {
+                    if (cbxTipo.getSelectedItem().equals(lstTiposServicios.get(i).getNombre())) {
+                        paquete.setId_tiposervicio(lstTiposServicios.get(i).getId_servicio());
+                    }
+
+                }
+                paquete.setCosto(Integer.parseInt(txtCosto.getText()));
+                paquete.setPrecioventa(Integer.parseInt(txtPrecioV.getText()));
+
+                prueba.modificarPaquetes(paquete);
+                id = 0;
+                txtNombre.setText(null);
+                txtDescripcion.setText(null);
+                txtCosto.setText(null);
+                txtPrecioV.setText(null);
+                llenarTabla();
+            } catch (Exception ex) {
+                System.out.println("Error en el Bean Al intentar Modificar Persona " + ex);
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Primero Debe seleccionar un Registro ");
+        }
+
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        if (id == 0) {
+            JOptionPane.showMessageDialog(null, "Primero Debe Seleccionar Un dato de La tabla ");
+        } else {
+            int resp = JOptionPane.showConfirmDialog(null, "¿Esta seguro?", "Alerta!", JOptionPane.YES_NO_OPTION);
+            if (resp == 0) {
+                try {
+                    PaquetesDAO prueba = new PaquetesDAO();
+
+                    prueba.eliminarPaquetes(id);
+                    id = 0;
+                    txtNombre.setText(null);
+                    txtDescripcion.setText(null);
+                    txtCosto.setText(null);
+                    txtPrecioV.setText(null);
+                    llenarTabla();
+                } catch (Exception ex) {
+                    System.out.println("Error al Eliminar Paquete Bean");
+                }
+            } else {
+                jTable1.setSelectionMode(0);
+                txtNombre.setText(null);
+                txtDescripcion.setText(null);
+                txtCosto.setText(null);
+                txtPrecioV.setText(null);
+            }
+        }
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     public final void listarTipos() {
         try {
@@ -211,34 +344,33 @@ public class formProductos extends javax.swing.JFrame {
             PaquetesDAO DAO = new PaquetesDAO();
             //array que recibira los datos contenidos en el array de la clase
 
-            lstPaquetes = DAO.listar();
+            int tamanio = modeloTabla.getRowCount();
 
             if (modeloTabla.getRowCount() != 0) {
-                for (int i = 0; i < modeloTabla.getRowCount(); i++) {
-
+                for (int i = 0; i < tamanio; i++) {
                     modeloTabla.removeRow(0);
                 }
-
-            } else {
-
-                int tamano = lstPaquetes.size();
-
-                for (int i = 0; i < tamano; i++) {
-                    columna[0] = lstPaquetes.get(i).getId_paquete();
-
-                    columna[1] = lstPaquetes.get(i).getNombre();
-
-                    columna[2] = lstPaquetes.get(i).getDescripcion();
-
-                    columna[3] = lstPaquetes.get(i).getId_tiposervicio();
-
-                    columna[4] = lstPaquetes.get(i).getCosto();
-
-                    columna[5] = lstPaquetes.get(i).getPrecioventa();
-
-                    modeloTabla.addRow(columna);
-                }
             }
+            lstPaquetes = DAO.listar();
+
+            int tamano = lstPaquetes.size();
+
+            for (int i = 0; i < tamano; i++) {
+                columna[0] = lstPaquetes.get(i).getId_paquete();
+
+                columna[1] = lstPaquetes.get(i).getNombre();
+
+                columna[2] = lstPaquetes.get(i).getDescripcion();
+
+                columna[3] = lstPaquetes.get(i).getId_tiposervicio();
+
+                columna[4] = lstPaquetes.get(i).getCosto();
+
+                columna[5] = lstPaquetes.get(i).getPrecioventa();
+
+                modeloTabla.addRow(columna);
+            }
+
         } catch (Exception ex) {
             System.out.println("Error al intentar Listar bean Paquetes" + ex);
         }
@@ -256,6 +388,8 @@ public class formProductos extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnNuevo;
     private javax.swing.JComboBox<String> cbxTipo;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

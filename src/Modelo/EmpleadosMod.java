@@ -1,8 +1,8 @@
 package Modelo;
-
-public class Empleados {
+public class EmpleadosMod {
     private int id_empleado;
-    
+    private String nombre;
+    private String apellido;
     private int id_puesto;
     private double sueldo;
     private String empleado;
@@ -13,6 +13,22 @@ public class Empleados {
 
     public void setId_empleado(int id_empleado) {
         this.id_empleado = id_empleado;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getApellido() {
+        return apellido;
+    }
+
+    public void setApellido(String apellido) {
+        this.apellido = apellido;
     }
 
     public int getId_puesto() {
@@ -38,5 +54,7 @@ public class Empleados {
     public void setEmpleado(String empleado) {
         this.empleado = empleado;
     }
+    
+    
     
 }

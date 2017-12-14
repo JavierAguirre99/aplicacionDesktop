@@ -1,5 +1,4 @@
 package Modelo;
-
 import java.sql.Date;
 
 public class Personas {
@@ -10,16 +9,18 @@ public class Personas {
     private long dpi;
     private int tel_movil;
     private int nit;
-    private Date fecha_nac;
+    private String fecha_nac;
     private int tel_casa;
 
-    public Date getFecha_nac() {
+    public String getFecha_nac() {
         return fecha_nac;
     }
 
-    public void setFecha_nac(Date fecha_nac) {
+    public void setFecha_nac(String fecha_nac) {
         this.fecha_nac = fecha_nac;
     }
+
+    
     
     public int getId() {
         return id;

@@ -1,11 +1,10 @@
 package jaaer;
 
-import DAO.DAO;
 import DAO.PersonaDAO;
 import Modelo.Personas;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
+
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import javax.swing.table.DefaultTableModel;
@@ -14,17 +13,20 @@ public class FormPersonas extends javax.swing.JFrame {
 
     DefaultTableModel modeloTabla;
     List<Personas> lstPersona = new ArrayList();
+    int id;
+    String nombre;
+    String apellido;
+    String direccion;
+    int nit;
+    int dpi;
+    String fecha;
+    String movil;
+    String casa;
 
     public FormPersonas() {
 
-        try {
-            initComponents();
-            temporal();
-
-        } catch (Exception ex) {
-            System.out.println("Error al llamar metodos"+ex);
-        }
-
+        initComponents();
+        llenar();
     }
 
     @SuppressWarnings("unchecked")
@@ -47,11 +49,12 @@ public class FormPersonas extends javax.swing.JFrame {
         txtNombre = new javax.swing.JTextField();
         txtNit = new javax.swing.JTextField();
         txtApellido = new javax.swing.JTextField();
-        txtFecha = new javax.swing.JTextField();
         txtDireccion = new javax.swing.JTextField();
         txtCasa = new javax.swing.JTextField();
         txtDpi = new javax.swing.JTextField();
         txtMovil = new javax.swing.JTextField();
+        btnModificar = new javax.swing.JButton();
+        txtFecha = new com.toedter.calendar.JDateChooser();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -60,10 +63,20 @@ public class FormPersonas extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Id", "Nombre", "Apellido", "Direccion", "Nit", "DPI"
+                "Id", "Nombre", "Apellido", "Direccion", "Nit", "DPI", "Fecha Nac", "Tel Movil", "Tel Casa"
             }
         ));
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
+        if (jTable1.getColumnModel().getColumnCount() > 0) {
+            jTable1.getColumnModel().getColumn(0).setMaxWidth(50);
+            jTable1.getColumnModel().getColumn(4).setMaxWidth(60);
+            jTable1.getColumnModel().getColumn(5).setMaxWidth(60);
+        }
 
         jLabel1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jLabel1.setText("Personas");
@@ -88,6 +101,13 @@ public class FormPersonas extends javax.swing.JFrame {
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
+            }
+        });
+
+        btnModificar.setText("Modificar");
+        btnModificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnModificarActionPerformed(evt);
             }
         });
 
@@ -120,23 +140,24 @@ public class FormPersonas extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(txtDpi, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(txtDireccion)
-                                .addComponent(txtApellido, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(txtNombre, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(txtNit, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(txtCasa, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addComponent(txtMovil, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(10, 10, 10)
-                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(txtMovil, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(txtDpi, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtDireccion)
+                            .addComponent(txtApellido, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtNombre, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtNit, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtCasa, javax.swing.GroupLayout.DEFAULT_SIZE, 142, Short.MAX_VALUE)
+                            .addComponent(txtFecha, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnModificar)
+                .addGap(33, 33, 33))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -162,10 +183,10 @@ public class FormPersonas extends javax.swing.JFrame {
                     .addComponent(jLabel7)
                     .addComponent(txtNit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel8))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel8)
+                    .addComponent(txtFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
                     .addComponent(txtCasa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -173,9 +194,11 @@ public class FormPersonas extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
                     .addComponent(txtMovil, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(38, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1)
+                    .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(39, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -188,11 +211,11 @@ public class FormPersonas extends javax.swing.JFrame {
                         .addContainerGap()
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 508, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(64, 64, 64)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(170, Short.MAX_VALUE))
+                .addContainerGap(114, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -200,44 +223,68 @@ public class FormPersonas extends javax.swing.JFrame {
                 .addGap(45, 45, 45)
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 296, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(26, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 305, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(25, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-      
-    public final void temporal() {
+
+    private void llenar() {
         try {
-            modeloTabla = (DefaultTableModel)jTable1.getModel();
-                                                    
+            modeloTabla = (DefaultTableModel) jTable1.getModel();
+
             //se crea un objeto array con la cantidad de columnas del modelo
             Object[] columna = new Object[modeloTabla.getColumnCount()];
-            
+
             PersonaDAO DAO = new PersonaDAO();
             //array que recibira los datos contenidos en el array de la clase
-            /*List<Personas> listapersonas = DAO.listarPersona();
-            
-            int tamano = listapersonas.size();
-            jTable1.removeAll();
+
+            int tamanio = modeloTabla.getRowCount();
+
+            if (modeloTabla.getRowCount() != 0) {
+                for (int i = 0; i < tamanio; i++) {
+
+                    modeloTabla.removeRow(0);
+                }
+
+            }
+            lstPersona = DAO.listarPersonas();
+
+            int tamano = lstPersona.size();
+
             for (int i = 0; i < tamano; i++) {
-                columna[0] = listapersonas.get(i).getId();
-                columna[1] = listapersonas.get(i).getNombre();
-                columna[2] = listapersonas.get(i).getApellido();
-                
+
+                columna[0] = lstPersona.get(i).getId();
+
+                columna[1] = lstPersona.get(i).getNombre();
+
+                columna[2] = lstPersona.get(i).getApellido();
+
+                columna[3] = lstPersona.get(i).getDireccion();
+
+                columna[4] = lstPersona.get(i).getNit();
+
+                columna[5] = lstPersona.get(i).getDpi();
+
+                columna[6] = lstPersona.get(i).getFecha_nac();
+
+                columna[7] = lstPersona.get(i).getTel_movil();
+
+                columna[8] = lstPersona.get(i).getTel_casa();
+
                 modeloTabla.addRow(columna);
-            }*/
-            jTable1.updateUI();
+            }
+
         } catch (Exception ex) {
-            System.out.println("Error al intentar Listar"+ex);
+            System.out.println("Error al intentar Listar bean personas" + ex);
         }
-       
     }
+
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        
-         try {
+        try {
             PersonaDAO Dao = new PersonaDAO();
             Personas objeto = new Personas();
 
@@ -246,48 +293,78 @@ public class FormPersonas extends javax.swing.JFrame {
             objeto.setDireccion(txtDireccion.getText());
             objeto.setDpi(Integer.parseInt(txtDpi.getText()));
             objeto.setNit(Integer.parseInt(txtNit.getText()));
+
+            int anio2 = txtFecha.getCalendar().get(Calendar.YEAR);
+            int mes2 = txtFecha.getCalendar().get(Calendar.MARCH);
+            int dia2 = txtFecha.getCalendar().get(Calendar.DAY_OF_MONTH);
+
+            String fechaContra = anio2 + "-" + mes2 + "-" + dia2;
+
+            objeto.setFecha_nac(fechaContra);
+            objeto.setTel_casa(Integer.parseInt(txtCasa.getText()));
             objeto.setTel_movil(Integer.parseInt(txtMovil.getText()));
 
-//            objeto.setFecha_nac(txtFecha.getText());
-            objeto.setTel_casa(Integer.parseInt(txtCasa.getText()));
-
             Dao.ingresarPersona(objeto);
-            
-            
+            llenar();
+
         } catch (Exception ex) {
             System.out.println("Error al Ingresar una persona" + ex);
         }
-         
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FormPersonas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FormPersonas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FormPersonas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FormPersonas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
 
-        /* Create and display the form */
+    private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
+                
+        try {
+            PersonaDAO prueba = new PersonaDAO();
+            Personas persona = new Personas();
+            
+            persona.setId(id);
+            persona.setNombre(txtNombre.getText());
+            persona.setApellido(txtApellido.getText());
+            persona.setDireccion(txtDireccion.getText());
+            persona.setDpi(Integer.parseInt(txtDpi.getText()));
+            persona.setNit(Integer.parseInt(txtNit.getText()));
+            
+            int anio2 = txtFecha.getCalendar().get(Calendar.YEAR);
+            int mes2 = txtFecha.getCalendar().get(Calendar.MARCH);
+            int dia2 = txtFecha.getCalendar().get(Calendar.DAY_OF_MONTH);
+            
+            String fechaPersona = anio2 + "-" + mes2 + "-" + dia2;
+            persona.setFecha_nac(fechaPersona);
+            persona.setTel_movil(Integer.parseInt(txtMovil.getText()));
+            persona.setTel_casa(Integer.parseInt(txtCasa.getText()));
+            
+            prueba.modificarPersona(persona);
+            llenar();
+        } catch (Exception ex) {
+            System.out.println("Error en el Bean Al intentar Modificar Persona "+ex);
+        }
+        
+    }//GEN-LAST:event_btnModificarActionPerformed
+
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+        id = Integer.parseInt(modeloTabla.getValueAt(jTable1.getSelectedRow(), 0).toString());
+        nombre = modeloTabla.getValueAt(jTable1.getSelectedRow(), 1).toString();
+        apellido = modeloTabla.getValueAt(jTable1.getSelectedRow(), 2).toString();
+        direccion = modeloTabla.getValueAt(jTable1.getSelectedRow(), 3).toString();
+        nit = Integer.parseInt(modeloTabla.getValueAt(jTable1.getSelectedRow(), 4).toString());
+        dpi = Integer.parseInt(modeloTabla.getValueAt(jTable1.getSelectedRow(), 5).toString());
+        fecha = modeloTabla.getValueAt(jTable1.getSelectedRow(), 6).toString();
+        movil = modeloTabla.getValueAt(jTable1.getSelectedRow(), 7).toString();
+        casa = modeloTabla.getValueAt(jTable1.getSelectedRow(), 8).toString();
+
+        txtNombre.setText(nombre);
+        txtApellido.setText(apellido);
+        txtDireccion.setText(direccion);
+        txtNit.setText(String.valueOf(nit));
+        txtDpi.setText(String.valueOf(dpi));
+        txtMovil.setText(movil);
+        txtCasa.setText(casa);
+    }//GEN-LAST:event_jTable1MouseClicked
+
+    public static void main(String args[]) {
+
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new FormPersonas().setVisible(true);
@@ -296,6 +373,7 @@ public class FormPersonas extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnModificar;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -313,7 +391,7 @@ public class FormPersonas extends javax.swing.JFrame {
     private javax.swing.JTextField txtCasa;
     private javax.swing.JTextField txtDireccion;
     private javax.swing.JTextField txtDpi;
-    private javax.swing.JTextField txtFecha;
+    private com.toedter.calendar.JDateChooser txtFecha;
     private javax.swing.JTextField txtMovil;
     private javax.swing.JTextField txtNit;
     private javax.swing.JTextField txtNombre;
