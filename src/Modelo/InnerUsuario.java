@@ -7,86 +7,49 @@ package Modelo;
  * @author Walter Caal
  */
 public class InnerUsuario {
-    private int idEmpleado;
-    private String nombreEmpleado;
-    private long dpiEmpleado;
-    private String direccion;
-    private double sueldo;
-    private int idPuesto;
-    private String puesto;
-    private int telefono;
-    private int nit;
-
-    public long getDpiEmpleado() {
-        return dpiEmpleado;
-    }
-
-    public void setDpiEmpleado(long dpiEmpleado) {
-        this.dpiEmpleado = dpiEmpleado;
-    }
-
-    public int getNit() {
-        return nit;
-    }
-
-    public void setNit(int nit) {
-        this.nit = nit;
-    }
-
-    public String getDireccion() {
-        return direccion;
-    }
-
-    public void setDireccion(String direccion) {
-        this.direccion = direccion;
-    }
+    private int idUsuario;
+    private String nombreUsuario;
+    private long dpiUsuario;
+    private String tipoUsuario;
+    private double idTipoUsuario;
     
-    public int getIdEmpleado() {
-        return idEmpleado;
+    public int getIdUsuario() {
+        return idUsuario;
     }
 
-    public void setIdEmpleado(int idEmpleado) {
-        this.idEmpleado = idEmpleado;
+    public void setIdUsuario(int idUsuario) {
+        this.idUsuario = idUsuario;
     }
 
-    public String getNombreEmpleado() {
-        return nombreEmpleado;
+    public String getNombreUsuario() {
+        return nombreUsuario;
     }
 
-    public void setNombreEmpleado(String nombreEmpleado) {
-        this.nombreEmpleado = nombreEmpleado;
+    public void setNombreUsuario(String nombreUsuario) {
+        this.nombreUsuario = nombreUsuario;
     }
 
-    public double getSueldo() {
-        return sueldo;
+    public long getDpiUsuario() {
+        return dpiUsuario;
     }
 
-    public void setSueldo(double sueldo) {
-        this.sueldo = sueldo;
+    public void setDpiUsuario(long dpiUsuario) {
+        this.dpiUsuario = dpiUsuario;
     }
 
-    public int getIdPuesto() {
-        return idPuesto;
+    public String getTipoUsuario() {
+        return tipoUsuario;
     }
 
-    public void setIdPuesto(int idPuesto) {
-        this.idPuesto = idPuesto;
+    public void setTipoUsuario(String tipoUsuario) {
+        this.tipoUsuario = tipoUsuario;
     }
 
-    public String getPuesto() {
-        return puesto;
+    public double getIdTipoUsuario() {
+        return idTipoUsuario;
     }
 
-    public void setPuesto(String puesto) {
-        this.puesto = puesto;
+    public void setIdTipoUsuario(double idTipoUsuario) {
+        this.idTipoUsuario = idTipoUsuario;
     }
-
-    public int getTelefono() {
-        return telefono;
-    }
-
-    public void setTelefono(int telefono) {
-        this.telefono = telefono;
-    }
-     
 }

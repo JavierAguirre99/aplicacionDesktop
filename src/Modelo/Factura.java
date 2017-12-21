@@ -1,6 +1,10 @@
 package Modelo;
 
 public class Factura {
+    private int id_contratacion;
+    private int id_empresa;
+    private String fecha;
+    private int total;
     private String apellido;
     private String nombre;
     private String direccion;
@@ -12,6 +16,39 @@ public class Factura {
     private String Tiposervicio;
     private int precioVenta;
 
+    public int getId_contratacion() {
+        return id_contratacion;
+    }
+
+    public void setId_contratacion(int id_contratacion) {
+        this.id_contratacion = id_contratacion;
+    }
+
+    public int getId_empresa() {
+        return id_empresa;
+    }
+
+    public void setId_empresa(int id_empresa) {
+        this.id_empresa = id_empresa;
+    }
+
+    public String getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(String fecha) {
+        this.fecha = fecha;
+    }
+
+    public int getTotal() {
+        return total;
+    }
+
+    public void setTotal(int total) {
+        this.total = total;
+    }
+
+    
     public String getDireccion() {
         return direccion;
     }

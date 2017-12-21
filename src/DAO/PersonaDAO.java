@@ -131,7 +131,7 @@ public class PersonaDAO extends DAO {
                 con.setNombre(result.getString("nombre"));
                 con.setApellido(result.getString("apellido"));
                 con.setDireccion(result.getString("direccion"));
-                con.setDpi(result.getInt("dpi"));
+                con.setDpi(result.getLong("dpi"));
                 con.setNit(result.getInt("nit"));
                 con.setFecha_nac(result.getString("fecha_nacimiento"));
                 con.setTel_movil(result.getInt("telefono_movil"));
@@ -148,6 +148,15 @@ public class PersonaDAO extends DAO {
 
     public void modificarPersona(Personas persona) throws Exception {
         try {
+            
+            System.out.println(persona.getApellido());
+            System.out.println(persona.getDireccion());
+            System.out.println(persona.getId());
+            System.out.println(persona.getTel_casa());
+            System.out.println(persona.getFecha_nac());
+            System.out.println(persona.getTel_movil());
+            System.out.println(persona.getNit());
+            System.out.println(persona.getDpi());
             this.conectar();
             PreparedStatement st = this.getCn().prepareStatement("UPDATE persona\n"
                     + "SET nombre = ?, apellido = ?, direccion = ? ,\n"

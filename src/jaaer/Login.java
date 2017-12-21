@@ -7,7 +7,7 @@ package jaaer;
 
 import DAO.usuarioDao;
 import Modelo.Usuario;
-import interfazCliente.menuCliente;
+import interfazEmpleado.menuEjecutivo;
 import javax.swing.JOptionPane;
 
 /**
@@ -157,16 +157,24 @@ public class Login extends javax.swing.JFrame {
             
             if(userDao.getContent()==1){
                 JOptionPane.showMessageDialog(this, "Bienvenido usuario "+txtUsuario.getText());
-                menuCliente menCliente = new menuCliente();
+                menuPrincipal menCliente = new menuPrincipal();
                 menCliente.setVisible(true);
                 menCliente.pack();
-            }else if(userDao.getContent()==2){
+            }
+            if(userDao.getContent()==2){
                 JOptionPane.showMessageDialog(this, "Bienvenido usuario "+txtUsuario.getText());
-                menuPrincipal menPrincipal = new menuPrincipal();
+                menuServicioCliente menPrincipal = new menuServicioCliente();
                 menPrincipal.setVisible(true);
                 menPrincipal.pack();
             }
-            
+            if(userDao.getContent()==4){
+                JOptionPane.showMessageDialog(this, "Bienvenido usuario "+txtUsuario.getText());
+                menuEjecutivo menPrincipal = new menuEjecutivo();
+                menPrincipal.setVisible(true);
+                menPrincipal.pack();
+            }if (userDao.getContent()==5) {
+                JOptionPane.showMessageDialog(this, "Ingrese un usuario correcto");
+            }
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(this, "Error contraseña o usuario incoreccto");
             System.out.println("Error: "+ex);

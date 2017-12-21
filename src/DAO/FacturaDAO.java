@@ -1,5 +1,6 @@
 package DAO;
 
+import Modelo.Empresa;
 import Modelo.Factura;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -26,29 +27,67 @@ public class FacturaDAO extends DAO {
             while (result.next()) {
                 Factura con = new Factura();
                 con.setNombre(result.getString("nombre"));
-                System.out.println("NOmbre"+result.getString("nombre"));
+
                 con.setApellido(result.getString("apellido"));
-                System.out.println(result.getString("apellido"));
+
                 con.setDireccion(result.getString("direccion"));
-                System.out.println(result.getString("direccion"));
-                con.setNit(result.getInt("nit"));
-                System.out.println(result.getInt("nit"));
-                con.setDpi(Integer.parseInt(result.getString("dpi")));
-                System.out.println(result.getString("dpi"));
+
+                
+
+                
+
                 con.setFecha_contratacion(result.getString("fecha_contratacion"));
-                System.out.println(result.getString("fecha_contratacion"));
+
                 con.setFecha_renovacion(result.getString("fecha_renovacion"));
-                System.out.println(result.getString("fecha_renovacion"));
+
                 con.setNombrePaquete(result.getString("NomPaquete"));
-                System.out.println(result.getString("NomPaquete"));
+
                 con.setTiposervicio(result.getString("TipodeServicio"));
-                System.out.println(result.getString("TipodeServicio"));
+
                 con.setPrecioVenta(result.getInt("precioventa"));
-                System.out.println(result.getInt("precioventa"));
+
                 lista2.add(con);
             }
         } catch (SQLException e) {
             System.out.println("Error en el DAO FacturaDa" + e);
+        } finally {
+            this.cerrar();
+        }
+        return lista2;
+    }
+
+    public void ingresarFactura(Factura factura) throws Exception {
+        try {
+            this.conectar();
+            PreparedStatement st = this.getCn().prepareStatement("insert into factura(id_contratacion,id_empresa,fecha_emision,total) values(?,?,?,?)");
+            st.setInt(1, factura.getId_contratacion());
+            st.setInt(2, factura.getId_empresa());
+            st.setString(3, factura.getFecha());
+            st.setInt(4, factura.getTotal());
+            st.executeUpdate();
+        } catch (Exception e) {
+            System.out.println("Error en el DAO AL ingresar una factura" + e);
+        } finally {
+            this.cerrar();
+        }
+    }
+
+    public List<Empresa> listarEmpresas() throws Exception {
+        List<Empresa> lista2;
+        lista2 = new ArrayList();
+        ResultSet result;
+        try {
+            this.conectar();
+            PreparedStatement st = this.getCn().prepareCall("select * from empresas");
+            result = st.executeQuery();
+            while (result.next()) {
+                Empresa con = new Empresa();
+                con.setId_empresa(result.getInt("id_empresa"));
+                con.setNombre(result.getString("nombre"));
+                lista2.add(con);
+            }
+        } catch (SQLException e) {
+            System.out.println("Error en listar Empresas" + e);
         } finally {
             this.cerrar();
         }

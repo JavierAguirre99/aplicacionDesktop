@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="c25ff3d2-a9f6-4189-a952-2905471f6ba1">
+	<property name="ireport.zoom" value="1.1000000000000005"/>
+	<property name="ireport.x" value="222"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[SELECT
+     contrataciones.`id_contratacion` AS contrataciones_id_contratacion,
+     contrataciones.`fecha_contratacion` AS contrataciones_fecha_contratacion,
+     contrataciones.`fecha_renovacion` AS contrataciones_fecha_renovacion,
+     contrataciones.`fecha_culminacion` AS contrataciones_fecha_culminacion,
+     contrataciones.`id_cliente` AS contrataciones_id_cliente,
+     contrataciones.`direccion` AS contrataciones_direccion,
+     contrataciones.`id_empleado` AS contrataciones_id_empleado,
+     paquetes.`nombre` AS paquetes_nombre,
+     paquetes.`descripcion` AS paquetes_descripcion,
+     municipios.`nombre` AS municipios_nombre,
+     persona.`nombre` AS persona_nombre,
+     persona.`apellido` AS persona_apellido
+FROM
+     `paquetes` paquetes INNER JOIN `contrataciones` contrataciones ON paquetes.`id_paquete` = contrataciones.`id_paquete`
+     INNER JOIN `municipios` municipios ON contrataciones.`id_municipio` = municipios.`id_municipio`
+     INNER JOIN `clientes` clientes ON contrataciones.`id_cliente` = clientes.`id_cliente`
+     INNER JOIN `persona` persona ON clientes.`id_cliente` = persona.`id_persona`]]>
+	</queryString>
+	<field name="contrataciones_id_contratacion" class="java.lang.Integer"/>
+	<field name="contrataciones_fecha_contratacion" class="java.sql.Date"/>
+	<field name="contrataciones_fecha_renovacion" class="java.sql.Date"/>
+	<field name="contrataciones_fecha_culminacion" class="java.sql.Date"/>
+	<field name="contrataciones_id_cliente" class="java.lang.Integer"/>
+	<field name="contrataciones_direccion" class="java.lang.String"/>
+	<field name="contrataciones_id_empleado" class="java.lang.Integer"/>
+	<field name="paquetes_nombre" class="java.lang.String"/>
+	<field name="paquetes_descripcion" class="java.lang.String"/>
+	<field name="municipios_nombre" class="java.lang.String"/>
+	<field name="persona_nombre" class="java.lang.String"/>
+	<field name="persona_apellido" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="104" splitType="Stretch">
+			<staticText>
+				<reportElement x="247" y="27" width="271" height="42" uuid="e0fdf6a4-0178-4154-b502-f25950506fb3"/>
+				<textElement>
+					<font size="28"/>
+				</textElement>
+				<text><![CDATA[Listado de Clientes]]></text>
+			</staticText>
+			<image>
+				<reportElement x="0" y="0" width="247" height="103" uuid="49584342-5524-4858-b865-1a8d3be33e94"/>
+				<imageExpression><![CDATA["C:\\Users\\Walter\\Documents\\NetBeansProjects\\CitServices\\web\\resource\\img.web\\logocit.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="348" y="82" width="75" height="22" uuid="1b5cc5cf-de56-467b-bfe1-08d744d935a4"/>
+				<text><![CDATA[Cit Services]]></text>
+			</staticText>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="563" y="38" width="173" height="20" uuid="58b1efcd-8207-47d6-bb75-47c38506aa05"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="31" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="34" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="0" width="802" height="20" forecolor="#FFFFFF" backcolor="#CCCCCC" uuid="84556f8d-1b54-4ffb-a76a-f0cd42677c6c"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="0" y="0" width="54" height="20" uuid="262adf83-18b4-462b-9055-96987cda37ab"/>
+				<text><![CDATA[ID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="204" y="0" width="100" height="20" uuid="97100b30-5454-4154-bb82-d8e8b2c185d1"/>
+				<text><![CDATA[Apellido]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="304" y="0" width="94" height="20" uuid="187b8224-084a-42c1-aa25-091cfdc3644f"/>
+				<text><![CDATA[Paquete]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="398" y="0" width="102" height="20" uuid="9cc37474-ad34-43a5-99b2-92cbf68904aa"/>
+				<text><![CDATA[Fecha contratacion]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="500" y="0" width="98" height="20" uuid="9e495294-303c-4be5-9352-b31ddeb8c1cb"/>
+				<text><![CDATA[Fecha renovacion]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="598" y="0" width="92" height="20" uuid="bfa3231a-c239-40de-a977-92b08ea708ee"/>
+				<text><![CDATA[Fecha culminacion]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="54" y="0" width="62" height="20" uuid="c3e2d8ec-2f86-4bcd-b738-1b21ef7ccad1"/>
+				<text><![CDATA[ID Cliente]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="690" y="0" width="46" height="20" uuid="3f1ee3d9-e44f-422e-8103-d31c35bcc881"/>
+				<text><![CDATA[Empleado]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="736" y="0" width="66" height="20" uuid="3401df0d-1736-4578-a2ae-6bf37a4554f5"/>
+				<text><![CDATA[Direccion]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="116" y="0" width="88" height="20" uuid="6b586071-8ff6-4813-9100-82b1154c4ff3"/>
+				<text><![CDATA[Nombre]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="33" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="54" height="20" uuid="752c3b25-e64d-43e0-b749-88118f3cf2c4"/>
+				<textFieldExpression><![CDATA[$F{contrataciones_id_contratacion}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="116" y="0" width="88" height="20" uuid="fa81ecb7-2f31-44e6-9129-695f5eb71f48"/>
+				<textFieldExpression><![CDATA[$F{persona_nombre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="204" y="0" width="100" height="20" uuid="edd700a8-4788-426d-b54f-460e06e9d99b"/>
+				<textFieldExpression><![CDATA[$F{persona_apellido}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="304" y="0" width="94" height="20" uuid="2e396570-bb9f-447e-b317-11c1493a204a"/>
+				<textFieldExpression><![CDATA[$F{paquetes_nombre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="398" y="0" width="102" height="20" uuid="3d71cd32-a4e2-40c6-afc6-59e06aa49b60"/>
+				<textFieldExpression><![CDATA[$F{contrataciones_fecha_contratacion}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="500" y="0" width="98" height="20" uuid="e6e12f3b-cf94-4709-858b-ee42be91cc89"/>
+				<textFieldExpression><![CDATA[$F{contrataciones_fecha_renovacion}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="598" y="0" width="92" height="20" uuid="fcccd3ad-77b9-4b17-b0b2-182e4334888f"/>
+				<textFieldExpression><![CDATA[$F{contrataciones_fecha_culminacion}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="54" y="0" width="62" height="20" uuid="8a962090-e0d2-4f50-82d1-2e1a0cb34673"/>
+				<textFieldExpression><![CDATA[$F{contrataciones_id_cliente}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="690" y="0" width="46" height="20" uuid="3e203dab-7405-422b-8a13-c0f83f37f8fe"/>
+				<textFieldExpression><![CDATA[$F{contrataciones_id_empleado}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="736" y="0" width="66" height="20" uuid="fd72fea0-f2d8-4112-a753-43668c7477a9"/>
+				<textFieldExpression><![CDATA[$F{contrataciones_direccion}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch">
+			<textField>
+				<reportElement x="333" y="18" width="80" height="20" uuid="25fe294d-f94c-42dc-8215-4eaab7913471"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<rectangle>
+				<reportElement x="0" y="0" width="802" height="20" forecolor="#FFFFFF" backcolor="#999999" uuid="e6c13380-b62b-45a8-b7fa-87dea7912fb3"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="0" y="34" width="802" height="20" forecolor="#FFFFFF" backcolor="#FF0000" uuid="bde7b5f4-3c96-4a9a-927a-36afee4ef20c"/>
+			</rectangle>
+			<textField evaluationTime="Report">
+				<reportElement x="413" y="18" width="40" height="20" uuid="be594950-ae24-4cb5-92c4-1ad5e775fab2"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

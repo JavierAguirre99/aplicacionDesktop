@@ -164,5 +164,95 @@ public class EmpleadoDao extends DAO {
             this.cerrar();
         }
         return lstModEmpleado;
-    }      
+    }    
+     public ArrayList<InnerPersonaEmpleado> listarTodoEmpleado() throws Exception {
+        ArrayList<InnerPersonaEmpleado> lstModEmpleado = null;
+        ResultSet res;
+        try {
+            this.conectar();
+            sql = "SELECT empleados.id_empleado, empleados.sueldo, empleados.id_puesto, concat(persona.nombre,' ',persona.apellido) as nombre_empleado, puestos.nombre as nombrepuesto, persona.direccion, persona.dpi, persona.nit, persona.telefono_movil "
+                    + " FROM empleados "
+                    + " INNER JOIN persona on persona.id_persona = empleados.id_empleado "
+                    + " INNER JOIN puestos on puestos.id_puesto = empleados.id_puesto ";
+            sta = this.getCn().prepareStatement(sql);
+            res = sta.executeQuery();
+            lstModEmpleado = new ArrayList<>();
+            
+            while (res.next()) {
+                InnerPersonaEmpleado empModelo = new InnerPersonaEmpleado();
+                empModelo.setIdEmpleado(res.getInt("id_empleado"));
+                empModelo.setNombreEmpleado(res.getString("nombre_empleado"));
+                empModelo.setIdPuesto(res.getInt("id_puesto"));
+                empModelo.setSueldo(res.getDouble("sueldo"));
+                empModelo.setTelefono(res.getInt("telefono_movil"));
+                empModelo.setDpiEmpleado(res.getLong("dpi"));
+                empModelo.setNit(res.getInt("nit"));
+                empModelo.setPuesto(res.getString("nombrepuesto"));
+                empModelo.setDireccion(res.getString("direccion"));
+                lstModEmpleado.add(empModelo);
+            }
+        } catch (SQLException e) {
+            System.err.println("Error al listar por id: " + e);
+        }finally{
+            this.cerrar();
+        }
+        return lstModEmpleado;
+    }
+     
+     public void modificarEmpleado(Empleados empleado) throws Exception {
+        try {
+            this.conectar();
+            PreparedStatement st = this.getCn().prepareStatement("UPDATE empleados\n"
+                    + "SET id_puesto = ?, sueldo = ? \n"
+                    + "WHERE id_empleado =?");
+
+            st.setInt(1, empleado.getId_puesto());
+            System.out.println("idpuesto"+empleado.getId_puesto());
+            st.setDouble(2, empleado.getSueldo()); 
+            System.out.println("sueldo"+empleado.getSueldo());
+            st.setInt(3, empleado.getId_empleado());
+            System.out.println("id puesto"+empleado.getId_puesto());
+          
+            
+            st.executeUpdate();
+            
+
+        } catch (Exception e) {
+            System.out.println(" Error Al intentar Modificar empleado DAO" + e);
+        } finally {
+            this.cerrar();
+        }
+    }
+     
+     public List<InnerPersonaEmpleado> listaEmpleados() throws Exception {
+
+        List<InnerPersonaEmpleado> lista2;
+        lista2 = new ArrayList();
+        ResultSet result;
+
+        try {
+            this.conectar();
+            PreparedStatement st = this.getCn().prepareCall("select persona.id_persona,persona.nombre,persona.direccion,empleados.sueldo,puestos.nombre as NamePuesto\n"
+                    + "from persona INNER JOIN empleados on persona.id_persona=empleados.id_empleado\n"
+                    + "INNER JOIN puestos on empleados.id_puesto=puestos.id_puesto");
+
+            result = st.executeQuery();
+
+            while (result.next()) {
+                InnerPersonaEmpleado con = new InnerPersonaEmpleado();
+                con.setIdEmpleado(Integer.parseInt(result.getString("id_persona")));
+                con.setNombreEmpleado(result.getString("nombre"));
+                con.setDireccion(result.getString("direccion"));
+                con.setPuesto(result.getString("NamePuesto"));
+                con.setSueldo(result.getDouble("sueldo"));
+
+                lista2.add(con);
+            }
+        } catch (Exception e) {
+            System.out.println("Error en el DAO" + e);
+        } finally {
+            this.cerrar();
+        }
+        return lista2;
+    }
 }

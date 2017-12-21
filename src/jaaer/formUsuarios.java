@@ -3,6 +3,9 @@ package jaaer;
 import DAO.usuarioDao;
 import Modelo.TiposUsuarios;
 import Modelo.Usuario;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -36,16 +39,19 @@ public class formUsuarios extends javax.swing.JFrame {
         cbxNombres1 = new javax.swing.JComboBox<>();
         jLabel6 = new javax.swing.JLabel();
         txtID = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jPanel1.setLayout(null);
 
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel1.setText("Nombres:");
         jPanel1.add(jLabel1);
-        jLabel1.setBounds(90, 100, 60, 20);
+        jLabel1.setBounds(80, 190, 60, 20);
 
         cbxTipoUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -53,20 +59,23 @@ public class formUsuarios extends javax.swing.JFrame {
             }
         });
         jPanel1.add(cbxTipoUsuario);
-        cbxTipoUsuario.setBounds(160, 190, 100, 20);
+        cbxTipoUsuario.setBounds(180, 390, 150, 40);
 
+        jLabel2.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         jLabel2.setText("Password:");
         jPanel1.add(jLabel2);
-        jLabel2.setBounds(90, 130, 60, 20);
+        jLabel2.setBounds(80, 250, 80, 20);
         jPanel1.add(txtPasword);
-        txtPasword.setBounds(160, 130, 100, 20);
+        txtPasword.setBounds(180, 250, 150, 40);
 
+        jLabel3.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         jLabel3.setText("Confirmar:");
         jPanel1.add(jLabel3);
-        jLabel3.setBounds(90, 160, 60, 20);
+        jLabel3.setBounds(80, 320, 80, 20);
         jPanel1.add(txtConfirmar);
-        txtConfirmar.setBounds(160, 160, 100, 20);
+        txtConfirmar.setBounds(180, 320, 150, 40);
 
+        btnGuardar.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         btnGuardar.setText("Agregar ");
         btnGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -74,16 +83,18 @@ public class formUsuarios extends javax.swing.JFrame {
             }
         });
         jPanel1.add(btnGuardar);
-        btnGuardar.setBounds(140, 220, 90, 23);
+        btnGuardar.setBounds(180, 460, 110, 40);
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 3, 18)); // NOI18N
-        jLabel4.setText("USUARIOS ");
+        jLabel4.setFont(new java.awt.Font("Yu Gothic UI", 3, 18)); // NOI18N
+        jLabel4.setText("Ingresar Usuario");
         jPanel1.add(jLabel4);
-        jLabel4.setBounds(130, 10, 110, 22);
+        jLabel4.setBounds(150, 40, 180, 25);
+        jLabel4.getAccessibleContext().setAccessibleName("Ingresar Usuario ");
 
+        jLabel5.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         jLabel5.setText("Tipo de Usu:");
         jPanel1.add(jLabel5);
-        jLabel5.setBounds(80, 190, 60, 20);
+        jLabel5.setBounds(70, 390, 76, 20);
 
         cbxNombres1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -91,32 +102,33 @@ public class formUsuarios extends javax.swing.JFrame {
             }
         });
         jPanel1.add(cbxNombres1);
-        cbxNombres1.setBounds(160, 100, 100, 20);
+        cbxNombres1.setBounds(180, 180, 150, 40);
 
+        jLabel6.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         jLabel6.setText("ID:");
         jPanel1.add(jLabel6);
-        jLabel6.setBounds(90, 70, 34, 20);
+        jLabel6.setBounds(120, 130, 34, 20);
 
-        txtID.setBackground(new java.awt.Color(255, 153, 0));
+        txtID.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.add(txtID);
-        txtID.setBounds(160, 70, 100, 20);
+        txtID.setBounds(180, 120, 150, 40);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(37, 37, 37)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 353, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(47, Short.MAX_VALUE))
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 0, 450, 520));
+
+        jPanel2.setBackground(new java.awt.Color(255, 102, 0));
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 189, Short.MAX_VALUE)
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(44, 44, 44)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(33, Short.MAX_VALUE))
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 520, Short.MAX_VALUE)
         );
+
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 520));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -128,6 +140,7 @@ public class formUsuarios extends javax.swing.JFrame {
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
         ingresarNuevoUsuario();
+        java.util.Date fecha = new Date();
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void cbxNombres1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxNombres1ActionPerformed
@@ -138,7 +151,29 @@ public class formUsuarios extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_cbxNombres1ActionPerformed
     public static void main(String args[]) {
-       
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Windows".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(formEliminarCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(formEliminarCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(formEliminarCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(formEliminarCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new formUsuarios().setVisible(true);
@@ -202,6 +237,15 @@ public class formUsuarios extends javax.swing.JFrame {
         }
     }
 
+    public void obtenerFecha() {
+        Date date = new Date();
+//Caso 1: obtener la hora y salida por pantalla con formato:
+        DateFormat hourFormat = new SimpleDateFormat("HH:mm:ss");
+        System.out.println("Hora: " + hourFormat.format(date));
+//Caso 2: obtener la fecha y salida por pantalla con formato:
+        DateFormat dateFormat = new SimpleDateFormat("yyyy/mm/dd");
+        System.out.println("Fecha: " + dateFormat.format(date));
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnGuardar;
@@ -214,6 +258,7 @@ public class formUsuarios extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JTextField txtConfirmar;
     private javax.swing.JLabel txtID;
     private javax.swing.JTextField txtPasword;

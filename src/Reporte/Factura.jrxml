@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="095de478-169a-44f7-a1a0-e0eb9ab5a972">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="id" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     factura.`id_factura` AS factura_id_factura,
+     factura.`fecha_emision` AS factura_fecha_emision,
+     factura.`total` AS factura_total,
+     contrataciones.`id_contratacion` AS contrataciones_id_contratacion,
+     contrataciones.`fecha_contratacion` AS contrataciones_fecha_contratacion,
+     contrataciones.`fecha_renovacion` AS contrataciones_fecha_renovacion,
+     contrataciones.`fecha_culminacion` AS contrataciones_fecha_culminacion,
+     contrataciones.`id_cliente` AS contrataciones_id_cliente,
+     contrataciones.`id_paquete` AS contrataciones_id_paquete,
+     contrataciones.`direccion` AS contrataciones_direccion,
+     contrataciones.`id_municipio` AS contrataciones_id_municipio,
+     contrataciones.`id_empleado` AS contrataciones_id_empleado,
+     clientes.`id_cliente` AS clientes_id_cliente,
+     persona.`nombre` AS persona_nombre,
+     persona.`apellido` AS persona_apellido,
+     persona.`direccion` AS persona_direccion,
+     paquetes.`nombre` AS paquetes_nombre,
+     persona.`nit` AS persona_nit,
+     empresas.`id_empresa` AS empresas_id_empresa,
+     empresas.`nombre` AS empresas_nombre,
+     empresas.`direccion` AS empresas_direccion,
+     empresas.`nit` AS empresas_nit,
+     empresas.`sucursal` AS empresas_sucursal,
+     empresas.`telefono` AS empresas_telefono,
+     empresas.`email` AS empresas_email,
+     empresas.`imagen` AS empresas_imagen,
+     empresas.`id_municipio` AS empresas_id_municipio
+FROM
+     `contrataciones` contrataciones INNER JOIN `factura` factura ON contrataciones.`id_contratacion` = factura.`id_contratacion`
+     INNER JOIN `clientes` clientes ON contrataciones.`id_cliente` = clientes.`id_cliente`
+     INNER JOIN `paquetes` paquetes ON contrataciones.`id_paquete` = paquetes.`id_paquete`
+     INNER JOIN `persona` persona ON clientes.`id_cliente` = persona.`id_persona`
+     INNER JOIN `empresas` empresas ON factura.`id_empresa` = empresas.`id_empresa`
+WHERE contrataciones.id_contratacion=$P(id)]]>
+	</queryString>
+	<field name="factura_id_factura" class="java.lang.String"/>
+	<field name="factura_fecha_emision" class="java.sql.Date"/>
+	<field name="factura_total" class="java.lang.Double"/>
+	<field name="contrataciones_id_contratacion" class="java.lang.Integer"/>
+	<field name="contrataciones_fecha_contratacion" class="java.sql.Date"/>
+	<field name="contrataciones_fecha_renovacion" class="java.sql.Date"/>
+	<field name="contrataciones_fecha_culminacion" class="java.sql.Date"/>
+	<field name="contrataciones_id_cliente" class="java.lang.Integer"/>
+	<field name="contrataciones_id_paquete" class="java.lang.Integer"/>
+	<field name="contrataciones_direccion" class="java.lang.String"/>
+	<field name="contrataciones_id_municipio" class="java.lang.Integer"/>
+	<field name="contrataciones_id_empleado" class="java.lang.Integer"/>
+	<field name="clientes_id_cliente" class="java.lang.Integer"/>
+	<field name="persona_nombre" class="java.lang.String"/>
+	<field name="persona_apellido" class="java.lang.String"/>
+	<field name="persona_direccion" class="java.lang.String"/>
+	<field name="paquetes_nombre" class="java.lang.String"/>
+	<field name="persona_nit" class="java.lang.Integer"/>
+	<field name="empresas_id_empresa" class="java.lang.Integer"/>
+	<field name="empresas_nombre" class="java.lang.String"/>
+	<field name="empresas_direccion" class="java.lang.String"/>
+	<field name="empresas_nit" class="java.lang.Integer"/>
+	<field name="empresas_sucursal" class="java.lang.String"/>
+	<field name="empresas_telefono" class="java.lang.Integer"/>
+	<field name="empresas_email" class="java.lang.String"/>
+	<field name="empresas_imagen" class="java.lang.String"/>
+	<field name="empresas_id_municipio" class="java.lang.Integer"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="87" splitType="Stretch">
+			<staticText>
+				<reportElement x="389" y="0" width="88" height="20" uuid="549e5389-8abe-41aa-ac23-bcb962840971"/>
+				<textElement>
+					<font size="15"/>
+				</textElement>
+				<text><![CDATA[No. Factura]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="467" y="0" width="22" height="20" uuid="f2c4a84d-b58d-45de-a2a3-5cc151610a18"/>
+				<textElement>
+					<font size="15"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{factura_id_factura}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="282" y="20" width="100" height="20" uuid="4696ba89-989f-40a9-a106-025a4c099795"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{empresas_direccion}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="199" y="40" width="20" height="20" uuid="689c1034-570b-4dbc-bdaa-a2df4f93fa81"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[Nit:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="219" y="40" width="100" height="20" uuid="406db387-8018-47ff-b3b8-d7368888ba88"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{empresas_nit}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="152" y="20" width="67" height="20" uuid="b2823a4c-d408-4f58-808b-861f47bec590"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[Empresa:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="219" y="20" width="60" height="20" uuid="bba858a4-092e-4cef-b536-5940037b107e"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{empresas_nombre}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="192" y="63" width="35" height="20" uuid="f9077292-0db2-4aaf-9402-164c321a1f39"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[Email:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="229" y="63" width="100" height="20" uuid="7f3c0d22-caa9-4852-b6b1-4c1d886b2f4e"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{empresas_email}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="1" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch">
+			<staticText>
+				<reportElement x="167" y="13" width="172" height="34" uuid="06116196-fc21-4132-bd90-53653e9246e8"/>
+				<textElement>
+					<font size="15" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Comprobante De Pago]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="151" splitType="Stretch">
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="78" y="24" width="100" height="20" uuid="95fb6b08-59c4-48df-a6e5-64d9a0510b6d"/>
+				<textElement>
+					<font size="13"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="14" y="25" width="47" height="19" uuid="f8e2bc0a-f245-490c-954b-90140a21edaa"/>
+				<textElement>
+					<font size="13"/>
+				</textElement>
+				<text><![CDATA[Fecha:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="78" y="51" width="100" height="20" uuid="b3c0a3f0-b356-4a0f-9182-e0bca2087e62"/>
+				<textElement>
+					<font size="13"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{clientes_id_cliente}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="14" y="51" width="64" height="20" uuid="85b9fce1-5a88-463c-81b2-c9a0491bea5b"/>
+				<textElement>
+					<font size="13"/>
+				</textElement>
+				<text><![CDATA[ID Cliente:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="249" y="25" width="100" height="20" uuid="ee33c611-b8a0-4095-ac3e-34d8ad91b2e8"/>
+				<textElement>
+					<font size="13"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{persona_nombre}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="201" y="25" width="48" height="20" uuid="56312ece-95be-452a-986a-0fe5f431cdad"/>
+				<textElement>
+					<font size="13"/>
+				</textElement>
+				<text><![CDATA[Nombre:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="349" y="25" width="100" height="20" uuid="ea2e0298-0164-4108-89a0-07106d225a75"/>
+				<textElement>
+					<font size="13"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{persona_apellido}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="78" y="77" width="100" height="20" uuid="37c59b46-8d34-47d8-a5aa-568138ed62b5"/>
+				<textElement>
+					<font size="13"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{paquetes_nombre}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="14" y="77" width="64" height="20" uuid="466b8933-cbdd-4677-b383-000e6253e517"/>
+				<textElement>
+					<font size="13"/>
+				</textElement>
+				<text><![CDATA[Paquete:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="259" y="52" width="123" height="20" uuid="dfcbb4bc-ad5f-47e9-a1ce-a36ba0eb0a1e"/>
+				<textElement>
+					<font size="13"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{persona_direccion}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="201" y="52" width="55" height="20" uuid="24954d27-3c8b-4038-baad-862a258bf8f0"/>
+				<textElement>
+					<font size="13"/>
+				</textElement>
+				<text><![CDATA[Direccion:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="229" y="78" width="100" height="20" uuid="ee83d229-5355-4f94-a0e4-ad1b93934758"/>
+				<textElement>
+					<font size="13"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{persona_nit}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="201" y="78" width="28" height="20" uuid="6f6a4423-3746-49b5-b7a3-2b89e7fdd342"/>
+				<textElement>
+					<font size="13"/>
+				</textElement>
+				<text><![CDATA[Nit:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="111" width="122" height="20" uuid="4f1e3ef3-fd5f-4882-b2ab-a054584e2d43"/>
+				<textElement>
+					<font size="13"/>
+				</textElement>
+				<text><![CDATA[Fecha Contratacion]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="132" y="111" width="95" height="20" uuid="9faee9b3-e7db-4607-a217-2727b849f25b"/>
+				<textElement>
+					<font size="13"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{contrataciones_fecha_contratacion}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="227" y="111" width="115" height="20" uuid="f2ae2b45-3971-46c4-b2f6-aacc042570c2"/>
+				<textElement>
+					<font size="13"/>
+				</textElement>
+				<text><![CDATA[Fecha Renovacion]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="342" y="111" width="107" height="20" uuid="957f96de-c1ba-41c5-a45b-5b1fafa593b1"/>
+				<textElement>
+					<font size="13"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{contrataciones_fecha_renovacion}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="359" y="78" width="100" height="20" uuid="6ef165ff-02be-4bf6-aa91-08bbd93a228c"/>
+				<textElement>
+					<font size="13"/>
+				</textElement>
+				<text><![CDATA[Total]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="389" y="78" width="100" height="20" uuid="1b902188-6466-45f3-a654-c0d18b30be67"/>
+				<textElement>
+					<font size="13"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{factura_total}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="22" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="38" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

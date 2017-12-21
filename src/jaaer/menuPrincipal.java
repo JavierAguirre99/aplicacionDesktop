@@ -5,6 +5,15 @@
  */
 package jaaer;
 
+import PanelesAdministrativo.principalCliente;
+import PanelesAdministrativo.principalContrato;
+import PanelesAdministrativo.principalEmpleado;
+import PanelesAdministrativo.principalPersona;
+import jaaer.formProductos;
+import javax.swing.JOptionPane;
+
+
+
 /**
  *
  * @author javam
@@ -12,10 +21,12 @@ package jaaer;
 public class menuPrincipal extends javax.swing.JFrame {
 
     /**
-     * Creates new form menuPrincipal
+     * Creates new form menuCliente
      */
     public menuPrincipal() {
         initComponents();
+        this.setLocationRelativeTo(this);
+        
     }
 
     /**
@@ -27,21 +38,234 @@ public class menuPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        jPanel3 = new javax.swing.JPanel();
+        btnPro = new rsbuttom.RSButtonMetro();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        btnPersona = new rsbuttom.RSButtonMetro();
+        btnCliente = new rsbuttom.RSButtonMetro();
+        btnEmpleado = new rsbuttom.RSButtonMetro();
+        btnContrato = new rsbuttom.RSButtonMetro();
+        btnPago = new rsbuttom.RSButtonMetro();
+        btnProducto1 = new rsbuttom.RSButtonMetro();
+        pnlPrincipal = new javax.swing.JPanel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
+
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel3.setBackground(new java.awt.Color(255, 204, 102));
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        btnPro.setBackground(new java.awt.Color(255, 204, 102));
+        btnPro.setForeground(new java.awt.Color(0, 0, 0));
+        btnPro.setText("Cerrar Sesion");
+        btnPro.setColorHover(new java.awt.Color(255, 169, 0));
+        btnPro.setColorNormal(new java.awt.Color(255, 204, 102));
+        btnPro.setColorPressed(new java.awt.Color(255, 169, 0));
+        btnPro.setColorTextHover(new java.awt.Color(0, 0, 0));
+        btnPro.setColorTextNormal(new java.awt.Color(0, 0, 0));
+        btnPro.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        btnPro.setIconTextGap(6);
+        btnPro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnProActionPerformed(evt);
+            }
+        });
+        jPanel3.add(btnPro, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 430, 220, 50));
+
+        jPanel2.setBackground(new java.awt.Color(255, 204, 102));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/logo cit letra blanca2.png"))); // NOI18N
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(39, 39, 39)
+                .addComponent(jLabel2)
+                .addContainerGap(41, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel2)
+                .addContainerGap(13, Short.MAX_VALUE))
+        );
+
+        jPanel3.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 220, 120));
+
+        btnPersona.setBackground(new java.awt.Color(255, 204, 102));
+        btnPersona.setForeground(new java.awt.Color(0, 0, 0));
+        btnPersona.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/avatar.png"))); // NOI18N
+        btnPersona.setText("Persona");
+        btnPersona.setColorHover(new java.awt.Color(255, 169, 0));
+        btnPersona.setColorNormal(new java.awt.Color(255, 204, 102));
+        btnPersona.setColorPressed(new java.awt.Color(255, 169, 0));
+        btnPersona.setColorTextHover(new java.awt.Color(0, 0, 0));
+        btnPersona.setColorTextNormal(new java.awt.Color(0, 0, 0));
+        btnPersona.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        btnPersona.setIconTextGap(10);
+        btnPersona.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPersonaActionPerformed(evt);
+            }
+        });
+        jPanel3.add(btnPersona, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 130, 220, 50));
+
+        btnCliente.setBackground(new java.awt.Color(255, 204, 102));
+        btnCliente.setForeground(new java.awt.Color(0, 0, 0));
+        btnCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/telemarketer.png"))); // NOI18N
+        btnCliente.setText("Cliente");
+        btnCliente.setColorHover(new java.awt.Color(255, 169, 0));
+        btnCliente.setColorNormal(new java.awt.Color(255, 204, 102));
+        btnCliente.setColorPressed(new java.awt.Color(255, 169, 0));
+        btnCliente.setColorTextHover(new java.awt.Color(0, 0, 0));
+        btnCliente.setColorTextNormal(new java.awt.Color(0, 0, 0));
+        btnCliente.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        btnCliente.setIconTextGap(15);
+        btnCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnClienteActionPerformed(evt);
+            }
+        });
+        jPanel3.add(btnCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 180, 220, 50));
+
+        btnEmpleado.setBackground(new java.awt.Color(255, 204, 102));
+        btnEmpleado.setForeground(new java.awt.Color(0, 0, 0));
+        btnEmpleado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/employee.png"))); // NOI18N
+        btnEmpleado.setText("Empleado");
+        btnEmpleado.setColorHover(new java.awt.Color(255, 169, 0));
+        btnEmpleado.setColorNormal(new java.awt.Color(255, 204, 102));
+        btnEmpleado.setColorPressed(new java.awt.Color(255, 169, 0));
+        btnEmpleado.setColorTextHover(new java.awt.Color(0, 0, 0));
+        btnEmpleado.setColorTextNormal(new java.awt.Color(0, 0, 0));
+        btnEmpleado.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        btnEmpleado.setIconTextGap(6);
+        btnEmpleado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEmpleadoActionPerformed(evt);
+            }
+        });
+        jPanel3.add(btnEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 230, 220, 50));
+
+        btnContrato.setBackground(new java.awt.Color(255, 204, 102));
+        btnContrato.setForeground(new java.awt.Color(0, 0, 0));
+        btnContrato.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/certificate.png"))); // NOI18N
+        btnContrato.setText("Contrato");
+        btnContrato.setColorHover(new java.awt.Color(255, 169, 0));
+        btnContrato.setColorNormal(new java.awt.Color(255, 204, 102));
+        btnContrato.setColorPressed(new java.awt.Color(255, 169, 0));
+        btnContrato.setColorTextHover(new java.awt.Color(0, 0, 0));
+        btnContrato.setColorTextNormal(new java.awt.Color(0, 0, 0));
+        btnContrato.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        btnContrato.setIconTextGap(6);
+        btnContrato.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnContratoActionPerformed(evt);
+            }
+        });
+        jPanel3.add(btnContrato, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 280, 220, 50));
+
+        btnPago.setBackground(new java.awt.Color(255, 204, 102));
+        btnPago.setForeground(new java.awt.Color(0, 0, 0));
+        btnPago.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/profits.png"))); // NOI18N
+        btnPago.setText("Pago");
+        btnPago.setColorHover(new java.awt.Color(255, 169, 0));
+        btnPago.setColorNormal(new java.awt.Color(255, 204, 102));
+        btnPago.setColorPressed(new java.awt.Color(255, 169, 0));
+        btnPago.setColorTextHover(new java.awt.Color(0, 0, 0));
+        btnPago.setColorTextNormal(new java.awt.Color(0, 0, 0));
+        btnPago.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        btnPago.setIconTextGap(30);
+        btnPago.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPagoActionPerformed(evt);
+            }
+        });
+        jPanel3.add(btnPago, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 330, 220, 50));
+
+        btnProducto1.setBackground(new java.awt.Color(255, 204, 102));
+        btnProducto1.setForeground(new java.awt.Color(0, 0, 0));
+        btnProducto1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/responsive.png"))); // NOI18N
+        btnProducto1.setText("Productos");
+        btnProducto1.setColorHover(new java.awt.Color(255, 169, 0));
+        btnProducto1.setColorNormal(new java.awt.Color(255, 204, 102));
+        btnProducto1.setColorPressed(new java.awt.Color(255, 169, 0));
+        btnProducto1.setColorTextHover(new java.awt.Color(0, 0, 0));
+        btnProducto1.setColorTextNormal(new java.awt.Color(0, 0, 0));
+        btnProducto1.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        btnProducto1.setIconTextGap(6);
+        btnProducto1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnProducto1ActionPerformed(evt);
+            }
+        });
+        jPanel3.add(btnProducto1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 380, 220, 50));
+
+        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 220, 710));
+
+        pnlPrincipal.setBackground(new java.awt.Color(255, 255, 255));
+        pnlPrincipal.setLayout(new javax.swing.BoxLayout(pnlPrincipal, javax.swing.BoxLayout.LINE_AXIS));
+        jPanel1.add(pnlPrincipal, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 0, 820, 710));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1263, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 844, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnPersonaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPersonaActionPerformed
+        principalPersona prPersona = new principalPersona();
+        prPersona.show();
+    }//GEN-LAST:event_btnPersonaActionPerformed
+
+    private void btnClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClienteActionPerformed
+        principalCliente prCliente = new principalCliente();
+        prCliente.show();
+    }//GEN-LAST:event_btnClienteActionPerformed
+ private void btnProductoActionPerformed(java.awt.event.ActionEvent evt) {                                            
+        this.hide();
+        Login login = new Login();
+        login.show();
+        
+    }
+    private void btnEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEmpleadoActionPerformed
+        principalEmpleado formEmpleado = new principalEmpleado();
+        formEmpleado.show();
+                
+    }//GEN-LAST:event_btnEmpleadoActionPerformed
+
+    private void btnContratoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnContratoActionPerformed
+        principalContrato prContrato = new principalContrato();
+        prContrato.show();
+    }//GEN-LAST:event_btnContratoActionPerformed
+
+    private void btnPagoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPagoActionPerformed
+        JOptionPane.showMessageDialog(null, "Esta operacion estara disponible en la version 1.2");
+    }//GEN-LAST:event_btnPagoActionPerformed
+
+    private void btnProActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProActionPerformed
+        this.hide();
+        Login login = new Login();
+        login.show();
+    }//GEN-LAST:event_btnProActionPerformed
+
+    private void btnProducto1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProducto1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnProducto1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -69,6 +293,7 @@ public class menuPrincipal extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(menuPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -79,5 +304,17 @@ public class menuPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private rsbuttom.RSButtonMetro btnCliente;
+    private rsbuttom.RSButtonMetro btnContrato;
+    private rsbuttom.RSButtonMetro btnEmpleado;
+    private rsbuttom.RSButtonMetro btnPago;
+    private rsbuttom.RSButtonMetro btnPersona;
+    private rsbuttom.RSButtonMetro btnPro;
+    private rsbuttom.RSButtonMetro btnProducto1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel pnlPrincipal;
     // End of variables declaration//GEN-END:variables
 }

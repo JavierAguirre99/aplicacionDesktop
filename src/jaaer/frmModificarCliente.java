@@ -88,6 +88,7 @@ public class frmModificarCliente extends javax.swing.JFrame {
         cboIdCategoria = new javax.swing.JComboBox<>();
         lblEmail = new javax.swing.JLabel();
         txtEmail = new principal.MaterialTextField();
+        jPanel2 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -97,12 +98,12 @@ public class frmModificarCliente extends javax.swing.JFrame {
 
         lblTituloElCliente.setFont(new java.awt.Font("Yu Gothic UI", 1, 24)); // NOI18N
         lblTituloElCliente.setText("Modificar Cliente");
-        jPanel1.add(lblTituloElCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 10, -1, 60));
-        jPanel1.add(txtIdCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 110, 200, 40));
+        jPanel1.add(lblTituloElCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 20, -1, 60));
+        jPanel1.add(txtIdCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 120, 200, 40));
 
         jLabel1.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         jLabel1.setText("ID Cliente:");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 110, 70, 40));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 120, 70, 40));
 
         btnModificar.setText("Modificar");
         btnModificar.addActionListener(new java.awt.event.ActionListener() {
@@ -110,35 +111,50 @@ public class frmModificarCliente extends javax.swing.JFrame {
                 btnModificarActionPerformed(evt);
             }
         });
-        jPanel1.add(btnModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 460, 107, 40));
+        jPanel1.add(btnModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 470, 107, 40));
 
         lblIdEstado.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         lblIdEstado.setText("Estado:");
-        jPanel1.add(lblIdEstado, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 180, 70, 40));
+        jPanel1.add(lblIdEstado, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 190, 70, 40));
 
         cboIdEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jPanel1.add(cboIdEstado, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 180, 200, 39));
+        jPanel1.add(cboIdEstado, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 190, 200, 39));
 
         cboIdTipoCliente.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jPanel1.add(cboIdTipoCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 250, 200, 39));
+        jPanel1.add(cboIdTipoCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 260, 200, 39));
 
         lblIdTipoCliente.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         lblIdTipoCliente.setText("Tipo de Cliente:");
-        jPanel1.add(lblIdTipoCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 250, 100, 40));
+        jPanel1.add(lblIdTipoCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 260, 100, 40));
 
         lblIdCategoria.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         lblIdCategoria.setText("Categoria:");
-        jPanel1.add(lblIdCategoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 320, 70, 40));
+        jPanel1.add(lblIdCategoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 330, 70, 40));
 
         cboIdCategoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jPanel1.add(cboIdCategoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 320, 200, 39));
+        jPanel1.add(cboIdCategoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 330, 200, 39));
 
         lblEmail.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         lblEmail.setText("Correo Electronico:");
-        jPanel1.add(lblEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 390, 120, 40));
-        jPanel1.add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 390, 200, 40));
+        jPanel1.add(lblEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 400, 120, 40));
+        jPanel1.add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 400, 200, 40));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 790, 510));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 0, 630, 540));
+
+        jPanel2.setBackground(new java.awt.Color(255, 102, 0));
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 189, Short.MAX_VALUE)
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 540, Short.MAX_VALUE)
+        );
+
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 540));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -218,6 +234,7 @@ public class frmModificarCliente extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cboIdTipoCliente;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JLabel lblEmail;
     private javax.swing.JLabel lblIdCategoria;
     private javax.swing.JLabel lblIdEstado;

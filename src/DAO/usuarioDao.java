@@ -65,13 +65,13 @@ public class usuarioDao extends DAO {
             this.conectar();
             PreparedStatement st = this.getCn().prepareStatement("insert into usuarios  values(?,?,?,?)");
             st.setInt(1, nuevo.getId_usuario());
-            System.out.println("id_usuario"+nuevo.getId_usuario());
+            System.out.println("id_usuario" + nuevo.getId_usuario());
             st.setString(2, nuevo.getNombre());
-            System.out.println("Nombre"+nuevo.getNombre());
+            System.out.println("Nombre" + nuevo.getNombre());
             st.setString(3, nuevo.getContrasena());
-            System.out.println("Contrase;a"+nuevo.getContrasena());
+            System.out.println("Contrase;a" + nuevo.getContrasena());
             st.setInt(4, nuevo.getTipo_usuario());
-            System.out.println("tipoUsuario"+nuevo.getTipo_usuario());
+            System.out.println("tipoUsuario" + nuevo.getTipo_usuario());
             st.executeUpdate();
         } catch (SQLException e) {
             System.out.println("Error en el DAO AL Ingresar Nuevo Usuario" + e);
@@ -128,7 +128,7 @@ public class usuarioDao extends DAO {
         }
         return lista;
     }
-    
+
     public List<Usuario> listarUsuarios() throws Exception {
 
         List<Usuario> lista;
@@ -143,7 +143,7 @@ public class usuarioDao extends DAO {
                 Usuario con = new Usuario();
                 con.setId_usuario(result.getInt("id_usuario"));
                 con.setNombre(result.getString("nombre"));
-                con.setContrasena(result.getString("id_tipoUsuaio"));                
+                con.setContrasena(result.getString("id_tipoUsuaio"));
                 con.setTipo_usuario(result.getInt("tipoUsuario"));
                 lista.add(con);
             }
@@ -155,8 +155,58 @@ public class usuarioDao extends DAO {
         return lista;
     }
 
-    public ArrayList<InnerUsuario> listarUsuario() {
+    public ArrayList<InnerUsuario> listarUsuarioId(InnerUsuario modUsu) throws Exception {
         ArrayList<InnerUsuario> lstModUsuario = null;
+        ResultSet res;
+        try {
+            this.conectar();
+
+            sql = "SELECT usuarios.id_usuario, usuarios.nombre as usuario, tipos_usuario.tipoUsuario "
+                    + " FROM usuarios "
+                    + " INNER JOIN tipos_usuario ON tipos_usuario.id_tipoUsuario=usuarios.id_tipoUsuario "
+                    + " WHERE usuarios.id_usuario=?";
+            sta = this.getCn().prepareStatement(sql);
+            sta.setInt(1, modUsu.getIdUsuario());
+            res = sta.executeQuery();
+            lstModUsuario = new ArrayList<>();
+
+            while (res.next()) {
+                InnerUsuario modUsuario = new InnerUsuario();
+                modUsuario.setIdUsuario(res.getInt("id_usuario"));
+                modUsuario.setNombreUsuario(res.getString("usuario"));
+                modUsuario.setTipoUsuario(res.getString("tipoUsuario"));
+                lstModUsuario.add(modUsu);
+            }
+        } catch (SQLException e) {
+            System.out.println("Error al listar por id usuario: " + e);
+        }
+
+        return lstModUsuario;
+    }
+
+    public ArrayList<InnerUsuario> listarUsuario() throws Exception {
+        ArrayList<InnerUsuario> lstModUsuario = null;
+        ResultSet res;
+        try {
+            this.conectar();
+
+            sql = "SELECT usuarios.id_usuario, usuarios.nombre as usuario, tipos_usuario.tipoUsuario "
+                    + " FROM usuarios "
+                    + " INNER JOIN tipos_usuario ON tipos_usuario.id_tipoUsuario=usuarios.id_tipoUsuario ";
+            sta = this.getCn().prepareStatement(sql);
+            res = sta.executeQuery();
+            lstModUsuario = new ArrayList<>();
+
+            while (res.next()) {
+                InnerUsuario modUsuario = new InnerUsuario();
+                modUsuario.setIdUsuario(res.getInt("id_usuario"));
+                modUsuario.setNombreUsuario(res.getString("usuario"));
+                modUsuario.setTipoUsuario(res.getString("tipoUsuario"));
+                lstModUsuario.add(modUsuario);
+            }
+        } catch (SQLException e) {
+            System.out.println("error al listar usuario: "+e);
+        }
 
         return lstModUsuario;
     }

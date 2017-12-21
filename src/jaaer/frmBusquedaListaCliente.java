@@ -6,21 +6,13 @@
 package jaaer;
 
 import DAO.ClienteDao;
-import DAO.DAO;
+import DAO.ReporteDao;
 import Modelo.InnerPersonaCliente;
-import java.sql.Connection;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import net.sf.jasperreports.engine.JRException;
-import net.sf.jasperreports.engine.JasperCompileManager;
-import net.sf.jasperreports.engine.JasperFillManager;
-import net.sf.jasperreports.engine.JasperPrint;
-import net.sf.jasperreports.engine.JasperReport;
-import net.sf.jasperreports.engine.util.JRLoader;
-import net.sf.jasperreports.view.JasperViewer;
 
 
 /**
@@ -88,6 +80,7 @@ public class frmBusquedaListaCliente extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jFileChooser1 = new javax.swing.JFileChooser();
         jPanel1 = new javax.swing.JPanel();
         lblTituloElCliente = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -96,9 +89,10 @@ public class frmBusquedaListaCliente extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         btnBuscar = new javax.swing.JButton();
         txtIdCliente = new principal.MaterialTextField();
+        jPanel2 = new javax.swing.JPanel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -170,18 +164,24 @@ public class frmBusquedaListaCliente extends javax.swing.JFrame {
             }
         });
         jPanel1.add(btnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 110, 60, 40));
-        jPanel1.add(txtIdCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 109, 190, 40));
+        jPanel1.add(txtIdCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 110, 180, 40));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 0, 970, -1));
+
+        jPanel2.setBackground(new java.awt.Color(255, 102, 0));
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 189, Short.MAX_VALUE)
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 550, javax.swing.GroupLayout.PREFERRED_SIZE)
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 550, Short.MAX_VALUE)
         );
+
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 550));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -193,20 +193,13 @@ public class frmBusquedaListaCliente extends javax.swing.JFrame {
         int res = JOptionPane.showConfirmDialog(this, "¿Desea imprimir el listado de Clientes?", "Confirmacion", JOptionPane.YES_OPTION);
         if (res == 0) {
             try {
-                DAO conn = new DAO();
-                Connection con = conn.getCn();
-                String direccion = "src\\Reporte\\report2.jasper";
-                JasperReport reporteCliente;//Variable de tipo JasperReport
-                reporteCliente =  (JasperReport) JRLoader.loadObjectFromFile(direccion);//se le asigna la direccion del archivo .jasper 
-                JasperPrint imprimirReporte =  JasperFillManager.fillReport(reporteCliente, null, con);//obtiene la direccion del reporte y la conexion a base de datos
-                JasperViewer vista = new JasperViewer(imprimirReporte, false);//se genera la vista del reporte
-                vista.setDefaultCloseOperation(DISPOSE_ON_CLOSE); //para que se pueda cerrar el reporte al momento de pichar la X
-                vista.setVisible(true);
                 
-            } catch (JRException ex) {
-                System.out.println("Error al generar reporte: "+ex);
-//                Logger.getLogger(frmBusquedaListaCliente.class.getName()).log(Level.SEVERE, null, ex);
-            }
+                ReporteDao rep = new ReporteDao();
+                rep.generarReporteCliente();
+                JOptionPane.showMessageDialog(null, "¡Archivo Listo para imprimir!");
+            }catch (Exception ex) {
+                Logger.getLogger(frmBusquedaListaCliente.class.getName()).log(Level.SEVERE, null, ex);
+            } 
             
                     
         }
@@ -279,8 +272,10 @@ public class frmBusquedaListaCliente extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnListarImprimir;
+    private javax.swing.JFileChooser jFileChooser1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblTituloElCliente;
     private javax.swing.JTable tblCliente;

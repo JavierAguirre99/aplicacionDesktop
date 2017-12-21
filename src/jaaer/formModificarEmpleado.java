@@ -2,17 +2,30 @@ package jaaer;
 
 import DAO.EmpleadoDao;
 import Modelo.Empleados;
-import Modelo.EmpleadosMod;
+
+import Modelo.InnerPersonaEmpleado;
+import Modelo.Puesto;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 public class formModificarEmpleado extends javax.swing.JFrame {
+
     DefaultTableModel modeloTabla;
-    List<EmpleadosMod> lstEmpleado = new ArrayList();
+    List<InnerPersonaEmpleado> lstEmpleado = new ArrayList();
+    List<Puesto> lstPuesto = new ArrayList();
+
+    int id;
+    String puesto;
+    double sueldo;
+
     public formModificarEmpleado() {
         initComponents();
+        llenar();
+        listarPuestos();
     }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -20,67 +33,52 @@ public class formModificarEmpleado extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        txtNit = new javax.swing.JTextField();
-        txtDpi = new javax.swing.JTextField();
+        txtSueldo = new javax.swing.JTextField();
         btnModificar = new javax.swing.JButton();
+        cbxPuesto = new javax.swing.JComboBox<>();
+        txtID = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel5.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         jLabel5.setText("Sueldo:");
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 110, -1, -1));
 
+        jLabel7.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel7.setText("Puesto:");
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 110, -1, -1));
+        jPanel1.add(txtSueldo, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 100, 150, 40));
 
+        btnModificar.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         btnModificar.setText("Modificar");
         btnModificar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnModificarActionPerformed(evt);
             }
         });
+        jPanel1.add(btnModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 160, -1, 40));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(26, 26, 26)
-                        .addComponent(jLabel5)
-                        .addGap(18, 18, 18)
-                        .addComponent(txtDpi, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(41, 41, 41)
-                        .addComponent(jLabel7)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtNit, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(203, 203, 203)
-                        .addComponent(btnModificar)))
-                .addContainerGap(54, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(txtDpi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtNit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel7))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
+        cbxPuesto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbxPuestoActionPerformed(evt);
+            }
+        });
+        jPanel1.add(cbxPuesto, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 100, 150, 40));
+        jPanel1.add(txtID, new org.netbeans.lib.awtextra.AbsoluteConstraints(26, 168, 44, 23));
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Id", "Nombre", "Apellido", "Puesto", "Sueldo"
+                "Id", "Nombre", "Direccion", "Puesto", "Sueldo"
             }
         ));
         jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -93,89 +91,78 @@ public class formModificarEmpleado extends javax.swing.JFrame {
             jTable1.getColumnModel().getColumn(0).setMaxWidth(60);
         }
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
-        jLabel1.setText("Modificar Empleados");
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 219, 600, 160));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(96, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(216, 216, 216))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(59, 59, 59))))
+        jLabel1.setFont(new java.awt.Font("Yu Gothic UI", 1, 24)); // NOI18N
+        jLabel1.setText("Modificar Empleado");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 30, -1, -1));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 0, 600, 380));
+
+        jPanel2.setBackground(new java.awt.Color(255, 102, 0));
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 189, Short.MAX_VALUE)
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(16, 16, 16)
-                .addComponent(jLabel1)
-                .addGap(18, 18, 18)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(47, Short.MAX_VALUE))
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 380, Short.MAX_VALUE)
         );
+
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 380));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
+        if (id != 0) {
+            try {
+                EmpleadoDao prueba = new EmpleadoDao();
+                Empleados empleado = new Empleados();
 
-        try {
-            EmpleadoDao prueba = new EmpleadoDao();
-            Empleados empleado = new Empleados();
+                empleado.setId_empleado(Integer.parseInt(txtID.getText()));
+                for (int i = 0; i < lstPuesto.size(); i++) {
+                    if (cbxPuesto.getSelectedItem().equals(lstPuesto.get(i).getNombre())) {
+                        empleado.setId_puesto(lstPuesto.get(i).getIdPuesto());
+                    }
+                }
 
-            empleado.setId(id);
-            persona.setNombre(txtNombre.getText());
-            persona.setApellido(txtApellido.getText());
-            persona.setDireccion(txtDireccion.getText());
-            persona.setDpi(Integer.parseInt(txtDpi.getText()));
-            persona.setNit(Integer.parseInt(txtNit.getText()));
-
-            int anio2 = txtFecha.getCalendar().get(Calendar.YEAR);
-            int mes2 = txtFecha.getCalendar().get(Calendar.MARCH);
-            int dia2 = txtFecha.getCalendar().get(Calendar.DAY_OF_MONTH);
-
-            String fechaPersona = anio2 + "-" + mes2 + "-" + dia2;
-            persona.setFecha_nac(fechaPersona);
-            persona.setTel_movil(Integer.parseInt(txtMovil.getText()));
-            persona.setTel_casa(Integer.parseInt(txtCasa.getText()));
-
-            prueba.modificarPersona(persona);
-            llenar();
-        } catch (Exception ex) {
-            System.out.println("Error en el Bean Al intentar Modificar Persona "+ex);
+                empleado.setSueldo(Double.parseDouble(txtSueldo.getText()));
+                prueba.modificarEmpleado(empleado);
+                id=0;
+                txtSueldo.setText(null);
+                llenar();
+                
+            } catch (Exception ex) {
+                System.out.println("Error en el Bean Al intentar Modificar Persona " + ex);
+            }
+        }else{
+            
+            JOptionPane.showMessageDialog(null, "Primero Debe seleccionar un Registro ");
         }
+
 
     }//GEN-LAST:event_btnModificarActionPerformed
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
         id = Integer.parseInt(modeloTabla.getValueAt(jTable1.getSelectedRow(), 0).toString());
-        nombre = modeloTabla.getValueAt(jTable1.getSelectedRow(), 1).toString();
-        apellido = modeloTabla.getValueAt(jTable1.getSelectedRow(), 2).toString();
-        direccion = modeloTabla.getValueAt(jTable1.getSelectedRow(), 3).toString();
-        nit = Integer.parseInt(modeloTabla.getValueAt(jTable1.getSelectedRow(), 4).toString());
-        dpi = Integer.parseInt(modeloTabla.getValueAt(jTable1.getSelectedRow(), 5).toString());
-        fecha = modeloTabla.getValueAt(jTable1.getSelectedRow(), 6).toString();
-        movil = modeloTabla.getValueAt(jTable1.getSelectedRow(), 7).toString();
-        casa = modeloTabla.getValueAt(jTable1.getSelectedRow(), 8).toString();
+        System.out.println("id"+id);
+        puesto = modeloTabla.getValueAt(jTable1.getSelectedRow(), 3).toString();
+        sueldo = Double.parseDouble(modeloTabla.getValueAt(jTable1.getSelectedRow(), 4).toString());
+        
+        txtID.setText(String.valueOf(id));
+        txtSueldo.setText(String.valueOf(sueldo));
+        cbxPuesto.setSelectedItem(puesto);
 
-        txtNombre.setText(nombre);
-        txtApellido.setText(apellido);
-        txtDireccion.setText(direccion);
-        txtNit.setText(String.valueOf(nit));
-        txtDpi.setText(String.valueOf(dpi));
-        txtMovil.setText(movil);
-        txtCasa.setText(casa);
+
     }//GEN-LAST:event_jTable1MouseClicked
+
+    private void cbxPuestoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxPuestoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbxPuestoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -188,7 +175,7 @@ public class formModificarEmpleado extends javax.swing.JFrame {
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
+                if ("Windows".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
@@ -211,7 +198,7 @@ public class formModificarEmpleado extends javax.swing.JFrame {
             }
         });
     }
-    
+
     private void llenar() {
         try {
             modeloTabla = (DefaultTableModel) jTable1.getModel();
@@ -229,31 +216,22 @@ public class formModificarEmpleado extends javax.swing.JFrame {
 
                     modeloTabla.removeRow(0);
                 }
-
             }
-            lstEmpleado = DAO.listarNoEmpleado();
+            lstEmpleado = DAO.listaEmpleados();
 
-            int tamano = lstPersona.size();
+            int tamano = lstEmpleado.size();
 
             for (int i = 0; i < tamano; i++) {
 
-                columna[0] = lstPersona.get(i).getId();
+                columna[0] = lstEmpleado.get(i).getIdEmpleado();
 
-                columna[1] = lstPersona.get(i).getNombre();
+                columna[1] = lstEmpleado.get(i).getNombreEmpleado();
 
-                columna[2] = lstPersona.get(i).getApellido();
+                columna[2] = lstEmpleado.get(i).getDireccion();
 
-                columna[3] = lstPersona.get(i).getDireccion();
+                columna[3] = lstEmpleado.get(i).getPuesto();
 
-                columna[4] = lstPersona.get(i).getNit();
-
-                columna[5] = lstPersona.get(i).getDpi();
-
-                columna[6] = lstPersona.get(i).getFecha_nac();
-
-                columna[7] = lstPersona.get(i).getTel_movil();
-
-                columna[8] = lstPersona.get(i).getTel_casa();
+                columna[4] = lstEmpleado.get(i).getSueldo();
 
                 modeloTabla.addRow(columna);
             }
@@ -263,15 +241,26 @@ public class formModificarEmpleado extends javax.swing.JFrame {
         }
     }
 
+    public void listarPuestos() {
+
+        EmpleadoDao prueba = new EmpleadoDao();
+        lstPuesto = prueba.listarPuesto();
+        for (int i = 0; i < lstPuesto.size(); i++) {
+            cbxPuesto.addItem(lstPuesto.get(i).getNombre());
+        }
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnModificar;
+    private javax.swing.JComboBox<String> cbxPuesto;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTextField txtDpi;
-    private javax.swing.JTextField txtNit;
+    private javax.swing.JLabel txtID;
+    private javax.swing.JTextField txtSueldo;
     // End of variables declaration//GEN-END:variables
 }
