@@ -72,9 +72,9 @@ public class formIngresarEmpleado extends javax.swing.JFrame {
         lblIdClient = new javax.swing.JLabel();
         cboEmpleado = new javax.swing.JComboBox<>();
         lblCliente = new javax.swing.JLabel();
-        txtSueldo = new principal.MaterialTextField();
         cboPuesto = new javax.swing.JComboBox<>();
         lblPuesto = new javax.swing.JLabel();
+        txtSueldo = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
 
         jMenu1.setText("jMenu1");
@@ -123,14 +123,6 @@ public class formIngresarEmpleado extends javax.swing.JFrame {
         lblCliente.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         lblCliente.setText("Empleado:");
 
-        txtSueldo.setText(" ");
-        txtSueldo.setSelectionColor(new java.awt.Color(255, 102, 51));
-        txtSueldo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtSueldoActionPerformed(evt);
-            }
-        });
-
         cboPuesto.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         cboPuesto.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         cboPuesto.setBorder(null);
@@ -148,7 +140,7 @@ public class formIngresarEmpleado extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(80, Short.MAX_VALUE)
+                .addContainerGap(76, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(lblTituloElCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -161,8 +153,8 @@ public class formIngresarEmpleado extends javax.swing.JFrame {
                                     .addComponent(lblCliente))
                                 .addGap(71, 71, 71)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(cboEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(cboEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addComponent(lblPuesto))
                         .addGap(137, 137, 137))
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -175,7 +167,8 @@ public class formIngresarEmpleado extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(cboPuesto, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtSueldo, javax.swing.GroupLayout.PREFERRED_SIZE, 325, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
+                                    .addComponent(txtSueldo, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addContainerGap())))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -200,7 +193,7 @@ public class formIngresarEmpleado extends javax.swing.JFrame {
                     .addComponent(txtSueldo, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(52, 52, 52)
                 .addComponent(btnIngresarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(58, Short.MAX_VALUE))
+                .addContainerGap(56, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 0, 670, 540));
@@ -266,13 +259,13 @@ public class formIngresarEmpleado extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnIngresarClienteActionPerformed
 
-    private void txtSueldoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSueldoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtSueldoActionPerformed
-
     private void cboPuestoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboPuestoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cboPuestoActionPerformed
+
+    private void txtSueldoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtId1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtId1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -323,6 +316,6 @@ public class formIngresarEmpleado extends javax.swing.JFrame {
     private javax.swing.JLabel lblPuesto;
     private javax.swing.JLabel lblTituloElCliente;
     private javax.swing.JTextField txtId;
-    private principal.MaterialTextField txtSueldo;
+    private javax.swing.JTextField txtSueldo;
     // End of variables declaration//GEN-END:variables
 }

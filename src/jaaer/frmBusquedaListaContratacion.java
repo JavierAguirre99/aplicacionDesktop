@@ -89,7 +89,7 @@ public class frmBusquedaListaContratacion extends javax.swing.JFrame {
         btnListarImprimir = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         btnBuscar = new javax.swing.JButton();
-        txtIdEmpleado = new principal.MaterialTextField();
+        txtIdEmpleado = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -166,7 +166,7 @@ public class frmBusquedaListaContratacion extends javax.swing.JFrame {
             }
         });
         jPanel1.add(btnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 110, 60, 40));
-        jPanel1.add(txtIdEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 110, 180, 40));
+        jPanel1.add(txtIdEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 110, 170, 40));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 0, -1, -1));
 
@@ -283,6 +283,6 @@ public class frmBusquedaListaContratacion extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblTituloElCliente;
     private javax.swing.JTable tblContrato;
-    private principal.MaterialTextField txtIdEmpleado;
+    private javax.swing.JTextField txtIdEmpleado;
     // End of variables declaration//GEN-END:variables
 }

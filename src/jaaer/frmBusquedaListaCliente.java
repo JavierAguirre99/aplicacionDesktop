@@ -88,7 +88,7 @@ public class frmBusquedaListaCliente extends javax.swing.JFrame {
         btnListarImprimir = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         btnBuscar = new javax.swing.JButton();
-        txtIdCliente = new principal.MaterialTextField();
+        txtIdCliente = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
 
         setResizable(false);
@@ -164,7 +164,7 @@ public class frmBusquedaListaCliente extends javax.swing.JFrame {
             }
         });
         jPanel1.add(btnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 110, 60, 40));
-        jPanel1.add(txtIdCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 110, 180, 40));
+        jPanel1.add(txtIdCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 110, 170, 40));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 0, 970, -1));
 
@@ -279,6 +279,6 @@ public class frmBusquedaListaCliente extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblTituloElCliente;
     private javax.swing.JTable tblCliente;
-    private principal.MaterialTextField txtIdCliente;
+    private javax.swing.JTextField txtIdCliente;
     // End of variables declaration//GEN-END:variables
 }

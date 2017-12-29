@@ -77,9 +77,7 @@ public class frmModificarCliente extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         lblTituloElCliente = new javax.swing.JLabel();
-        txtIdCliente = new principal.MaterialTextField();
         jLabel1 = new javax.swing.JLabel();
-        btnModificar = new principal.MaterialButton();
         lblIdEstado = new javax.swing.JLabel();
         cboIdEstado = new javax.swing.JComboBox<>();
         cboIdTipoCliente = new javax.swing.JComboBox<>();
@@ -87,7 +85,8 @@ public class frmModificarCliente extends javax.swing.JFrame {
         lblIdCategoria = new javax.swing.JLabel();
         cboIdCategoria = new javax.swing.JComboBox<>();
         lblEmail = new javax.swing.JLabel();
-        txtEmail = new principal.MaterialTextField();
+        txtIdCliente = new javax.swing.JTextField();
+        txtEmail = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -99,19 +98,10 @@ public class frmModificarCliente extends javax.swing.JFrame {
         lblTituloElCliente.setFont(new java.awt.Font("Yu Gothic UI", 1, 24)); // NOI18N
         lblTituloElCliente.setText("Modificar Cliente");
         jPanel1.add(lblTituloElCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 20, -1, 60));
-        jPanel1.add(txtIdCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 120, 200, 40));
 
         jLabel1.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         jLabel1.setText("ID Cliente:");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 120, 70, 40));
-
-        btnModificar.setText("Modificar");
-        btnModificar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnModificarActionPerformed(evt);
-            }
-        });
-        jPanel1.add(btnModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 470, 107, 40));
 
         lblIdEstado.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         lblIdEstado.setText("Estado:");
@@ -137,6 +127,7 @@ public class frmModificarCliente extends javax.swing.JFrame {
         lblEmail.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         lblEmail.setText("Correo Electronico:");
         jPanel1.add(lblEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 400, 120, 40));
+        jPanel1.add(txtIdCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 130, 90, 30));
         jPanel1.add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 400, 200, 40));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 0, 630, 540));
@@ -228,7 +219,6 @@ public class frmModificarCliente extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private principal.MaterialButton btnModificar;
     private javax.swing.JComboBox<String> cboIdCategoria;
     private javax.swing.JComboBox<String> cboIdEstado;
     private javax.swing.JComboBox<String> cboIdTipoCliente;
@@ -240,7 +230,7 @@ public class frmModificarCliente extends javax.swing.JFrame {
     private javax.swing.JLabel lblIdEstado;
     private javax.swing.JLabel lblIdTipoCliente;
     private javax.swing.JLabel lblTituloElCliente;
-    private principal.MaterialTextField txtEmail;
-    private principal.MaterialTextField txtIdCliente;
+    private javax.swing.JTextField txtEmail;
+    private javax.swing.JTextField txtIdCliente;
     // End of variables declaration//GEN-END:variables
 }

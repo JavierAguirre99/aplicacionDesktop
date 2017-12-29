@@ -205,10 +205,10 @@
             </Constraint>
           </Constraints>
         </Component>
-        <Component class="principal.MaterialTextField" name="txtIdCliente">
+        <Component class="javax.swing.JTextField" name="txtIdCliente">
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="300" y="110" width="180" height="40"/>
+              <AbsoluteConstraints x="280" y="110" width="170" height="40"/>
             </Constraint>
           </Constraints>
         </Component>

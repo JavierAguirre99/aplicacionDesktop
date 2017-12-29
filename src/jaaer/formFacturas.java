@@ -1,9 +1,9 @@
 package jaaer;
 
-import DAO.ConsultaDeServiciosDAO;
+
 import DAO.FacturaDAO;
 import Modelo.Factura;
-import Modelo.Ticket;
+
 import java.awt.*;
 import java.awt.print.*;
 import java.util.ArrayList;

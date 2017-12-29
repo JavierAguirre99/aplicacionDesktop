@@ -82,7 +82,7 @@ public class frmBusquedaListaUsuario extends javax.swing.JFrame {
         btnListarImprimir = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         btnBuscar = new javax.swing.JButton();
-        txtIdEmpleado = new principal.MaterialTextField();
+        txtIdEmpleado = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -124,8 +124,11 @@ public class frmBusquedaListaUsuario extends javax.swing.JFrame {
         tblEmpleado.setRowHeight(25);
         tblEmpleado.setSelectionBackground(new java.awt.Color(255, 153, 51));
         jScrollPane1.setViewportView(tblEmpleado);
+        if (tblEmpleado.getColumnModel().getColumnCount() > 0) {
+            tblEmpleado.getColumnModel().getColumn(0).setMaxWidth(70);
+        }
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 200, 970, 350));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 190, 720, 360));
 
         btnListarImprimir.setBackground(new java.awt.Color(255, 255, 255));
         btnListarImprimir.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
@@ -159,7 +162,7 @@ public class frmBusquedaListaUsuario extends javax.swing.JFrame {
             }
         });
         jPanel1.add(btnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 110, 60, 40));
-        jPanel1.add(txtIdEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 110, 180, 40));
+        jPanel1.add(txtIdEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 110, 190, 40));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 0, 970, -1));
 
@@ -266,6 +269,6 @@ public class frmBusquedaListaUsuario extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblTituloElCliente;
     private javax.swing.JTable tblEmpleado;
-    private principal.MaterialTextField txtIdEmpleado;
+    private javax.swing.JTextField txtIdEmpleado;
     // End of variables declaration//GEN-END:variables
 }

@@ -1,7 +1,7 @@
 package DAO;
 
 import Modelo.Empleados;
-import Modelo.EmpleadosMod;
+
 import Modelo.InnerPersonaEmpleado;
 import Modelo.Puesto;
 import java.sql.PreparedStatement;
